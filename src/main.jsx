@@ -6,9 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 import Index from './pages/Index'
 import Sidebar from './components/Sidebar/Sidebar'
 import About from './pages/About'
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>,
   </BrowserRouter>
 )
