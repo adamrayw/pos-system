@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
+import { CgChevronDown, CgChevronUp } from 'react-icons/cg'
 
 function Sidebar() {
     const [open, setOpen] = useState(false);
+    const [stateManage, setStateManage] = useState(false)
 
     return (
         <div className="flex">
@@ -17,7 +19,11 @@ function Sidebar() {
                                 Soto Mak Wiek
                             </h2>
                             : ""}
-                        <button onClick={() => setOpen(!open)}>
+                        <button onClick={() => {
+                            setOpen(!open)
+                            setStateManage(false)
+                        }
+                        }>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-6 h-6 text-gray-500"
@@ -40,7 +46,11 @@ function Sidebar() {
                                 <Link
                                     to="/"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md active:bg-gray-200 transition hover:bg-gray-50`}
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                        setOpen(!open)
+                                        setStateManage(false)
+                                    }
+                                    }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -64,9 +74,16 @@ function Sidebar() {
                             </li>
                             <li className="rounded-sm">
                                 <Link
-                                    to="#"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                        if (open === false) {
+                                            setStateManage(!stateManage)
+                                            setOpen(true)
+                                        } else {
+                                            setStateManage(!stateManage)
+                                        }
+
+                                    }}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -83,15 +100,40 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className="text-gray-400 font-semibold">Inbox</span>
+                                        <>
+                                            <span className="text-gray-400 font-semibold">Manage</span>
+                                            {stateManage ? <CgChevronUp className='text-gray-500 text-xl ml-12' /> : <CgChevronDown className=' text-gray-500 text-xl ml-12' />}
+                                        </>
                                         : ''}
+
                                 </Link>
+                                <ul className={`${stateManage ? 'block' : 'hidden'} px-8 pb-4 pt-2 mx-3`}>
+                                    <li>
+                                        <Link to='/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                            Menu
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                            Kategori
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                            Diskon
+                                        </Link>
+                                    </li>
+                                </ul>
                             </li>
                             <li className="rounded-sm">
                                 <Link
                                     to="/laporan"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                        setOpen(!open)
+                                        setStateManage(false)
+                                    }
+                                    }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +161,11 @@ function Sidebar() {
                                 <Link
                                     to="#"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
-                                    onClick={() => setOpen(false)}
+                                    onClick={() => {
+                                        setOpen(!open)
+                                        setStateManage(false)
+                                    }
+                                    }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
