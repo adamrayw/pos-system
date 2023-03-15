@@ -20,7 +20,7 @@ function Menu() {
             {menu.map((e) => {
                 return (
 
-                    <button className='p-4 bg-white items-center space-y-2 shadow-sm active:bg-gray-100' onClick={() => dispatch(add(e))}>
+                    <button className='p-4 bg-white rounded-lg items-center space-y-2 shadow-sm active:bg-gray-100' onClick={() => dispatch(add(e))}>
                         <div className="flex justify-center items-center">
                             <img src={e.image} width={100} height={100} alt='menu' priority />
                         </div>
