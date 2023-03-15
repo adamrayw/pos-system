@@ -48,7 +48,7 @@ function RightBar() {
 
                     </div>
                 </div>
-                <div className='mt-10 bg-gray-100 p-4 space-y-2'>
+                <div className='mt-10 bg-gray-100 p-4 space-y-2 rounded-lg'>
                     <div className='flex justify-between text-gray-800'>
                         <h1 className='font-semibold'>Subtotal</h1>
                         <p className='text-gray-500 font-semibold'>Rp {new Intl.NumberFormat(['ban', 'id']).format(subTotal)}</p>
