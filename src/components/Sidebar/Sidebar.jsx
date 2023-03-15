@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 function Sidebar() {
     const [open, setOpen] = useState(false);
+
     return (
         <div className="flex">
             <div
@@ -19,7 +20,7 @@ function Sidebar() {
                         <button onClick={() => setOpen(!open)}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="w-6 h-6 text-black"
+                                className="w-6 h-6 text-gray-500"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -38,11 +39,12 @@ function Sidebar() {
                             <li className="rounded-sm">
                                 <Link
                                     to="/"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md`}
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md active:bg-gray-200 transition hover:bg-gray-50`}
+                                    onClick={() => setOpen(false)}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-black"
+                                        className="w-6 h-6 text-gray-500"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -55,19 +57,20 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className="text-black">Home</span>
+                                        <span className='text-gray-400 font-semibold'>Home</span>
                                         : ''
                                     }
                                 </Link>
                             </li>
                             <li className="rounded-sm">
-                                <a
-                                    href="#"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md`}
+                                <Link
+                                    to="#"
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
+                                    onClick={() => setOpen(false)}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-black"
+                                        className="w-6 h-6 text-gray-500"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -80,18 +83,19 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className="text-black">Inbox</span>
+                                        <span className="text-gray-400 font-semibold">Inbox</span>
                                         : ''}
-                                </a>
+                                </Link>
                             </li>
                             <li className="rounded-sm">
                                 <Link
                                     to="/laporan"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md`}
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
+                                    onClick={() => setOpen(false)}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-black"
+                                        className="w-6 h-6 text-gray-500"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -104,7 +108,7 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className="text-black">
+                                        <span className="text-gray-400 font-semibold">
                                             Laporan
                                         </span>
                                         : ''}
@@ -112,13 +116,14 @@ function Sidebar() {
                             </li>
 
                             <li className="rounded-sm">
-                                <a
-                                    href="#"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md`}
+                                <Link
+                                    to="#"
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
+                                    onClick={() => setOpen(false)}
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-black"
+                                        className="w-6 h-6 text-gray-500"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -131,11 +136,11 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className="text-black">
+                                        <span className="text-gray-400 font-semibold">
                                             Logout
                                         </span>
                                         : ''}
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
