@@ -4,6 +4,8 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import About from "./pages/About";
 import Index from "./pages/Index";
 import Laporan from "./pages/Laporan";
+import Menu from "./pages/Manage/Menu";
+import ManageMenu from "./pages/ManageMenu";
 
 function App() {
   return (
@@ -12,8 +14,11 @@ function App() {
       <div className="bg-gray-100 p-10 w-full">
         <Routes>
           <Route path='/' element={<Index />} />
-          <Route path='/laporan' element={<Laporan />} />
-          <Route path='/about' element={<About />} />
+          <Route path='laporan' element={<Laporan />} />
+          <Route path='about' element={<About />} />
+          <Route path='manage'>
+            <Route path='menu' element={<Menu />} />
+          </Route>
         </Routes>
       </div>
       <RightBar />
