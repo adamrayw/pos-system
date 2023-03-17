@@ -3,11 +3,9 @@ import { add } from '../../features/menuSlice/menuSlice'
 import { useEffect, useState } from 'react'
 import { getSubTotal } from '../../features/menuSlice/menuSlice'
 import axios from 'axios'
-import api from '../../services/api.service'
 import useApiRequest from '../../services/api.service'
 
 function Menu() {
-    const [isLoading, setIsLoading] = useState(false)
     const { data, error, isLoaded } = useApiRequest("menu")
 
     if (error !== null) {
