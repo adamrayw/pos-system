@@ -10,16 +10,25 @@ function Menu() {
     const [isLoaded, setIsLoaded] = useState(false)
     const [data, setData] = useState([])
 
+    const selector = useSelector((state) => state.menu.tab)
+
     useEffect(() => {
         const fetchMenu = async () => {
-            setIsLoaded(false)
-            const { response, err } = await useApiRequest("menu")
-            setData(response.data)
-            setIsLoaded(true)
+            if (selector === "semua") {
+                setIsLoaded(false)
+                const { response, err } = await useApiRequest("menu")
+                setData(response.data)
+                setIsLoaded(true)
+            } else {
+                setIsLoaded(false)
+                const { response, err } = await useApiRequest('kategori/getbyid/' + selector)
+                setData(response.data.items)
+                setIsLoaded(true)
+            }
         }
 
         fetchMenu()
-    }, [])
+    }, [selector])
 
 
     const valueMenu = useSelector((state) => state.menu.value)
@@ -36,10 +45,9 @@ function Menu() {
                 <div className='grid grid-cols-3 gap-4' >
                     {data.items.map((e) => {
                         return (
-
-                            <button className='p-4 bg-white rounded-lg items-center space-y-2 shadow-sm active:bg-gray-100' onClick={() => dispatch(add(e))}>
+                            <button className='p-4 bg-white rounded-lg items-center space-y-2 shadow-sm active:bg-gray-100' key={e.id} onClick={() => dispatch(add(e))}>
                                 <div className="flex justify-center items-center">
-                                    <img src={e.image} width={100} height={100} alt='menu' priority />
+                                    <img src={e.image} width={100} priority="true" height={100} alt='menu' />
                                 </div>
 
                                 <div className="text-left">
