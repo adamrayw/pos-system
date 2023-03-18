@@ -38,7 +38,6 @@ export const menuSlice = createSlice({
                 cartSubtotal.subTotal += itemTotal
                 cartSubtotal.quantity += Number(qty)
 
-                console.log(cartSubtotal)
                 return cartSubtotal
             }, {
                 subTotal: 0,
