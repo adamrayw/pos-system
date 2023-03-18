@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Modal from "../../components/Modal/Modal"
 import { useApiRequest } from "../../services/api.service"
 import { FaRegEdit, FaTrash } from 'react-icons/fa'
@@ -8,21 +8,27 @@ function Menu() {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
     const [dataEdit, setDataEdit] = useState([])
-    const { data, isLoaded, error } = useApiRequest('menu')
+    const [data, setData] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
-    if (error !== null) {
-        console.log(error.message)
-    }
-
-    if (!isLoaded) {
-        console.log('loading...')
-    }
 
     const triggerFromModal = (data) => {
         setIsModalOpen(data)
         setIsEditModalOpen(data)
         setIsDeleteModalOpen(data)
     }
+
+    useEffect(() => {
+        const fetchMenu = async () => {
+            setIsLoaded(false)
+            const { response, err } = await useApiRequest("menu")
+
+            setData(response.data)
+            setIsLoaded(true)
+        }
+
+        fetchMenu()
+    }, [isEditModalOpen, isDeleteModalOpen])
 
     return (
         <div>
@@ -75,12 +81,12 @@ function Menu() {
                                             {
                                                 data.items.map((e) => {
                                                     return (
-                                                        <tr>
+                                                        <tr key={e.id}>
                                                             <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                                 <div className="flex items-center">
                                                                     <div className="flex-shrink-0">
                                                                         <a href="#" className="relative block">
-                                                                            <img alt="profil" src={e.image} className="mx-auto object-cover rounded-full h-10 w-10 " />
+                                                                            <img alt="profil" src={e.image} priority="true" className="mx-auto object-cover rounded-full h-10 w-10 " />
                                                                         </a>
                                                                     </div>
                                                                     <div className="ml-3">
