@@ -23,7 +23,7 @@ function RightBar() {
                             : ''}
                         {menus.map((e) => {
                             return (
-                                <div className="card flex items-center space-x-4">
+                                <div key={e.id} className="card flex items-center space-x-4">
                                     <img src={e.image} alt="icon" className='w-14' />
                                     <div className='flex justify-between items-end w-full'>
                                         <div className='space-y-2'>
