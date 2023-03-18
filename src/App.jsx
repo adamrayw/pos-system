@@ -8,6 +8,7 @@ import Laporan from "./pages/Laporan";
 import Menu from "./pages/Manage/Menu";
 import ManageMenu from "./pages/ManageMenu";
 import 'react-toastify/dist/ReactToastify.css';
+import Kategori from "./pages/Manage/Kategori";
 
 function App() {
   return (
@@ -18,14 +19,15 @@ function App() {
           <Route path='/' element={<Index />} />
           <Route path='laporan' element={<Laporan />} />
           <Route path='about' element={<About />} />
-          <Route path='manage'>
+          <Route path='manage' >
             <Route path='menu' element={<Menu />} />
+            <Route path='kategori' element={<Kategori />} />
           </Route>
         </Routes>
       </div>
       <RightBar />
       <ToastContainer />
-    </div>
+    </div >
   )
 }
 
