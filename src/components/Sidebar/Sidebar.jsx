@@ -117,7 +117,7 @@ function Sidebar() {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                        <Link to="/manage/kategori" className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
                                             setOpen(false)
                                             setStateManage(false)
                                         }}>
