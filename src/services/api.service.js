@@ -34,3 +34,23 @@ export const useApiPost = async (url, data) => {
     }
 
 }
+
+export const useApiEdit = async (url, data) => {
+    try {
+        const response = await axios.put(api + url, data)
+        return response
+    } catch (err) {
+        return err
+    }
+
+}
+
+export const useApiDelete = async (url, data) => {
+    try {
+        const response = await axios.delete(api + url, { data: { id: data } })
+        return response
+    } catch (err) {
+        return err
+    }
+
+}
