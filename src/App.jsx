@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import RightBar from "./components/RightBar/RightBar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import About from "./pages/About";
@@ -6,6 +7,7 @@ import Index from "./pages/Index";
 import Laporan from "./pages/Laporan";
 import Menu from "./pages/Manage/Menu";
 import ManageMenu from "./pages/ManageMenu";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         </Routes>
       </div>
       <RightBar />
+      <ToastContainer />
     </div>
   )
 }
