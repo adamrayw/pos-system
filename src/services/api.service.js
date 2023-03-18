@@ -1,36 +1,39 @@
 const api = 'http://localhost:8181/api/'
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
-export const useApiRequest = url => {
-    const [data, setData] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [error, setError] = useState(null)
+const showErrorToast = () => {
+    toast.error('Ada masalah pada server!', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+}
 
-    useEffect(() => {
-        const fetchData = () => {
-            axios
-                .get(api + url)
-                .then(response => {
-                    setIsLoaded(true)
-                    setData(response.data)
-                })
-                .catch(error => {
-                    setError(error)
-                })
-        }
-        fetchData()
-    }, [url])
+export const useApiRequest = async (url) => {
+    try {
+        const response = await axios.get(api + url)
+        return { response, err: null }
+    } catch (err) {
+        showErrorToast()
+        return { response: null, err }
+    }
 
-    return { error, isLoaded, data }
 }
 
 export const useApiPost = async (url, data) => {
     try {
         const response = await axios.post(api + url, data)
-        return response
+        return { response, err: null }
     } catch (err) {
-        return err
+        showErrorToast()
+        return { response: null, err }
     }
 
 }
@@ -38,9 +41,10 @@ export const useApiPost = async (url, data) => {
 export const useApiEdit = async (url, data) => {
     try {
         const response = await axios.put(api + url, data)
-        return response
+        return { response, err: null }
     } catch (err) {
-        return err
+        showErrorToast()
+        return { response: null, err }
     }
 
 }
@@ -48,9 +52,10 @@ export const useApiEdit = async (url, data) => {
 export const useApiDelete = async (url, data) => {
     try {
         const response = await axios.delete(api + url, { data: { id: data } })
-        return response
+        return { response, err: null }
     } catch (err) {
-        return err
+        showErrorToast()
+        return { response: null, err }
     }
 
 }
