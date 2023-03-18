@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { getSubTotal } from '../../features/menuSlice/menuSlice'
 import axios from 'axios'
 import { useApiRequest } from '../../services/api.service'
+import convert from '../../utils/convertToRupiah.utils'
 
 function Menu() {
     const [isLoaded, setIsLoaded] = useState(false)
@@ -44,7 +45,7 @@ function Menu() {
                                 <div className="text-left">
                                     <h3 className='text-xl font-bold text-gray-800'>{e.name}</h3>
                                     <p className='text-lg font-medium text-orange-500'>
-                                        Rp {e.price}
+                                        Rp {convert(e.price)}
                                     </p>
                                 </div>
                             </button>

@@ -1,6 +1,7 @@
 import Soto from '/assets/soto.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { add, remove, getSubTotal } from '../../features/menuSlice/menuSlice'
+import convert from '../../utils/convertToRupiah.utils'
 
 function RightBar() {
 
@@ -26,20 +27,20 @@ function RightBar() {
                                     <img src={e.image} alt="icon" className='w-14' />
                                     <div className='flex justify-between items-end w-full'>
                                         <div className='space-y-2'>
-                                            <h2 className='font-medium'>{e.name}</h2>
-                                            <p className='text-orange-500 font-medium'>Rp{new Intl.NumberFormat(['ban', 'id']).format(e.price)}</p>
+                                            <h2 className='font-bold text-lg'>{e.name}</h2>
+                                            <p className='text-orange-500 font-medium'>Rp {convert(e.price)}</p>
                                         </div>
                                         {/* <div>
                                             <p className='text-gray-400'>{e.qty}x</p>
                                         </div> */}
-                                        <div className='flex justify-between space-x-2'>
-                                            <button className='text-xs py-1 rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => dispatch(add(e))}>+</button>
-                                            <p>
-                                                {e.qty}
-                                            </p>
-                                            <button className='text-xs py-1 rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => {
+                                        <div className='flex items-center justify-between space-x-2'>
+                                            <button className='text-xs py-1 w-6  rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => {
                                                 dispatch(remove(e))
                                             }}>-</button>
+                                            <p className='text-sm'>
+                                                {e.qty}
+                                            </p>
+                                            <button className='text-xs py-1 w-6 rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => dispatch(add(e))}>+</button>
                                         </div>
                                     </div>
                                 </div>
@@ -51,7 +52,7 @@ function RightBar() {
                 <div className='mt-10 bg-gray-100 p-4 space-y-2 rounded-lg'>
                     <div className='flex justify-between text-gray-800'>
                         <h1 className='font-semibold'>Subtotal</h1>
-                        <p className='text-gray-500 font-semibold'>Rp {new Intl.NumberFormat(['ban', 'id']).format(subTotal)}</p>
+                        <p className='text-gray-500 font-semibold'>Rp {convert(subTotal)}</p>
                     </div>
                     <div className='flex justify-between text-gray-800'>
                         <h1 className='font-semibold'>Diskon</h1>
@@ -63,7 +64,7 @@ function RightBar() {
                     </div>
                     <div className='flex justify-between pt-10 text-gray-800'>
                         <h1 className='font-bold text-xl'>TOTAL</h1>
-                        <p className='text-gray-500 font-semibold text-lg'>Rp {new Intl.NumberFormat(['ban', 'id']).format(total)}</p>
+                        <p className='text-gray-500 font-semibold text-lg'>Rp {convert(total)}</p>
                     </div>
                 </div>
                 <div className='mt-10'>
