@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     value: [],
-    subTotal: 0
+    subTotal: 0,
+    tab: 'semua'
 }
 
 export const menuSlice = createSlice({
@@ -45,10 +46,13 @@ export const menuSlice = createSlice({
             })
             state.subTotal = subTotal
             state.qty = quantity
+        },
+        kategoriIndex: (state, action) => {
+            state.tab = action.payload
         }
     }
 })
 
-export const { add, remove, getSubTotal } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex } = menuSlice.actions
 
 export default menuSlice.reducer
