@@ -6,15 +6,20 @@ import axios from 'axios'
 import { useApiRequest } from '../../services/api.service'
 
 function Menu() {
-    const { data, error, isLoaded } = useApiRequest("menu")
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [data, setData] = useState([])
 
-    if (error !== null) {
-        console.log(error.message)
-    }
+    useEffect(() => {
+        const fetchMenu = async () => {
+            setIsLoaded(false)
+            const { response, err } = await useApiRequest("menu")
+            setData(response.data)
+            setIsLoaded(true)
+        }
 
-    if (!isLoaded) {
-        console.log('loading...')
-    }
+        fetchMenu()
+    }, [])
+
 
     const valueMenu = useSelector((state) => state.menu.value)
 
@@ -54,6 +59,8 @@ function Menu() {
                         <div className="p-3 h-">
                             <div className="grid grid-row-2 gap-4 mt-2">
                                 <div className="h-8 bg-gray-200 rounded animate-pulse">
+                                </div>
+                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
                                 </div>
 
                                 <div className="...">
