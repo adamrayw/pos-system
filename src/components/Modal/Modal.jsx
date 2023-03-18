@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { MdImage, MdOutlineCloudUpload } from 'react-icons/md'
-import useApiPost from '../../services/api.service'
+import { useApiPost } from '../../services/api.service'
 import { CgSpinner } from 'react-icons/cg'
 
 function Modal(props) {

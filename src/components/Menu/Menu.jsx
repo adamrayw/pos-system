@@ -3,7 +3,7 @@ import { add } from '../../features/menuSlice/menuSlice'
 import { useEffect, useState } from 'react'
 import { getSubTotal } from '../../features/menuSlice/menuSlice'
 import axios from 'axios'
-import useApiRequest from '../../services/api.service'
+import { useApiRequest } from '../../services/api.service'
 
 function Menu() {
     const { data, error, isLoaded } = useApiRequest("menu")
@@ -54,8 +54,6 @@ function Menu() {
                         <div className="p-3 h-">
                             <div className="grid grid-row-2 gap-4 mt-2">
                                 <div className="h-8 bg-gray-200 rounded animate-pulse">
-                                </div>
-                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
                                 </div>
 
                                 <div className="...">
