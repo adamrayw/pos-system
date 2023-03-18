@@ -20,7 +20,7 @@ function Sidebar() {
                             </h2>
                             : ""}
                         <button onClick={() => {
-                            setOpen(false)
+                            setOpen(!open)
                             setStateManage(false)
                         }
                         }>
