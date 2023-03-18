@@ -20,7 +20,7 @@ function Sidebar() {
                             </h2>
                             : ""}
                         <button onClick={() => {
-                            setOpen(!open)
+                            setOpen(false)
                             setStateManage(false)
                         }
                         }>
@@ -47,7 +47,7 @@ function Sidebar() {
                                     to="/"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md active:bg-gray-200 transition hover:bg-gray-50`}
                                     onClick={() => {
-                                        setOpen(!open)
+                                        setOpen(false)
                                         setStateManage(false)
                                     }
                                     }
@@ -109,17 +109,26 @@ function Sidebar() {
                                 </Link>
                                 <ul className={`${stateManage ? 'block' : 'hidden'} px-8 pb-4 pt-2 mx-3`}>
                                     <li>
-                                        <Link to='/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                        <Link to='/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                            setOpen(false)
+                                            setStateManage(false)
+                                        }}>
                                             Menu
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                            setOpen(false)
+                                            setStateManage(false)
+                                        }}>
                                             Kategori
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block'>
+                                        <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                            setOpen(false)
+                                            setStateManage(false)
+                                        }}>
                                             Diskon
                                         </Link>
                                     </li>
@@ -130,7 +139,7 @@ function Sidebar() {
                                     to="/laporan"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
                                     onClick={() => {
-                                        setOpen(!open)
+                                        setOpen(false)
                                         setStateManage(false)
                                     }
                                     }
@@ -162,7 +171,7 @@ function Sidebar() {
                                     to="#"
                                     className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 active:bg-gray-200 transition`}
                                     onClick={() => {
-                                        setOpen(!open)
+                                        setOpen(false)
                                         setStateManage(false)
                                     }
                                     }
