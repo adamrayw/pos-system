@@ -146,7 +146,7 @@ function Modal(props) {
                                                         </span>
                                                     </p>
                                                 </div>
-                                                <input id="dropzone-file" type="file" className="hidden" onChange={handleChangeImg} />
+                                                <input id="dropzone-file" type="file" className="hidden" onChange={handleChangeImg} accept="image/*" />
                                             </label>
                                         </div>
 

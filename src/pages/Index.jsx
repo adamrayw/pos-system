@@ -41,7 +41,7 @@ function Index() {
                 </div>
                 <div className="relative">
                     <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-2.5" />
-                    <input type="text" name="search" className="w-full pl-8 pr-3 py-2.5 rounded font-medium focus:shadow-lg text-sm focus:ring focus:ring-orange-500 transition" value={keywordSearch} placeholder="Cari menu..." onChange={handleSearch} />
+                    <input type="text" name="search" className="w-full pl-8 pr-3 py-2.5 rounded font-medium shadow-sm focus:shadow-lg text-sm focus:ring focus:ring-orange-500 transition" value={keywordSearch} placeholder="Cari menu..." onChange={handleSearch} />
                     <IoMdClose className={`${keyword === '' ? 'hidden' : 'block'} absolute m-auto right-0 top-0 bottom-0 mr-2.5 hover:cursor-pointer`} onClick={() => {
                         dispatch(setKeyword(''))
                         setKeywordSearch('')
