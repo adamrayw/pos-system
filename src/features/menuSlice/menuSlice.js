@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     value: [],
     subTotal: 0,
-    tab: 'semua'
+    tab: 'semua',
+    keyword: '',
+    searchDatas: [],
 }
 
 export const menuSlice = createSlice({
@@ -49,10 +51,13 @@ export const menuSlice = createSlice({
         },
         kategoriIndex: (state, action) => {
             state.tab = action.payload
+        },
+        setKeyword: (state, action) => {
+            state.keyword = action.payload
         }
     }
 })
 
-export const { add, remove, getSubTotal, kategoriIndex } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex, setKeyword } = menuSlice.actions
 
 export default menuSlice.reducer
