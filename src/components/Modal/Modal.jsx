@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { MdImage, MdOutlineCloudUpload } from 'react-icons/md'
 import { RiErrorWarningFill } from 'react-icons/ri'
-import { useApiDelete, useApiEdit, useApiPost } from '../../services/api.service'
+import { useApiDelete, useApiEdit, useApiPost, useApiRequest } from '../../services/api.service'
 import { CgSpinner } from 'react-icons/cg'
 
 function Modal(props) {
@@ -12,6 +12,9 @@ function Modal(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [imageEdited, setImageEdited] = useState(false)
     const [isEdit, setIsEdit] = useState(true)
+    const [dataKategori, setDataKategori] = useState([])
+    const [kategori, setKategori] = useState('')
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,10 +25,10 @@ function Modal(props) {
 
         data.append('id', props.dataMenu ? props.dataMenu.id : null)
         data.append('imageEdited', imageEdited)
+        data.append('kategoriId', kategori)
         data.append('image', file)
         data.append('name', name)
         data.append('price', price)
-
 
         if (props.isEdit) {
             await useApiEdit("menu/edit", data)
@@ -56,6 +59,10 @@ function Modal(props) {
         }
     }
 
+    const handleKategori = (e) => {
+        setKategori(e.target.value)
+    }
+
     const handleName = (e) => {
         setName(e.target.value)
     }
@@ -68,7 +75,21 @@ function Modal(props) {
         setFile(props.dataMenu ? props.dataMenu.image : '')
         setName(props.dataMenu ? props.dataMenu.name : '')
         setPrice(props.dataMenu ? props.dataMenu.price : null)
+        setKategori(props.dataMenu ? props.dataMenu.kategori : null)
         setIsEdit(props.isEdit ? props.isEdit : null)
+    }, [])
+
+    useState(() => {
+        const fetchKategori = async () => {
+            const { response, err } = await useApiRequest('kategori')
+            setDataKategori(response.data)
+            setIsLoaded(true)
+            if (err !== null) {
+                alert(err.message)
+            }
+        }
+
+        fetchKategori()
     }, [])
 
     return (
@@ -132,11 +153,30 @@ function Modal(props) {
                                     </div>
                                     <div>
                                         <label htmlFor="nama" className="block mb-2 text-sm font-medium text-gray-900">Nama Menu</label>
-                                        <input type="nama" name="nama" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5" placeholder="Soto" required onChange={handleName} value={name} />
+                                        <input type="nama" name="nama" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" placeholder="Soto" required onChange={handleName} value={name} />
+                                    </div>
+                                    <div>
+                                        <label htmlFor='pilih-kategori' className="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
+                                        <select id="kategori" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" onChange={handleKategori}>
+                                            {isLoaded ?
+                                                <>
+                                                    <option selected>Pilih Kategori</option>
+                                                    {dataKategori.items.map((e) => {
+                                                        return (
+                                                            <>
+                                                                <option key={e.id} value={e.id}>{e.name}</option>
+                                                            </>
+                                                        )
+                                                    })}
+                                                </>
+                                                :
+                                                <option selected>Pilih Kategori</option>
+                                            }
+                                        </select>
                                     </div>
                                     <div>
                                         <label htmlFor="harga" className="block mb-2 text-sm font-medium text-gray-900">Harga</label>
-                                        <input type="text" name="harga" id="harga" placeholder="10000" className='bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5' required onChange={handlePrice} value={price} />
+                                        <input type="text" name="harga" id="harga" placeholder="10000" className='bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5' required onChange={handlePrice} value={price} />
                                         <small className="text-xs text-gray-400">contoh: 10000 = Rp 10.000</small>
                                     </div>
                                     {isLoading ?
