@@ -28,7 +28,7 @@ function Menu() {
         }
 
         fetchMenu()
-    }, [isEditModalOpen, isDeleteModalOpen])
+    }, [isEditModalOpen, isDeleteModalOpen, isModalOpen])
 
     return (
         <div>
