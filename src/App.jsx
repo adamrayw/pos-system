@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import RightBar from "./components/RightBar/RightBar";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Kategori from "./pages/Manage/Kategori";
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <div className="App flex">
       <Sidebar />
@@ -25,7 +27,7 @@ function App() {
           </Route>
         </Routes>
       </div>
-      <RightBar />
+      {pathname === '/laporan' ? <></> : <RightBar />}
       <ToastContainer />
     </div >
   )
