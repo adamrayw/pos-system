@@ -1,4 +1,5 @@
-const api = 'http://localhost:8181/api/'
+// const api = 'http://localhost:8181/api/'
+const api = 'https://pos-backend.up.railway.app/api/'
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
