@@ -3,6 +3,7 @@ import { BiLineChart, BiLineChartDown } from 'react-icons/bi'
 import { useApiRequest } from '../services/api.service'
 import convert from '../utils/convertToRupiah.utils'
 import { BiLinkExternal } from 'react-icons/bi'
+import convertToDateTimeFormat from '../utils/converToDateFormat.utils'
 
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
@@ -26,40 +27,47 @@ function Laporan() {
     }, [])
 
     return (
-        <div>
-            <h1 className="text-4xl font-semibold mb-6">Laporan</h1>
-            <div className="grid grid-cols-2 gap-2 justify-between">
-                <div className="card bg-white p-4 space-y-2">
-                    <div className='flex items-center space-x-1'>
-                        <h3 className="text-sm text-gray-400">Total Pendapatan Hari Ini</h3>
-                        <BiLineChart className='text-sm text-orange-500' />
+        <div className='container'>
+            <h1 className="text-2xl md:text-4xl font-semibold mb-6">Laporan</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+                <div className="grid grid-cols-2 gap-2 justify-between w-full">
+                    <div className="card bg-white p-4 space-y-2">
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-sm text-gray-400 truncate">Total Pendapatan Hari Ini</h3>
+                            <BiLineChart className='text-sm text-orange-500' />
+                        </div>
+                        <p className="font-semibold text-2xl">Rp 0</p>
                     </div>
-                    <p className="font-semibold text-2xl">Rp 0</p>
+                    <div className="card bg-white p-4 space-y-2">
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-sm text-gray-400 truncate">Total Pengeluaran</h3>
+                            <BiLineChartDown className='text-sm text-orange-500' />
+                        </div>
+                        <p className="font-semibold text-2xl">- Rp 0</p>
+                    </div>
+                    <div className="card bg-white p-4 space-y-2">
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-sm text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
+                            <BiLineChart className='text-sm text-orange-500' />
+                        </div>
+                        <p className="font-semibold text-2xl">Rp 0</p>
+                    </div>
+                    <div className="card bg-white p-4 space-y-2">
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-sm text-gray-400 truncate">Total Pengeluaran Bulan ini</h3>
+                            <BiLineChartDown className='text-sm text-orange-500' />
+                        </div>
+                        <p className="font-semibold text-2xl">- Rp 0</p>
+                    </div>
                 </div>
-                <div className="card bg-white p-4 space-y-2">
-                    <div className='flex items-center space-x-1'>
-                        <h3 className="text-sm text-gray-400">Total Pengeluaran</h3>
-                        <BiLineChartDown className='text-sm text-orange-500' />
-                    </div>
-                    <p className="font-semibold text-2xl">- Rp 0</p>
-                </div>
-                <div className="card bg-white p-4 space-y-2">
-                    <div className='flex items-center space-x-1'>
-                        <h3 className="text-sm text-gray-400">Total Pendapatan Bulan Ini</h3>
-                        <BiLineChart className='text-sm text-orange-500' />
-                    </div>
-                    <p className="font-semibold text-2xl">Rp 0</p>
-                </div>
-                <div className="card bg-white p-4 space-y-2">
-                    <div className='flex items-center space-x-1'>
-                        <h3 className="text-sm text-gray-400">Total Pengeluaran Bulan ini</h3>
-                        <BiLineChartDown className='text-sm text-orange-500' />
-                    </div>
-                    <p className="font-semibold text-2xl">- Rp 0</p>
+                <div className='w-[w-12] px-10 py-4 bg-white text-center'>
+                    <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
+                    <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p>
                 </div>
             </div>
+
             <h2 className='mt-4 font-semibold mb-2'>Transaksi Terakhir</h2>
-            <div class="relative overflow-x-auto" >
+            <div className='relative space-x-4 w-full overflow-x-auto'>
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-white whitespace-nowrap">
                         <tr>
@@ -79,12 +87,11 @@ function Laporan() {
                                 Link Pembayaran
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Tgl Beli
+                                Tanggal
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-
                         {isLoading ? 'Loading...' :
                             <>
                                 {dataTransaksi.map((e) => {
@@ -100,13 +107,13 @@ function Laporan() {
                                                 Rp {convert(e.total)}
                                             </td>
                                             <td className='px-6 py-4'>
-                                                <p className={`${e.isPaid ? 'text-green-800 bg-green-300' : 'text-yellow-800 bg-yellow-300'} text-center text-sm py-2 px-3 rounded-xl font-semibold`}>{e.isPaid ? 'Sudah Dibayar' : 'Menunggu Pembayaran'}</p>
+                                                <p className={`${e.isPaid ? 'text-green-800 bg-green-300' : 'text-yellow-700 bg-yellow-200'} text-center text-sm py-2 px-3 rounded-xl font-semibold`}>{e.isPaid ? 'Sudah Dibayar' : 'Menunggu Pembayaran'}</p>
                                             </td>
                                             <td className='px-6 py-4'>
                                                 <a href={e.redirect_url} className="flex items-center hover:text-blue-500" target="_blank"><BiLinkExternal className='mr-2 text-lg' />Klik Disini</a>
                                             </td>
                                             <td className="px-6 py-4">
-                                                {new Date(e.createdAt).toLocaleDateString()}
+                                                {convertToDateTimeFormat(e.createdAt)}
                                             </td>
                                         </tr>
 
@@ -121,9 +128,10 @@ function Laporan() {
                     <p className='text-center mt-6'>
                         Anda belum melakukan transaksi
                     </p>
-                    : null}
+                    : null
+                }
             </div>
-        </div >
+        </div>
     )
 }
 
