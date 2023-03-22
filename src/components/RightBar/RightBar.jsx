@@ -5,9 +5,12 @@ import convert from '../../utils/convertToRupiah.utils'
 import ModalTransaksi from '../Modal/ModalTransaksi'
 import { useEffect, useState } from 'react'
 import Modal from '../Modal/Modal'
+import { IoIosClose } from 'react-icons/io'
+import { BiFoodMenu } from 'react-icons/bi'
 
 function RightBar() {
     const [isModalKonfirmasiOpen, setIsModalKonfirmasiOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const menus = useSelector((state) => state.menu.value)
     const subTotal = useSelector((state) => state.menu.subTotal)
@@ -15,23 +18,32 @@ function RightBar() {
 
     let total = subTotal + 1000
 
-
     const triggerFromModal = (data) => {
         setIsModalKonfirmasiOpen(data)
     }
 
-
     return (
-        <>
+        <div className='relative'>
+            <div className={`absolute ${isOpen ? 'hidden' : 'block'} right-0 w-fit'`} >
+                <button className=' bg-orange-500 flex items-center px-4 rounded-bl-lg text-white space-x-2 hover:bg-orange-600 transition' onClick={() => setIsOpen(true)}>
+                    <BiFoodMenu className='text-2xl my-2' />
+                    <p className='whitespace-nowrap font-semibold'>Open</p>
+                </button>
+            </div>
             {isModalKonfirmasiOpen ?
                 <ModalTransaksi toggleModal={triggerFromModal} dataPrice={[{ subTotal, total }]} />
 
                 :
                 null
             }
-            <div className="w-2/5 bg-white p-10 max-h-screen scrollbar-hide overflow-y-scroll">
-                <div className='flex flex-col justify-between'>
+            <div className={`md:relative absolute right-0 ${isOpen ? 'md:w-[22rem] w-[24rem] p-10' : 'w-[0]'} transition bg-white max-h-screen scrollbar-hide overflow-y-scroll`}>
+                <div className={`flex flex-col justify-between ${isOpen ? 'block' : 'hidden'}`}>
                     <div>
+                        <div className='w-fit'>
+                            <button className=' bg-orange-500 px-2 rounded-lg text-white hover:bg-orange-600 transition' onClick={() => setIsOpen(false)}>
+                                <IoIosClose className='text-xl my-2' />
+                            </button>
+                        </div>
                         <h1 className="font-bold text-xl mb-6">Current Order</h1>
                         <div className='space-y-4 h-48 overflow-y-scroll scrollbar-hide'>
                             {menus.length === 0 ?
@@ -94,7 +106,7 @@ function RightBar() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
 
     )
 }
