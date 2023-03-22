@@ -34,10 +34,10 @@ function Index() {
 
     return (
         <div className="container mx-auto">
-            <div className='leading-loose mb-6 flex items-center justify-between'>
-                <div>
-                    <h1 className='text-2xl font-bold'>Welcome, Soto Mak Wiek👋</h1>
-                    <p className='text-gray-400'>Discover what you need easily!</p>
+            <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
+                <div className="md:text-left text-center mb-4 md:mb-0">
+                    <h1 className='text-xl md:text-2xl font-bold'>Welcome, Soto Mak Wiek👋</h1>
+                    <p className='text-xs md:text-base text-gray-400'>Discover what you need easily!</p>
                 </div>
                 <div className="relative">
                     <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-2.5" />
@@ -48,7 +48,7 @@ function Index() {
                     }} />
                 </div>
             </div>
-            <div className="flex space-x-6 mb-6">
+            <div className="flex overflow-x-scroll scrollbar-hide space-x-6 mb-6">
                 {isLoaded ?
                     <>
                         <button onClick={() => dispatch(kategoriIndex('semua'))}>
