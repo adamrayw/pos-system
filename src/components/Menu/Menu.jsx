@@ -72,12 +72,12 @@ function Menu() {
                             <p className='text-center'>Menu yang anda cari tidak ditemukan</p>
                         </div>
                         : null}
-                    <div className='grid grid-cols-3 gap-4' >
+                    <div className='grid grid-cols-2 md:grid-cols-4 gap-4' >
                         {data.items.map((e) => {
                             return (
                                 <button className='p-4 bg-white rounded-lg items-center space-y-2 shadow-sm active:bg-gray-100' key={e.id} onClick={() => dispatch(add(e))}>
                                     <div className="flex justify-center items-center">
-                                        <img src={e.image} width={100} priority="true" height={100} alt='menu' />
+                                        <img src={e.image} className="w-[5rem]" priority="true" alt='menu' />
                                     </div>
 
                                     <div className="text-left">
