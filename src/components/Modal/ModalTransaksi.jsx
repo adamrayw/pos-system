@@ -16,12 +16,6 @@ function ModalTransaksi(props) {
         props.toggleModal(false)
     }
 
-    if (paymentMethod === 'midtrans') {
-        console.log('pay with midtrans')
-    } else if (paymentMethod === 'cash') {
-        console.log('pay with cash')
-    }
-
     function handlePayment() {
         setIsLoading(true)
         useApiPost("transaksi/post", { data: { menu: menus, total: props.dataPrice[0].total } })
