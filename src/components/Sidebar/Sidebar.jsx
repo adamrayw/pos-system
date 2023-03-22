@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg'
+import { FaChartBar } from 'react-icons/fa'
 
 function Sidebar() {
     const [open, setOpen] = useState(false);
@@ -45,7 +46,7 @@ function Sidebar() {
                             <li className="rounded-sm">
                                 <Link
                                     to="/"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md active:bg-gray-200 transition hover:bg-gray-50`}
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md group active:bg-gray-200 transition hover:bg-orange-200 hover:text-orange-500`}
                                     onClick={() => {
                                         setOpen(false)
                                         setStateManage(false)
@@ -54,7 +55,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-500"
+                                        className="w-6 h-6 group-hover:text-orange-400 text-gray-500"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -67,7 +68,7 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className='text-gray-400 font-semibold'>Home</span>
+                                        <span className='group-hover:text-white text-gray-400 font-semibold'>Home</span>
                                         : ''
                                     }
                                 </Link>
@@ -145,18 +146,11 @@ function Sidebar() {
                                     }
                                 >
                                     <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-500"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        strokeWidth={2}
+                                        viewBox="0 0 1024 1024"
+                                        fill="currentColor"
+                                        className='h-6 w-6 text-gray-500'
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                                        />
+                                        <path d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm-600-80h56c4.4 0 8-3.6 8-8V560c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v144c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V384c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v320c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V462c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v242c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v400c0 4.4 3.6 8 8 8z" />
                                     </svg>
                                     {open ?
                                         <span className="text-gray-400 font-semibold">
