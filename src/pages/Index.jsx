@@ -17,6 +17,8 @@ function Index() {
     const keyword = useSelector((state) => state.menu.keyword)
 
     useState(() => {
+        localStorage.setItem('incomePast', 0)
+
         const getKategori = async () => {
             setIsLoaded(false)
             const { response, err } = await useApiRequest("kategori")
