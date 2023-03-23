@@ -5,7 +5,10 @@ const initialState = {
     subTotal: 0,
     tab: 'semua',
     keyword: '',
-    searchDatas: [],
+    transaction_today: [],
+    transaction_month: [],
+    total_pendapatan_today: 0,
+    total_pendapatan_month: 0,
 }
 
 export const menuSlice = createSlice({
@@ -54,10 +57,26 @@ export const menuSlice = createSlice({
         },
         setKeyword: (state, action) => {
             state.keyword = action.payload
+        },
+        calculateTrToday: (state, action) => {
+            state.transaction_today = action.payload
+
+            if (state.transaction_today.length !== 0) {
+                const total = state.transaction_today.reduce((acc, transaction_today) => acc + transaction_today.total, 0)
+                state.total_pendapatan_today = total
+            }
+        },
+        calculateTrMonth: (state, action) => {
+            state.transaction_month = action.payload
+
+            if (state.transaction_month.length !== 0) {
+                const total = state.transaction_month.reduce((acc, transaction_month) => acc + transaction_month.total, 0)
+                state.total_pendapatan_month = total
+            }
         }
     }
 })
 
-export const { add, remove, getSubTotal, kategoriIndex, setKeyword } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth } = menuSlice.actions
 
 export default menuSlice.reducer
