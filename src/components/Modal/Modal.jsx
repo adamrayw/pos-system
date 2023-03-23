@@ -48,7 +48,6 @@ function Modal(props) {
         setImageEdited(true)
         setIsEdit(false)
     }
-    console.log(file)
 
     const handlePrice = (e) => {
         const regex = /^[0-9]*$/
