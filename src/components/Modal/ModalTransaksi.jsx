@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import convert from "../../utils/convertToRupiah.utils"
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import { useApiPost } from "../../services/api.service"
 import { CgSpinner } from "react-icons/cg"
+import { reset } from "../../features/menuSlice/menuSlice"
 
 function ModalTransaksi(props) {
     const [isLoading, setIsLoading] = useState(false)
@@ -11,6 +12,8 @@ function ModalTransaksi(props) {
     const [isToggleModalOpen, setIsToggleModalOpen] = useState(true)
     const [paymentMethod, setPaymentMethod] = useState('')
     const [paymentLink, setPaymentLink] = useState([])
+
+    const dispatch = useDispatch()
 
     const triggerToRightBarComponent = () => {
         props.toggleModal(false)
@@ -22,6 +25,7 @@ function ModalTransaksi(props) {
             .then((response) => {
                 setPaymentLink(response.response.data.data.redirect_url)
                 setIsLoading(false)
+                dispatch(reset())
             })
             .catch((error) => {
                 console.log(error)

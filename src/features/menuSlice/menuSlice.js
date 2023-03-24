@@ -73,10 +73,14 @@ export const menuSlice = createSlice({
                 const total = state.transaction_month.reduce((acc, transaction_month) => acc + transaction_month.total, 0)
                 state.total_pendapatan_month = total
             }
+        },
+        reset: (state) => {
+            state.value = []
+            state.subTotal = 0
         }
     }
 })
 
-export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth, reset } = menuSlice.actions
 
 export default menuSlice.reducer
