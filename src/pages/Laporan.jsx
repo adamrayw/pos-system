@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { calculateTrMonth, calculateTrToday } from '../features/menuSlice/menuSlice'
 import convert from '../utils/convertToRupiah.utils'
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'
+import { MdGroup, MdGroups2 } from 'react-icons/md'
 
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
@@ -17,6 +18,8 @@ function Laporan() {
     const dispatch = useDispatch()
     const getTotal = useSelector((state) => state.menu.total_pendapatan_today)
     const getMonth = useSelector((state) => state.menu.total_pendapatan_month)
+    const jumlahOrderTd = useSelector((state) => state.menu.transaction_today)
+    const jumlahOrderMh = useSelector((state) => state.menu.transaction_month)
 
     function hitungSelisih() {
         const incomeNow = getTotal
@@ -63,14 +66,14 @@ function Laporan() {
         <div className='container'>
             <h1 className="text-2xl md:text-4xl font-semibold mb-6">Laporan</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-                <div className="grid grid-cols-2 gap-2 justify-between w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between w-full">
                     <div className="card bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
-                            <h3 className="text-sm text-gray-400 truncate">Total Pendapatan Hari Ini</h3>
+                            <h3 className="text-xs text-gray-400">Total Pendapatan Hari Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
                         <div className='space-y-2 flex space-x-2'>
-                            <p className="font-semibold text-2xl">Rp {convert(getTotal)}</p>
+                            <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getTotal)}</p>
                             {/* {selisihPenHari === 0 ?
                                 <p className='text-xs text-black flex items-center'>{selisihPenHari + '% '}</p>
                                 :
@@ -84,35 +87,35 @@ function Laporan() {
                         </div>
                     </div>
                     <div className="card bg-white p-4 space-y-2">
-                        {/* <div className='flex items-center space-x-1'>
-                            <h3 className="text-sm text-gray-400 truncate">Total Pengeluaran</h3>
-                            <BiLineChartDown className='text-sm text-orange-500' />
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-xs text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
+                            <BiLineChart className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold text-2xl">- Rp 0</p> */}
+                        <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
                     </div>
                     <div className="card bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
-                            <h3 className="text-sm text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
-                            <BiLineChart className='text-sm text-orange-500' />
+                            <h3 className="text-xs text-gray-400 truncate">Jumlah Order Hari Ini</h3>
+                            <MdGroup className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold text-2xl">Rp {convert(getMonth)}</p>
+                        <p className="font-semibold md:text-2xl">{jumlahOrderTd.length}</p>
                     </div>
                     <div className="card bg-white p-4 space-y-2">
-                        {/* <div className='flex items-center space-x-1'>
-                            <h3 className="text-sm text-gray-400 truncate">Total Pengeluaran Bulan ini</h3>
-                            <BiLineChartDown className='text-sm text-orange-500' />
+                        <div className='flex items-center space-x-1'>
+                            <h3 className="text-xs text-gray-400 truncate">Jumlah Order Bulan Ini</h3>
+                            <MdGroups2 className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold text-2xl">- Rp 0</p> */}
+                        <p className="font-semibold md:text-2xl">{jumlahOrderMh.length}</p>
                     </div>
                 </div>
                 <div className='w-[w-12] px-10 py-4 bg-white text-center'>
-                    <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
-                    <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p>
+                    {/* <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
+                    <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p> */}
                 </div>
             </div>
 
             <h2 className='mt-4 font-semibold mb-2'>Transaksi Terakhir</h2>
-            <div className='relative space-x-4 w-full overflow-x-auto'>
+            <div className='relative space-x-4 max-h-screen w-full overflow-auto'>
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-gray-700 uppercase bg-white whitespace-nowrap">
                         <tr>
