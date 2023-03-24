@@ -4,7 +4,7 @@ import { useApiRequest } from '../services/api.service'
 import { BiLinkExternal } from 'react-icons/bi'
 import convertToDateTimeFormat from '../utils/converToDateFormat.utils'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTrMonth, calculateTrToday } from '../features/menuSlice/menuSlice'
+import { calculateTrLMonth, calculateTrMonth, calculateTrToday, calculateTrYesterday } from '../features/menuSlice/menuSlice'
 import convert from '../utils/convertToRupiah.utils'
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'
 import { MdGroup, MdGroups2 } from 'react-icons/md'
@@ -19,30 +19,47 @@ function Laporan() {
     const dispatch = useDispatch()
     const getTotal = useSelector((state) => state.menu.total_pendapatan_today)
     const getMonth = useSelector((state) => state.menu.total_pendapatan_month)
+    const getLastMonth = useSelector((state) => state.menu.total_last_month)
+    const getYesterday = useSelector((state) => state.menu.total_pendapatan_yesterday)
     const jumlahOrderTd = useSelector((state) => state.menu.transaction_today)
     const jumlahOrderMh = useSelector((state) => state.menu.transaction_month)
 
-    function hitungSelisih() {
-        const incomeNow = getTotal
-        const incomePast = localStorage.getItem('incomePast')
+    function hitungSelisihBulan() {
+        const incomeThisMonth = getMonth
+        const incomeLastMonth = getLastMonth
 
-        localStorage.setItem('incomePast', getTotal)
+        const result = ((incomeThisMonth - incomeLastMonth) / incomeLastMonth) * 100;
 
-        const difference = incomeNow - incomePast;
-        const percentage = (difference / incomeNow) * 100;
-
-        if (difference > 0) {
-            setSelisihPenHari(percentage.toFixed(2))
-        } else if (difference < 0) {
-            setSelisihPenHari(percentage.toFixed(2))
+        if (result > 0) {
+            setSelisihPenBulan(result.toFixed(2))
+        } else if (result < 0) {
+            setSelisihPenBulan(result.toFixed(2))
         } else {
             setSelisihPenHari(0)
         }
     }
 
-    setTimeout(() => {
-        hitungSelisih()
-    }, 1000);
+    function hitungSelisih() {
+        const incomeToday = getTotal
+        const incomeYesterday = getYesterday
+
+        const result = ((incomeToday - incomeYesterday) / incomeYesterday) * 100;
+
+        if (result > 0) {
+            setSelisihPenHari(result.toFixed(2))
+        } else if (result < 0) {
+            setSelisihPenHari(result.toFixed(2))
+        } else {
+            setSelisihPenHari(0)
+        }
+    }
+
+    if (getTotal !== 0) {
+        setTimeout(() => {
+            hitungSelisih()
+            hitungSelisihBulan()
+        }, 1000);
+    }
 
     useEffect(() => {
         const fetchTransaksi = async () => {
@@ -52,6 +69,8 @@ function Laporan() {
                     setDataTransaksi(response.response.data.items)
                     dispatch(calculateTrToday(response.response.data.transaction_today))
                     dispatch(calculateTrMonth(response.response.data.transaction_month))
+                    dispatch(calculateTrYesterday(response.response.data.transaction_yesterday))
+                    dispatch(calculateTrLMonth(response.response.data.transaction_last_month))
                     setIsLoading(false)
                 })
                 .catch((error) => {
@@ -79,16 +98,22 @@ function Laporan() {
                                 :
                                 <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getTotal)}</p>
                             }
-                            {/* {selisihPenHari === 0 ?
-                                <p className='text-xs text-black flex items-center'>{selisihPenHari + '% '}</p>
-                                :
+                            {getYesterday === 0 ?
                                 null
-                            }
-                            {selisihPenHari < 0 ?
-                                <p className='text-xs text-red-500 flex items-center'>{selisihPenHari + '% '}<BsArrowDown className='ml-1' /></p>
                                 :
-                                <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenHari + '% '}<BsArrowUp className='ml-1' /></p>
-                            } */}
+                                <>
+                                    {selisihPenHari === 0 ?
+                                        <p className='text-xs text-black flex items-center'>{selisihPenHari + '% '}</p>
+                                        :
+                                        null
+                                    }
+                                    {selisihPenHari < 0 ?
+                                        <p className='text-xs text-red-500 flex items-center'>{selisihPenHari + '% '}<BsArrowDown className='ml-1' /></p>
+                                        :
+                                        <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenHari + '% '}<BsArrowUp className='ml-1' /></p>
+                                    }
+                                </>
+                            }
                         </div>
                     </div>
                     <div className="card bg-white p-4 texce space-y-2">
@@ -96,11 +121,29 @@ function Laporan() {
                             <h3 className="text-xs text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
-                        {isLoading ?
-                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
-                            :
-                            <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
-                        }
+                        <div className='space-y-2 flex space-x-2'>
+                            {isLoading ?
+                                <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                                :
+                                <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
+                            }
+                            {getLastMonth === 0 ?
+                                <p className='text-xs text-black flex items-center'>{'0% '}</p>
+                                :
+                                <>
+                                    {selisihPenBulan === 0 ?
+                                        <p className='text-xs text-black flex items-center'>{selisihPenBulan + '% '}</p>
+                                        :
+                                        null
+                                    }
+                                    {selisihPenBulan < 0 ?
+                                        <p className='text-xs text-red-500 flex items-center'>{selisihPenBulan + '% '}<BsArrowDown className='ml-1' /></p>
+                                        :
+                                        <p className={`text-xs ${selisihPenBulan === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenBulan + '% '}<BsArrowUp className='ml-1' /></p>
+                                    }
+                                </>
+                            }
+                        </div>
                     </div>
                     <div className="card bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
