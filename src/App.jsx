@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App flex">
       <Sidebar />
-      <div className="bg-gray-100 p-10 w-full">
+      <div className="bg-gray-100 py-10 px-5 md:p-10 w-full max-h-screen overflow-auto">
         <Routes>
           <Route path='/' element={<Index />} />
           <Route path='laporan' element={<Laporan />} />

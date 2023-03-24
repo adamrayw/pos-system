@@ -36,15 +36,15 @@ function RightBar() {
                 :
                 null
             }
-            <div className={`md:relative absolute right-0 ${isOpen ? 'md:w-[22rem] w-[24rem] p-10' : 'w-[0]'} transition bg-white max-h-screen scrollbar-hide overflow-y-scroll`}>
+            <div className={`md:relative absolute right-0 ${isOpen ? 'md:w-[22rem] w-[23rem] p-10' : 'w-[0]'} h-full transition bg-white max-h-screen scrollbar-hide overflow-y-scroll`}>
                 <div className={`flex flex-col justify-between ${isOpen ? 'block' : 'hidden'}`}>
                     <div>
-                        <div className='w-fit'>
+                        <div className='w-full flex flex-row-reverse justify-between items-center mb-6'>
                             <button className=' bg-orange-500 px-2 rounded-lg text-white hover:bg-orange-600 transition' onClick={() => setIsOpen(false)}>
                                 <IoIosClose className='text-xl my-2' />
                             </button>
+                            <h1 className="font-bold text-xl">Current Order</h1>
                         </div>
-                        <h1 className="font-bold text-xl mb-6">Current Order</h1>
                         <div className='space-y-4 h-48 overflow-y-scroll scrollbar-hide'>
                             {menus.length === 0 ?
                                 <p className='text-sm text-gray-400 text-center'>Anda belum menambahkan menu</p>
