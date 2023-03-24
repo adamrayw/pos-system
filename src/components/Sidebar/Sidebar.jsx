@@ -12,7 +12,7 @@ function Sidebar() {
     return (
         <div className="flex">
             <div
-                className={` ${open ? "w-60" : "w-20 "
+                className={` ${open ? "w-60" : "w-18 md:w-20 "
                     } flex flex-col h-screen py-3 bg-white shadow duration-300`}
             >
                 <div className="space-y-3">

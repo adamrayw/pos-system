@@ -38,7 +38,7 @@ function Index() {
         <div className="container mx-auto">
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
                 <div className="md:text-left text-center mb-4 md:mb-0">
-                    <h1 className='text-xl md:text-2xl font-bold'>Welcome, Soto Mak Wiek👋</h1>
+                    <h1 className='text-xl md:text-2xl font-semibold'>Welcome, Soto Mak Wiek👋</h1>
                     <p className='text-xs md:text-base text-gray-400'>Discover what you need easily!</p>
                 </div>
                 <div className="relative">

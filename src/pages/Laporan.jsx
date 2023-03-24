@@ -8,6 +8,7 @@ import { calculateTrMonth, calculateTrToday } from '../features/menuSlice/menuSl
 import convert from '../utils/convertToRupiah.utils'
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'
 import { MdGroup, MdGroups2 } from 'react-icons/md'
+import { CgSpinner } from 'react-icons/cg'
 
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
@@ -73,7 +74,11 @@ function Laporan() {
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
                         <div className='space-y-2 flex space-x-2'>
-                            <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getTotal)}</p>
+                            {isLoading ?
+                                <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                                :
+                                <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getTotal)}</p>
+                            }
                             {/* {selisihPenHari === 0 ?
                                 <p className='text-xs text-black flex items-center'>{selisihPenHari + '% '}</p>
                                 :
@@ -86,31 +91,45 @@ function Laporan() {
                             } */}
                         </div>
                     </div>
-                    <div className="card bg-white p-4 space-y-2">
+                    <div className="card bg-white p-4 texce space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
+                        {isLoading ?
+                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                            :
+                            <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
+                        }
                     </div>
                     <div className="card bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Jumlah Order Hari Ini</h3>
                             <MdGroup className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold md:text-2xl">{jumlahOrderTd.length}</p>
+                        {isLoading ?
+                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                            :
+                            <p className="font-semibold md:text-2xl">{jumlahOrderTd.length}</p>
+                        }
+
                     </div>
                     <div className="card bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Jumlah Order Bulan Ini</h3>
                             <MdGroups2 className='text-sm text-orange-500' />
                         </div>
-                        <p className="font-semibold md:text-2xl">{jumlahOrderMh.length}</p>
+                        {isLoading ?
+                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                            :
+                            <p className="font-semibold md:text-2xl">{jumlahOrderMh.length}</p>
+                        }
                     </div>
                 </div>
-                <div className='w-[w-12] px-10 py-4 bg-white text-center'>
+                <div className='w-[w-12] px-10 py-4 bg-white text-center flex justify-center items-center'>
                     {/* <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
                     <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p> */}
+                    <h1 className='font-bold text-gray-300 text-lg md:text-2xl'>News</h1>
                 </div>
             </div>
 
@@ -140,7 +159,50 @@ function Laporan() {
                         </tr>
                     </thead>
                     <tbody>
-                        {isLoading ? 'Loading...' :
+                        {isLoading ?
+                            <>
+                                <tr tr className="bg-white border-b whitespace-nowrap" >
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                </tr>
+                                <tr tr className="bg-white border-b whitespace-nowrap" >
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <div className='w-20 h-5 bg-gray-200 animate-pulse'></div>
+                                    </th>
+                                </tr>
+                            </>
+                            :
                             <>
                                 {dataTransaksi.map((e) => {
                                     return (
