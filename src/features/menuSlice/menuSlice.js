@@ -7,8 +7,12 @@ const initialState = {
     keyword: '',
     transaction_today: [],
     transaction_month: [],
+    transaction_yesterday: [],
+    transaction_last_month: [],
     total_pendapatan_today: 0,
     total_pendapatan_month: 0,
+    total_last_month: 0,
+    total_pendapatan_yesterday: 0,
 }
 
 export const menuSlice = createSlice({
@@ -74,6 +78,22 @@ export const menuSlice = createSlice({
                 state.total_pendapatan_month = total
             }
         },
+        calculateTrYesterday: (state, action) => {
+            state.transaction_yesterday = action.payload
+
+            if (state.transaction_yesterday.length !== 0) {
+                const total = state.transaction_yesterday.reduce((acc, transaction_yesterday) => acc + transaction_yesterday.total, 0)
+                state.total_pendapatan_yesterday = total
+            }
+        },
+        calculateTrLMonth: (state, action) => {
+            state.transaction_last_month = action.payload
+
+            if (state.transaction_last_month.length !== 0) {
+                const total = state.transaction_last_month.reduce((acc, transaction_last_month) => acc + transaction_last_month.total, 0)
+                state.transaction_last_month = total
+            }
+        },
         reset: (state) => {
             state.value = []
             state.subTotal = 0
@@ -81,6 +101,6 @@ export const menuSlice = createSlice({
     }
 })
 
-export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth, reset } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth, reset, calculateTrYesterday, calculateTrLMonth } = menuSlice.actions
 
 export default menuSlice.reducer
