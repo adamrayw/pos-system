@@ -28,7 +28,7 @@ function Laporan() {
         const incomeThisMonth = getMonth
         const incomeLastMonth = getLastMonth
 
-        const result = ((incomeThisMonth - incomeLastMonth) / incomeLastMonth) * 100;
+        const result = (incomeThisMonth - incomeLastMonth) / incomeThisMonth * 100.0;
 
         if (result > 0) {
             setSelisihPenBulan(result.toFixed(2))
@@ -43,7 +43,7 @@ function Laporan() {
         const incomeToday = getTotal
         const incomeYesterday = getYesterday
 
-        const result = ((incomeToday - incomeYesterday) / incomeYesterday) * 100;
+        const result = (incomeToday - incomeYesterday) / incomeToday * 100;
 
         if (result > 0) {
             setSelisihPenHari(result.toFixed(2))
@@ -92,7 +92,7 @@ function Laporan() {
                             <h3 className="text-xs text-gray-400">Total Pendapatan Hari Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
-                        <div className='space-y-2 flex space-x-2'>
+                        <div className='space-y-2'>
                             {isLoading ?
                                 <CgSpinner className='animate-spin text-2xl text-orange-500' />
                                 :
@@ -108,7 +108,7 @@ function Laporan() {
                                         null
                                     }
                                     {selisihPenHari < 0 ?
-                                        <p className='text-xs text-red-500 flex items-center'>{selisihPenHari + '% '}<BsArrowDown className='ml-1' /></p>
+                                        <p className='text-xs text-red-500 flex items-center'>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowDown className='ml-1' /> dari hari kemarin</p>
                                         :
                                         <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenHari + '% '}<BsArrowUp className='ml-1' /></p>
                                     }
@@ -128,7 +128,7 @@ function Laporan() {
                                 <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
                             }
                             {getLastMonth === 0 ?
-                                <p className='text-xs text-black flex items-center'>{'0% '}</p>
+                                null
                                 :
                                 <>
                                     {selisihPenBulan === 0 ?
