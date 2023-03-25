@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Menu from "../components/Menu/Menu"
 import Sidebar from "../components/Sidebar/Sidebar"
@@ -10,6 +10,7 @@ import { IoMdClose } from 'react-icons/io'
 function Index() {
     const [kategori, setKategori] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
+    const [date, setDate] = useState(new Date());
     const [keywordSearch, setKeywordSearch] = useState('')
 
     const dispatch = useDispatch()
@@ -34,10 +35,25 @@ function Index() {
         dispatch(setKeyword(e.target.value))
     }
 
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setDate(new Date());
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
+
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString();
+
     return (
         <div className="container mx-auto">
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
                 <div className="md:text-left text-center mb-4 md:mb-0">
+                    <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>
                     <h1 className='text-xl md:text-2xl font-semibold'>Welcome, Soto Mak Wiek👋</h1>
                     <p className='text-xs md:text-base text-gray-400'>Discover what you need easily!</p>
                 </div>

@@ -110,7 +110,7 @@ function Laporan() {
                                     {selisihPenHari < 0 ?
                                         <p className='text-xs text-red-500 flex items-center'>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowDown className='ml-1' /> dari hari kemarin</p>
                                         :
-                                        <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenHari + '% '}<BsArrowUp className='ml-1' /></p>
+                                        <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowUp className='ml-1' /> dari hari kemarin</p>
                                     }
                                 </>
                             }
