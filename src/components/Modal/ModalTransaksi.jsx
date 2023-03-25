@@ -5,12 +5,13 @@ import { BsFillCheckCircleFill } from 'react-icons/bs'
 import { useApiPost } from "../../services/api.service"
 import { CgSpinner } from "react-icons/cg"
 import { reset } from "../../features/menuSlice/menuSlice"
+import { TbUnlink } from 'react-icons/tb'
 
 function ModalTransaksi(props) {
     const [isLoading, setIsLoading] = useState(false)
     const menus = useSelector((state) => state.menu.value)
     const [isToggleModalOpen, setIsToggleModalOpen] = useState(true)
-    const [paymentMethod, setPaymentMethod] = useState('')
+    const [paymentMethod, setPaymentMethod] = useState('midtrans')
     const [paymentLink, setPaymentLink] = useState([])
 
     const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function ModalTransaksi(props) {
                 setPaymentLink(response.response.data.data.redirect_url)
                 setIsLoading(false)
                 dispatch(reset())
+                redirect(paymentLink)
             })
             .catch((error) => {
                 console.log(error)
@@ -40,6 +42,15 @@ function ModalTransaksi(props) {
                 {paymentLink.length === 0 ?
                     <div className="relative w-full h-full max-w-md md:h-auto">
                         <div className="relative bg-white rounded-lg shadow px-6 pb-6 my-10">
+                            {isLoading ?
+                                <div className="absolute h-full flex justify-center items-center w-full left-0 bg-gray-500 opacity-30">
+                                    <div className="bg-white rounded p-2">
+                                        <CgSpinner className="text-4xl text-orange-500 animate-spin" />
+                                    </div>
+                                </div>
+                                :
+                                null
+                            }
                             <h1 className="py-3 font-semibold text-2xl">Konfirmasi Pesanan</h1>
                             <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="authentication-modal" onClick={triggerToRightBarComponent}>
                                 <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -144,8 +155,8 @@ function ModalTransaksi(props) {
                             {paymentMethod === 'midtrans' ?
                                 <>
                                     {isLoading ?
-                                        <button disabled className="w-full flex justify-center items-center text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center hover:cursor-not-allowed">
-                                            <CgSpinner className='animate-spin text-xl' />
+                                        <button disabled className="w-full flex justify-center items-center text-white py-3 mt-4 bg-orange-300 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 text-center hover:cursor-not-allowed">
+                                            Buat Link Pembayaran
                                         </button>
                                         :
                                         <button className='bg-orange-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-orange-600 active:bg-orange-700 transition'
@@ -180,9 +191,10 @@ function ModalTransaksi(props) {
                                 <span className="sr-only">Close modal</span>
                             </button>
                             <div className="pt-10">
-                                <h1 className="text-xl mb-2 text-center font-bold">Link Pembayaran Berhasil Dibuat</h1>
-                                <p className="text-center text-xs text-gray-400 leading-relaxed">Silahkan klik button Open untuk melanjutkan pembayaran, jika pop-up ini hilang, link pembayaran tersimpan di laporan.</p>
-                                <a className="flex justify-center mt-4 bg-orange-500 text-white py-1 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" href={paymentLink} target="_blank">Open</a>
+                                <TbUnlink className="text-6xl mx-auto  mb-6 text-orange-500" />
+                                <h1 className="text-2xl mb-2 text-center font-bold">Link Pembayaran Berhasil Dibuat</h1>
+                                <p className="text-center text-sm text-gray-500 leading-relaxed">Klik <span className="text-orange-500 font-semibold">Lanjutkan Pembayaran</span> untuk melanjutkan pembayaran, link pembayaran tersimpan di laporan.</p>
+                                <a className="flex justify-center mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" href={paymentLink}>Lanjutkan Pembayaran</a>
                             </div>
                         </div>
                     </div>
