@@ -108,7 +108,7 @@ function Laporan() {
                                         <>
 
                                             {selisihPenHari < 0 ?
-                                                <p className='text-xs text-red-500 flex items-center whitespace-nowrap overflow-auto truncate'>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowDown className='ml-1' /> dari hari kemarin</p>
+                                                <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} scroller text-red-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan hari ini lebih rendah {selisihPenHari + '% dari hari kemarin'}<BsArrowDown className='ml-1' /></span></p>
                                                 :
                                                 <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} scroller text-green-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan hari ini lebih besar {selisihPenHari + '% dari hari kemarin'}<BsArrowUp className='ml-1' /></span></p>
                                             }
@@ -140,7 +140,7 @@ function Laporan() {
                                         null
                                     }
                                     {selisihPenBulan < 0 ?
-                                        <p className='text-xs text-red-500 flex items-center'>{selisihPenBulan + '% '}<BsArrowDown className='ml-1' /></p>
+                                        <p className={`text-xs ${selisihPenBulan === 0 ? 'hidden' : 'block'} scroller text-red-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan bulan ini lebih rendah {selisihPenBulan + '% dari bulan kemarin'}<BsArrowDown className='ml-1' /></span></p>
                                         :
                                         <p className={`text-xs ${selisihPenBulan === 0 ? 'hidden' : 'block'} scroller text-green-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan bulan ini lebih besar {selisihPenBulan + '% dari bulan kemarin'}<BsArrowUp className='ml-1' /></span></p>
                                     }
