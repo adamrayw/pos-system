@@ -11,7 +11,7 @@ const initialState = {
     transaction_last_month: [],
     total_pendapatan_today: 0,
     total_pendapatan_month: 0,
-    total_last_month: 0,
+    total_pendapatan_last_month: 0,
     total_pendapatan_yesterday: 0,
 }
 
@@ -91,7 +91,7 @@ export const menuSlice = createSlice({
 
             if (state.transaction_last_month.length !== 0) {
                 const total = state.transaction_last_month.reduce((acc, transaction_last_month) => acc + transaction_last_month.total, 0)
-                state.transaction_last_month = total
+                state.total_pendapatan_last_month = total
             }
         },
         reset: (state) => {
