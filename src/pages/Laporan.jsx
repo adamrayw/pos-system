@@ -13,13 +13,13 @@ import { CgSpinner } from 'react-icons/cg'
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
     const [dataTransaksi, setDataTransaksi] = useState([])
-    const [selisihPenHari, setSelisihPenHari] = useState('0%')
+    const [selisihPenHari, setSelisihPenHari] = useState('')
     const [selisihPenBulan, setSelisihPenBulan] = useState('')
 
     const dispatch = useDispatch()
     const getTotal = useSelector((state) => state.menu.total_pendapatan_today)
     const getMonth = useSelector((state) => state.menu.total_pendapatan_month)
-    const getLastMonth = useSelector((state) => state.menu.total_last_month)
+    const getLastMonth = useSelector((state) => state.menu.total_pendapatan_last_month)
     const getYesterday = useSelector((state) => state.menu.total_pendapatan_yesterday)
     const jumlahOrderTd = useSelector((state) => state.menu.transaction_today)
     const jumlahOrderMh = useSelector((state) => state.menu.transaction_month)
@@ -28,8 +28,7 @@ function Laporan() {
         const incomeThisMonth = getMonth
         const incomeLastMonth = getLastMonth
 
-        const result = (incomeThisMonth - incomeLastMonth) / incomeThisMonth * 100.0;
-
+        const result = ((incomeThisMonth - incomeLastMonth) / incomeThisMonth * 100.0);
         if (result > 0) {
             setSelisihPenBulan(result.toFixed(2))
         } else if (result < 0) {
@@ -44,6 +43,7 @@ function Laporan() {
         const incomeYesterday = getYesterday
 
         const result = (incomeToday - incomeYesterday) / incomeToday * 100;
+        console.log(result)
 
         if (result > 0) {
             setSelisihPenHari(result.toFixed(2))
@@ -85,9 +85,9 @@ function Laporan() {
     return (
         <div className='container'>
             <h1 className="text-2xl md:text-4xl font-semibold mb-6">Laporan</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-2 bg-black p-2 md:p-10 bg-gradient-to-bl from-yellow-200 via-yellow-300 to-amber-500 rounded-lg shadow background-animate'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between w-full">
-                    <div className="card bg-white p-4 space-y-2">
+                    <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400">Total Pendapatan Hari Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
@@ -96,36 +96,39 @@ function Laporan() {
                             {isLoading ?
                                 <CgSpinner className='animate-spin text-2xl text-orange-500' />
                                 :
-                                <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getTotal)}</p>
+                                <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getTotal)}</p>
                             }
                             {getYesterday === 0 ?
                                 null
                                 :
                                 <>
-                                    {selisihPenHari === 0 ?
-                                        <p className='text-xs text-black flex items-center'>{selisihPenHari + '% '}</p>
+                                    {selisihPenHari === 0 || selisihPenHari === '' ?
+                                        <p className='text-xs text-black flex items-center'>{selisihPenHari}</p>
                                         :
-                                        null
-                                    }
-                                    {selisihPenHari < 0 ?
-                                        <p className='text-xs text-red-500 flex items-center'>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowDown className='ml-1' /> dari hari kemarin</p>
-                                        :
-                                        <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowUp className='ml-1' /> dari hari kemarin</p>
+                                        <>
+
+                                            {selisihPenHari < 0 ?
+                                                <p className='text-xs text-red-500 flex items-center whitespace-nowrap overflow-auto truncate'>Pendapatan hari ini {selisihPenHari + '% '}<BsArrowDown className='ml-1' /> dari hari kemarin</p>
+                                                :
+                                                <p className={`text-xs ${selisihPenHari === 0 ? 'hidden' : 'block'} scroller text-green-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan hari ini lebih besar {selisihPenHari + '% dari hari kemarin'}<BsArrowUp className='ml-1' /></span></p>
+                                            }
+                                        </>
                                     }
                                 </>
                             }
+                            <p className='text-xs text-gray-400'>Pendapatan kemarin: Rp {convert(getYesterday)}</p>
                         </div>
                     </div>
-                    <div className="card bg-white p-4 texce space-y-2">
+                    <div className="card shadow-sm rounded-lg bg-white p-4 texce space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
                             <BiLineChart className='text-sm text-orange-500' />
                         </div>
-                        <div className='space-y-2 flex space-x-2'>
+                        <div className='space-y-2'>
                             {isLoading ?
                                 <CgSpinner className='animate-spin text-2xl text-orange-500' />
                                 :
-                                <p className="font-semibold whitespace-nowrap md:text-2xl">Rp {convert(getMonth)}</p>
+                                <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getMonth)}</p>
                             }
                             {getLastMonth === 0 ?
                                 null
@@ -139,13 +142,14 @@ function Laporan() {
                                     {selisihPenBulan < 0 ?
                                         <p className='text-xs text-red-500 flex items-center'>{selisihPenBulan + '% '}<BsArrowDown className='ml-1' /></p>
                                         :
-                                        <p className={`text-xs ${selisihPenBulan === 0 ? 'hidden' : 'block'} text-green-500 flex items-center`}>{selisihPenBulan + '% '}<BsArrowUp className='ml-1' /></p>
+                                        <p className={`text-xs ${selisihPenBulan === 0 ? 'hidden' : 'block'} scroller text-green-500 flex items-center scrollbar-hide whitespace-nowrap overflow-x-scroll`}><span>Pendapatan bulan ini lebih besar {selisihPenBulan + '% dari bulan kemarin'}<BsArrowUp className='ml-1' /></span></p>
                                     }
                                 </>
                             }
+                            <p className='text-xs text-gray-400'>Pendapatan Bulan kemarin: Rp {convert(getLastMonth)}</p>
                         </div>
                     </div>
-                    <div className="card bg-white p-4 space-y-2">
+                    <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Jumlah Order Hari Ini</h3>
                             <MdGroup className='text-sm text-orange-500' />
@@ -153,11 +157,11 @@ function Laporan() {
                         {isLoading ?
                             <CgSpinner className='animate-spin text-2xl text-orange-500' />
                             :
-                            <p className="font-semibold md:text-2xl">{jumlahOrderTd.length}</p>
+                            <p className="font-semibold text-lg md:text-2xl">{jumlahOrderTd.length}</p>
                         }
 
                     </div>
-                    <div className="card bg-white p-4 space-y-2">
+                    <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Jumlah Order Bulan Ini</h3>
                             <MdGroups2 className='text-sm text-orange-500' />
@@ -165,11 +169,11 @@ function Laporan() {
                         {isLoading ?
                             <CgSpinner className='animate-spin text-2xl text-orange-500' />
                             :
-                            <p className="font-semibold md:text-2xl">{jumlahOrderMh.length}</p>
+                            <p className="font-semibold text-lg md:text-2xl">{jumlahOrderMh.length}</p>
                         }
                     </div>
                 </div>
-                <div className='w-[w-12] px-10 py-4 bg-white text-center flex justify-center items-center'>
+                <div className='card shadow-sm rounded-lg w-[w-12] px-10 py-4 bg-white text-center flex justify-center items-center'>
                     {/* <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
                     <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p> */}
                     <h1 className='font-bold text-gray-300 text-lg md:text-2xl'>News</h1>
