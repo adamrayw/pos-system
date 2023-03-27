@@ -1,16 +1,14 @@
-import Soto from '/assets/soto.png'
 import { useSelector, useDispatch } from 'react-redux'
-import { add, remove, getSubTotal } from '../../features/menuSlice/menuSlice'
+import { add, remove } from '../../features/menuSlice/menuSlice'
 import convert from '../../utils/convertToRupiah.utils'
 import ModalTransaksi from '../Modal/ModalTransaksi'
-import { useEffect, useState } from 'react'
-import Modal from '../Modal/Modal'
+import { useState } from 'react'
 import { IoIosClose } from 'react-icons/io'
 import { BiFoodMenu } from 'react-icons/bi'
 
 function RightBar() {
     const [isModalKonfirmasiOpen, setIsModalKonfirmasiOpen] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
 
     const menus = useSelector((state) => state.menu.value)
     const subTotal = useSelector((state) => state.menu.subTotal)
