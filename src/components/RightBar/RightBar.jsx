@@ -8,7 +8,7 @@ import { BiFoodMenu } from 'react-icons/bi'
 
 function RightBar() {
     const [isModalKonfirmasiOpen, setIsModalKonfirmasiOpen] = useState(false)
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
 
     const menus = useSelector((state) => state.menu.value)
     const subTotal = useSelector((state) => state.menu.subTotal)
