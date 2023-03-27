@@ -19,7 +19,7 @@ function ModalKategori(props) {
         setIsLoading(true)
 
         if (props.isEdit) {
-            await useApiEdit("menu/edit", data)
+            await useApiEdit("kategori/edit", { id: props.dataMenu.id, name: name })
         } else if (props.isDelete) {
             await useApiDelete("kategori/remove", props.dataMenu.id)
         } else {
@@ -41,9 +41,7 @@ function ModalKategori(props) {
     }
 
     useState(() => {
-        setFile(props.dataMenu ? props.dataMenu.image : '')
         setName(props.dataMenu ? props.dataMenu.name : '')
-        setPrice(props.dataMenu ? props.dataMenu.price : null)
         setIsEdit(props.isEdit ? props.isEdit : null)
     }, [])
 
