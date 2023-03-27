@@ -8,6 +8,7 @@ function Kategori() {
     const [isLoaded, setIsLoaded] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [dataEdit, setDataEdit] = useState([])
 
     useEffect(() => {
@@ -20,11 +21,12 @@ function Kategori() {
 
         fetchKategori()
 
-    }, [isModalOpen, isDeleteModalOpen])
+    }, [isModalOpen, isDeleteModalOpen, isEditModalOpen])
 
     const triggerFromModal = (data) => {
         setIsModalOpen(data)
         setIsDeleteModalOpen(data)
+        setIsEditModalOpen(data)
     }
 
     return (
@@ -35,6 +37,12 @@ function Kategori() {
 
             {isDeleteModalOpen ?
                 <ModalKategori dataMenu={dataEdit} isDelete={true} toggleModal={triggerFromModal} />
+                :
+                null
+            }
+
+            {isEditModalOpen ?
+                <ModalKategori dataMenu={dataEdit} isEdit={true} toggleModal={triggerFromModal} />
                 :
                 null
             }
