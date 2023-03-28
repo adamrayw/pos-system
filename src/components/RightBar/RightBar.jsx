@@ -22,16 +22,15 @@ function RightBar() {
 
     return (
         <>
-            <div className={`absolute ${isOpen ? 'hidden' : 'block'} m-auto right-0 '`} >
-                <button className=' bg-orange-500 flex items-center px-4 rounded-bl-lg text-white space-x-2 hover:bg-orange-600 transition' onClick={() => setIsOpen(true)}>
-                    <BiFoodMenu className='text-2xl my-2' />
-                    <p className='whitespace-nowrap font-semibold'>Open</p>
+            <div className={`absolute ${isOpen ? 'hidden' : 'block'} m-6 right-0 bottom-0 '`} >
+                <button className=' bg-orange-500 flex items-center px-2 rounded-3xl text-white shadow-lg space-x-2 hover:bg-orange-600 transition active:bg-orange-800' onClick={() => setIsOpen(true)}>
+                    <BiFoodMenu className='md:text-3xl text-xl my-2' />
+                    {/* <p className='whitespace-nowrap font-semibold'>Open</p> */}
                 </button>
             </div>
             <div className={`md:relative absolute ${isOpen ? 'block' : 'hidden'} h-full w-full md:w-1/2 top-1/2 md:top-0 left-1/2 md:left-0 md:transform-none transform md:-translate-x-0 md:translate-y-0 -translate-x-1/2 -translate-y-1/2`}>
                 {isModalKonfirmasiOpen ?
                     <ModalTransaksi toggleModal={triggerFromModal} dataPrice={[{ subTotal, total }]} />
-
                     :
                     null
                 }
