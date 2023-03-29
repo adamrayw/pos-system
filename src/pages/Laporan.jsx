@@ -99,11 +99,11 @@ function Laporan() {
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getTotal)}</p>
                             }
                             {getYesterday === 0 ?
-                                <p className='text-xs text-black flex items-center'>{selisihPenBulan + '0% '}</p>
+                                null
                                 :
                                 <>
                                     {selisihPenHari === 0 || selisihPenHari === '' ?
-                                        <p className='text-xs text-black flex items-center'>{selisihPenHari}</p>
+                                        null
                                         :
                                         <>
 
@@ -135,7 +135,7 @@ function Laporan() {
                                 :
                                 <>
                                     {selisihPenBulan === 0 || selisihPenBulan === '' ?
-                                        <p className='text-xs text-black flex items-center'>{selisihPenBulan + '0% '}</p>
+                                        null
                                         :
                                         <>
                                             {selisihPenBulan < 0 ?
