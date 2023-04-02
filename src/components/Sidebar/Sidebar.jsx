@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg'
-import { FaChartBar } from 'react-icons/fa'
+import posku from '../../../public/assets/posku-logo.png'
 
 function Sidebar() {
     const [open, setOpen] = useState(false);
@@ -18,9 +18,10 @@ function Sidebar() {
                 <div className="space-y-3">
                     <div className={`flex items-center mx-4 ${open ? 'justify-between' : 'justify-center'}`}>
                         {open ?
-                            <h2 className="text-xl font-bold text-black truncate">
-                                POSKU
-                            </h2>
+                            <img src={posku} alt="posku" className="w-20 h-7" />
+                            // <h2 className="text-xl font-bold text-black truncate">
+                            //     POSKU
+                            // </h2>
                             : ""}
                         <button onClick={() => {
                             setOpen(!open)
