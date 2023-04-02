@@ -54,12 +54,10 @@ function Laporan() {
         }
     }
 
-    if (getTotal !== 0) {
-        setTimeout(() => {
-            hitungSelisih()
-            hitungSelisihBulan()
-        }, 1000);
-    }
+    setTimeout(() => {
+        hitungSelisih()
+        hitungSelisihBulan()
+    }, 1000);
 
     useEffect(() => {
         const fetchTransaksi = async () => {
@@ -98,7 +96,7 @@ function Laporan() {
                                 :
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getTotal)}</p>
                             }
-                            {getYesterday === 0 ?
+                            {getYesterday === 0 || getTotal === 0 ?
                                 null
                                 :
                                 <>
