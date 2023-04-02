@@ -9,6 +9,7 @@ import convert from '../utils/convertToRupiah.utils'
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'
 import { MdGroup, MdGroups2 } from 'react-icons/md'
 import { CgSpinner } from 'react-icons/cg'
+import Chart from '../components/Chart/Chart'
 
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
@@ -174,11 +175,7 @@ function Laporan() {
                         }
                     </div>
                 </div>
-                <div className='card shadow-sm rounded-lg w-[w-12] px-10 py-4 bg-white text-center flex justify-center items-center'>
-                    {/* <h2 className='font-semibold text-xl md:text-2xl'>Total Pendapatan</h2>
-                    <p className='my-4 md:my-10 text-xl md:text-4xl font-bold'>Rp. 10</p> */}
-                    <h1 className='font-bold text-gray-300 text-lg md:text-2xl'>News</h1>
-                </div>
+                <Chart props={dataTransaksi} />
             </div>
 
             <h2 className='mt-4 font-semibold mb-2'>Transaksi Terakhir</h2>
