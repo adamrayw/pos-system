@@ -55,7 +55,7 @@ function Index() {
                 <div className="md:text-left text-center mb-4 md:mb-0">
                     <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>
                     <h1 className='text-xl md:text-2xl font-semibold'>Welcome, Soto Mak Wiek👋</h1>
-                    <p className='text-xs md:text-base text-gray-400'>Discover what you need easily!</p>
+                    <p className='text-xs md:text-base text-gray-400'>Streamline your sales with ease - Anytime, Anywhere.</p>
                 </div>
                 <div className="relative">
                     <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-2.5" />
