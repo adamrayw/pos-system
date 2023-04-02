@@ -19,7 +19,7 @@ function Sidebar() {
                     <div className={`flex items-center mx-4 ${open ? 'justify-between' : 'justify-center'}`}>
                         {open ?
                             <h2 className="text-xl font-bold text-black truncate">
-                                Soto Mak Wiek
+                                POSKU
                             </h2>
                             : ""}
                         <button onClick={() => {
