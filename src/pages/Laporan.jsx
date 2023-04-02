@@ -56,7 +56,9 @@ function Laporan() {
 
     setTimeout(() => {
         hitungSelisih()
-        hitungSelisihBulan()
+        if (getMonth === 0 || getLastMonth === 0) {
+            hitungSelisihBulan()
+        }
     }, 1000);
 
     useEffect(() => {
@@ -96,7 +98,7 @@ function Laporan() {
                                 :
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getTotal)}</p>
                             }
-                            {getYesterday === 0 || getTotal === 0 ?
+                            {/* {getYesterday === 0 || getTotal === 0 ?
                                 null
                                 :
                                 <>
@@ -113,7 +115,7 @@ function Laporan() {
                                         </>
                                     }
                                 </>
-                            }
+                            } */}
                             <p className='text-xs text-gray-400'>Pendapatan kemarin: Rp {convert(getYesterday)}</p>
                         </div>
                     </div>
@@ -128,11 +130,11 @@ function Laporan() {
                                 :
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getMonth)}</p>
                             }
-                            {getLastMonth === 0 ?
+                            {/* {getLastMonth === 0 ?
                                 null
                                 :
                                 <>
-                                    {selisihPenBulan === 0 || selisihPenBulan === '' ?
+                                    {getMonth === 0 || selisihPenBulan === '' ?
                                         null
                                         :
                                         <>
@@ -144,7 +146,7 @@ function Laporan() {
                                         </>
                                     }
                                 </>
-                            }
+                            } */}
                             <p className='text-xs text-gray-400'>Pendapatan Bulan kemarin: Rp {convert(getLastMonth)}</p>
                         </div>
                     </div>
