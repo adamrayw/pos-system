@@ -37,9 +37,11 @@ function Chart({ props }) {
         },
     };
 
-    const labels = props.map((item) =>
-        new Date(item.createdAt).toLocaleString('default', { month: 'long', day: 'numeric' })
-    )
+    const labels = props
+        .map((item) =>
+            new Date(item.createdAt).toLocaleString('default', { month: 'long', day: 'numeric' })
+        )
+        .slice(0, 5);
     const data = {
         labels,
         datasets: [
