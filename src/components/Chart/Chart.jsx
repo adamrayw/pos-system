@@ -32,16 +32,17 @@ function Chart({ props }) {
             },
             title: {
                 display: true,
-                text: 'Pendapatan Harian',
+                text: 'Pendapatan Harian per Order',
             },
         },
     };
 
     const labels = props
         .map((item) =>
-            new Date(item.createdAt).toLocaleString('default', { month: 'long', day: 'numeric' })
+            new Date(item.createdAt).toLocaleString('default', { month: 'long', day: 'numeric' }) + '\n' + item.transaksiId
         )
         .slice(0, 5);
+
     const data = {
         labels,
         datasets: [
