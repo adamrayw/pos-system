@@ -10,11 +10,13 @@ import { TbMoodConfuzed } from 'react-icons/tb'
 function Menu() {
     const [isLoaded, setIsLoaded] = useState(false)
     const [data, setData] = useState([])
+    const [isSearchMode, setIsSearchMode] = useState(false)
 
     const dispatch = useDispatch()
 
     const selector = useSelector((state) => state.menu.tab)
     const keyword = useSelector((state) => state.menu.keyword)
+    const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
         if (keyword !== '') {
@@ -23,10 +25,12 @@ function Menu() {
                 const { response } = await useApiRequest("menu/search/" + keyword)
                 setData(response.data)
                 setIsLoaded(true)
+                setIsSearchMode(true)
             }
             fetchSearch()
         } else if (keyword === '') {
             const fetchAllMenu = async () => {
+                setIsSearchMode(false)
                 setIsLoaded(false)
                 const { response, err } = await useApiRequest("menu")
                 setData(response.data)
@@ -66,12 +70,41 @@ function Menu() {
 
             {isLoaded ?
                 <>
-                    {data.items.length === 0 ?
-                        <div className='flex flex-col items-center justify-center mt-10'>
+                    {data.items.length === 0 && isSearchMode ?
+                        <div div className='flex flex-col items-center justify-center mt-10'>
                             <TbMoodConfuzed className='text-6xl text-orange-500' />
                             <p className='text-center'>Menu yang anda cari tidak ditemukan</p>
                         </div>
                         : null}
+                    {data.items.length === 0 && !isSearchMode ? (
+                        <div className="flex flex-col items-center justify-center mt-10">
+                            <div className="bg-white p-5 md:p-10 rounded">
+                                <h1 className="text-base md:text-lg font-medium mb-4">Selamat Datang, {user.nama_usaha}!</h1>
+                                <p className="text-base md:text-lg mb-4">Terima kasih telah memilih aplikasi kami.</p>
+                                <h2 className="text-base md:text-lg font-medium mb-2">Untuk memulai dengan cepat, ikuti langkah-langkah berikut:</h2>
+                                <div className="flex items-center mb-4">
+                                    <div className="text-base md:text-lg mr-4">1.</div>
+                                    <div>
+                                        <p className='md:text-base text-sm'>Buka menu dengan mengklik ikon hamburger di pojok kiri atas layar.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center mb-4">
+                                    <div className="text-base md:text-lg mr-4">2.</div>
+                                    <div>
+                                        <p className='md:text-base text-sm'>Klik "Kategori" untuk menambahkan kategori baru.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center mb-4">
+                                    <div className="text-base md:text-lg mr-4">3.</div>
+                                    <div>
+                                        <p className='md:text-base text-sm'>Klik tombol "Tambah Kategori" dan isi informasi yang dibutuhkan.</p>
+                                    </div>
+                                </div>
+                                <p className="text-base md:text-lg mt-4">Kamu siap untuk memasukkan menu-menu baru ke dalam kategori-kategori kamu dan siap berjualan!</p>
+                            </div>
+                        </div>
+
+                    ) : null}
                     <div className='grid grid-cols-2 md:grid-cols-4 gap-4' >
                         {data.items.map((e) => {
                             return (
