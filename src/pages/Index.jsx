@@ -16,6 +16,7 @@ function Index() {
     const dispatch = useDispatch()
     const selector = useSelector((state) => state.menu.tab)
     const keyword = useSelector((state) => state.menu.keyword)
+    const user = JSON.parse(localStorage.getItem('user'))
 
     useState(() => {
         localStorage.setItem('incomePast', 0)
@@ -54,7 +55,7 @@ function Index() {
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
                 <div className="md:text-left text-center mb-4 md:mb-0">
                     <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>
-                    <h1 className='text-xl md:text-2xl font-semibold'>Welcome, Soto Mak Wiek👋</h1>
+                    <h1 className='text-xl md:text-2xl font-semibold'>{user.nama_usaha}</h1>
                     <p className='text-xs md:text-base text-gray-400'>Effortless sales, anytime, anywhere.</p>
                 </div>
                 <div className="relative">
