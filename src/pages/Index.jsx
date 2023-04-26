@@ -53,15 +53,22 @@ function Index() {
     return (
         <div className="container mx-auto">
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
-                <div className="md:text-left text-center mb-4 md:mb-0">
+                <div className="md:text-left text-center space-y-1 mb-4 md:mb-0">
                     <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>
                     <h1 className='text-xl md:text-2xl font-semibold'>{user.nama_usaha}</h1>
                     <p className='text-xs md:text-base text-gray-400'>Effortless sales, anytime, anywhere.</p>
                 </div>
                 <div className="relative">
                     <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-2.5" />
-                    <input type="text" name="search" className="w-full pl-8 pr-3 py-2.5 rounded font-medium shadow-sm focus:shadow-lg text-sm focus:ring focus:ring-orange-500 transition" value={keywordSearch} placeholder="Cari menu..." onChange={handleSearch} />
-                    <IoMdClose className={`${keyword === '' ? 'hidden' : 'block'} absolute m-auto right-0 top-0 bottom-0 mr-2.5 hover:cursor-pointer`} onClick={() => {
+                    <input
+                        type="text"
+                        name="search"
+                        value={keywordSearch}
+                        onChange={handleSearch}
+                        placeholder="Cari menu..."
+                        className="w-full pl-10 pr-3 py-2.5 rounded-lg font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                    />
+                    <IoMdClose className={`${keyword === '' ? 'hidden' : 'block'} absolute m-auto right-0 bottom-0 top-0 mr-2.5 hover:cursor-pointer`} onClick={() => {
                         dispatch(setKeyword(''))
                         setKeywordSearch('')
                     }} />
@@ -70,13 +77,15 @@ function Index() {
             <div className="flex overflow-x-scroll scrollbar-hide space-x-6 mb-6">
                 {isLoaded ?
                     <>
-                        <button onClick={() => dispatch(kategoriIndex('semua'))}>
-                            <div className={`w-full px-8 py-3 ${selector === 'semua' ? 'bg-orange-500 text-white shadow-lg' : 'bg-white text-gray-800 '} hover:bg-orange-500 hover:text-white active:bg-orange-700 transition rounded-lg shadow-sm flex items-center space-x-2`}>
-                                <div className="text-sm font-medium truncate">
-                                    Semua
+                        {kategori.items.length < 1 ? ('') : (
+                            <button onClick={() => dispatch(kategoriIndex('semua'))}>
+                                <div className={`w-full px-8 py-3 ${selector === 'semua' ? 'bg-orange-500 text-white shadow-lg' : 'bg-white text-gray-800 '} hover:bg-orange-500 hover:text-white active:bg-orange-700 transition rounded-lg shadow-sm flex items-center space-x-2`}>
+                                    <div className="text-sm font-medium truncate">
+                                        Semua
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
+                        )}
                         {
                             kategori.items.map((e) => {
                                 return (
