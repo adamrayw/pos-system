@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Modal from "../../components/Modal/Modal"
 import { useApiRequest } from "../../services/api.service"
 import { FaRegEdit, FaTrash } from 'react-icons/fa'
+import convert from "../../utils/convertToRupiah.utils"
 
 function Menu() {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -65,10 +66,13 @@ function Menu() {
                                             Item
                                         </th>
                                         <th scope="col" className="px-5 py-3 text-sm font-bold text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                            Created at
+                                            Harga
                                         </th>
                                         <th scope="col" className="px-5 py-3 text-sm font-bold text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-
+                                            DIBUAT PADA
+                                        </th>
+                                        <th scope="col" className="px-5 py-3 text-sm font-bold text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -95,10 +99,15 @@ function Menu() {
                                                             </td>
                                                             <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                                 <p className="text-gray-900 whitespace-nowrap">
+                                                                    Rp{convert(e.price)}
+                                                                </p>
+                                                            </td>
+                                                            <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                                <p className="text-gray-900 whitespace-nowrap">
                                                                     {new Date(e.createdAt).toLocaleDateString()}
                                                                 </p>
                                                             </td>
-                                                            <td className="px-5 py-5 text-sm whitespace-nowrap bg-white border-b space-x-2 border-gray-200">
+                                                            <td className="px-5 py-5 text-sm whitespace-nowrap bg-white border-b space-x-4 border-gray-200">
                                                                 <button
                                                                     className=" text-sm text-orange-500 rounded-xl whitespace-no-wrap"
                                                                     onClick={() => {
@@ -106,13 +115,13 @@ function Menu() {
                                                                         setDataEdit(e)
                                                                     }
                                                                     }>
-                                                                    <FaRegEdit />
+                                                                    <FaRegEdit size={'18'} />
                                                                 </button>
                                                                 <button className=" text-sm text-red-500 rounded-xl whitespace-no-wrap" onClick={() => {
                                                                     setIsDeleteModalOpen(true)
                                                                     setDataEdit(e)
                                                                 }}>
-                                                                    <FaTrash />
+                                                                    <FaTrash size={18} />
                                                                 </button>
                                                             </td>
                                                         </tr>
