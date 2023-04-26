@@ -64,10 +64,10 @@ function Kategori() {
                                             Kategori
                                         </th>
                                         <th scope="col" className="px-5 py-3 text-sm font-bold text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-                                            Created at
+                                            Dibuat Pada
                                         </th>
                                         <th scope="col" className="px-5 py-3 text-sm font-bold text-left text-gray-800 uppercase bg-white border-b border-gray-200">
-
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -100,13 +100,13 @@ function Kategori() {
                                                                         setDataEdit(e)
                                                                     }
                                                                     }>
-                                                                    <FaRegEdit />
+                                                                    <FaRegEdit size={18} />
                                                                 </button>
                                                                 <button className=" text-sm text-red-500 rounded-xl whitespace-no-wrap" onClick={() => {
                                                                     setIsDeleteModalOpen(true)
                                                                     setDataEdit(e)
                                                                 }}>
-                                                                    <FaTrash />
+                                                                    <FaTrash size={18} />
                                                                 </button>
                                                             </td>
                                                         </tr>
