@@ -44,7 +44,6 @@ function Laporan() {
         const incomeYesterday = getYesterday
 
         const result = (incomeToday - incomeYesterday) / incomeToday * 100;
-        console.log(result)
 
         if (result > 0) {
             setSelisihPenHari(result.toFixed(2))
