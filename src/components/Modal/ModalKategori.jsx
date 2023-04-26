@@ -58,7 +58,7 @@ function ModalKategori(props) {
                             <div className="px-6 py-6 lg:px-8 flex flex-col justify-center items-center">
                                 <RiErrorWarningFill className='text-7xl text-yellow-300 mb-4' />
                                 <h1 className='font-bold text-gray-600 text-lg'>Yakin ingin menghapus kategori ini?</h1>
-                                <p className='text-sm text-gray-400 text-center'>kategori dan semua menu dengan kategori tersebut akan dihapus secara permanen</p>
+                                <p className='text-sm text-gray-400 text-center'>kategori akan dihapus secara permanen, harap edit kategori menu yang berkategorikan <span className='font-bold'>{props.dataMenu.name}</span></p>
                                 <div className='flex items-center space-x-4 mt-6'>
                                     <form onSubmit={handleSubmit}>
                                         {isLoading ?
@@ -66,7 +66,7 @@ function ModalKategori(props) {
                                                 <CgSpinner className='animate-spin text-xl' />
                                             </button>
                                             :
-                                            <button type='submit' className='px-4 py-2 text-sm text-white font-semibold border-2 border-red-500 bg-red-500 rounded-lg hover:bg-red-600 active:bg-red-700 transition'>Yes</button>
+                                            <button type='submit' className='px-4 py-2 text-sm text-white font-semibold border-2 border-red-500 bg-red-500 rounded-lg hover:bg-red-600 active:bg-red-700 transition'>Ya, yakin</button>
                                         }
                                     </form>
                                     <button className='px-4 py-2 text-sm font-semibold border-2 rounded-lg hover:border-gray-300 active:border-gray-500 transition' onClick={triggerToMenuComponent}>Batal</button>
