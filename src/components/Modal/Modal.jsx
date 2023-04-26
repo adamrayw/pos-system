@@ -112,7 +112,7 @@ function Modal(props) {
                                                 <CgSpinner className='animate-spin text-xl' />
                                             </button>
                                             :
-                                            <button type='submit' className='px-4 py-2 text-sm text-white font-semibold border-2 border-red-500 bg-red-500 rounded-lg hover:bg-red-600 active:bg-red-700 transition'>Yes</button>
+                                            <button type='submit' className='px-4 py-2 text-sm text-white font-semibold border-2 border-red-500 bg-red-500 rounded-lg hover:bg-red-600 active:bg-red-700 transition'>Ya, yakin</button>
                                         }
                                     </form>
                                     <button className='px-4 py-2 text-sm font-semibold border-2 rounded-lg hover:border-gray-300 active:border-gray-500 transition' onClick={triggerToMenuComponent}>Batal</button>
