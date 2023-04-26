@@ -79,28 +79,45 @@ function Menu() {
                     {data.items.length === 0 && !isSearchMode ? (
                         <div className="flex flex-col items-center justify-center mt-10">
                             <div className="bg-white p-5 md:p-10 rounded">
-                                <h1 className="text-base md:text-lg font-medium mb-4">Selamat Datang, {user.nama_usaha}!</h1>
-                                <p className="text-base md:text-lg mb-4">Terima kasih telah memilih aplikasi kami.</p>
+                                <h1 className="text-base md:text-2xl font-bold mb-4">👋 Selamat Datang, {user.nama_usaha}!</h1>
+                                <p className="text-base md:text-lg mb-4">Terima Kasih telah memilih aplikasi <span className='text-orange-500 font-semibold'>POSKU</span>.</p>
                                 <h2 className="text-base md:text-lg font-medium mb-2">Untuk memulai dengan cepat, ikuti langkah-langkah berikut:</h2>
-                                <div className="flex items-center mb-4">
+                                <div className="flex items-center mb-2">
                                     <div className="text-base md:text-lg mr-4">1.</div>
                                     <div>
-                                        <p className='md:text-base text-sm'>Buka menu dengan mengklik ikon hamburger di pojok kiri atas layar.</p>
+                                        <span className='flex'>Buka menu dengan mengklik ikon
+                                            <svg
+                                                class='w-6 h-6 mx-1'
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                                                />
+                                            </svg>
+                                            di pojok kiri atas layar.
+                                        </span>
+
                                     </div>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className="flex items-center mb-2">
                                     <div className="text-base md:text-lg mr-4">2.</div>
                                     <div>
-                                        <p className='md:text-base text-sm'>Klik "Kategori" untuk menambahkan kategori baru.</p>
+                                        <p className='md:text-base text-sm'>Pilih menu "Kategori".</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center mb-4">
+                                <div className="flex items-center mb-2">
                                     <div className="text-base md:text-lg mr-4">3.</div>
                                     <div>
                                         <p className='md:text-base text-sm'>Klik tombol "Tambah Kategori" dan isi informasi yang dibutuhkan.</p>
                                     </div>
                                 </div>
-                                <p className="text-base md:text-lg mt-4">Kamu siap untuk memasukkan menu-menu baru ke dalam kategori-kategori kamu dan siap berjualan!</p>
+                                <p className="text-base md:text-lg mt-4 font-semibold">Anda siap untuk memasukkan menu-menu anda ke dalam kategori-kategori dan siap berjualan!</p>
                             </div>
                         </div>
 
