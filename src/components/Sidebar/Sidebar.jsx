@@ -9,6 +9,12 @@ function Sidebar() {
 
     const { pathname } = useLocation()
 
+    const handleLogout = () => {
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+        window.location.href = '/auth/login'
+    }
+
     return (
         <div className="flex">
             <div
@@ -71,7 +77,7 @@ function Sidebar() {
                                         />
                                     </svg>
                                     {open ?
-                                        <span className='group-hover:text-white text-gray-400 font-semibold'>Home</span>
+                                        <span className=' text-gray-400 font-semibold'>Home</span>
                                         : ''
                                     }
                                 </Link>
@@ -166,16 +172,17 @@ function Sidebar() {
                             <li className="rounded-sm">
                                 <Link
                                     to="#"
-                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 space-x-3 rounded-md hover:bg-gray-50 transition`}
+                                    className={`flex items-center ${open ? '' : 'justify-center'} p-2 group space-x-3 rounded-md hover:bg-gray-50 transition`}
                                     onClick={() => {
                                         setOpen(false)
                                         setStateManage(false)
+                                        handleLogout()
                                     }
                                     }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-500"
+                                        className="w-6 h-6 text-gray-500 group-hover:text-orange-400 transition "
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
