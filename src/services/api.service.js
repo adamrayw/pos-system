@@ -1,4 +1,4 @@
-// const api = 'http://localhost:3001/api/'
+// const api = 'https://83c3-139-192-148-110.ngrok-free.app/api/'
 const api = 'https://pos-backend.up.railway.app/api/'
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -28,7 +28,7 @@ export const useApiRequest = async (url) => {
         const response = await axios.get(api + url, config)
         return { response, err: null }
     } catch (err) {
-        showErrorToast()
+        showErrorToast(err.message)
         return { response: null, err }
     }
 
