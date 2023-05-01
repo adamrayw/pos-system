@@ -2,12 +2,14 @@ import { useState } from 'react';
 import posku from '../../../../public/assets/posku-logo.png';
 import { useApiLogin } from '../../../services/api.service';
 import AlertError from '../../../components/Alert/AlertError';
+import ModalSubscription from '../../../components/Modal/ModalSubscription';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [errResponse, setErrResponse] = useState({});
+    const [modal, setModal] = useState(false);
 
     const handleUsernameChange = event => setUsername(event.target.value);
     const handlePasswordChange = event => setPassword(event.target.value);
@@ -39,19 +41,34 @@ const Login = () => {
                 setIsLoading(false)
                 return
             }
-            localStorage.setItem('user', JSON.stringify(response.response.data.data))
-            localStorage.setItem('token', response.response.data.data.token)
-            // Refresh the current page and force a server refresh
-            window.location.href = '/'
-            setIsLoading(false)
+
+            if (response.response.data.data.isHaveActiveSubscription) {
+                localStorage.setItem('user', JSON.stringify(response.response.data.data))
+                localStorage.setItem('token', response.response.data.data.token)
+                // Refresh the current page and force a server refresh
+                window.location.href = '/'
+                setIsLoading(false)
+            } else {
+                setIsLoading(false)
+                setModal(true)
+            }
         } catch (error) {
             setIsLoading(false)
-            setErrResponse({
-                status_text: "error",
-                message: "Something went wrong!"
-            })
-            console.log("err: " + error)
         }
+    };
+
+    const openModal = () => {
+        setModal(true);
+    };
+
+    const closeModal = () => {
+        setModal(false);
+    };
+
+    const subscriptionProps = {
+        isExpired: false,
+        onClose: closeModal,
+        buttonText: 'Subscribe Now',
     };
 
     return (
@@ -61,6 +78,9 @@ const Login = () => {
             </div>
             <div>
                 <AlertError message={errResponse} />
+            </div>
+            <div>
+                {modal && <ModalSubscription {...subscriptionProps} />}
             </div>
             <div className="mt-8">
                 <form action="#" autoComplete="off" onSubmit={handleLogin}>
