@@ -30,10 +30,10 @@ function App() {
 
   return (
     <div className="App flex">
-      <div className="bg-white">
+      <div className="bg-gray-50">
         {pathname === '/auth/login' ? <></> : <Sidebar />}
       </div>
-      <div className={` ${pathname === '/auth/login' ? 'bg-white' : 'bg-gray-100'}  py-10 px-5 md:p-10 w-full max-h-screen overflow-auto`}>
+      <div className={` ${pathname === '/auth/login' ? 'bg-gray-50' : 'bg-gray-100'}  py-10 px-5 md:p-10 w-full max-h-screen overflow-auto`}>
         <Routes>
           <Route path='/' element={
             <Protected>
