@@ -14,7 +14,7 @@ function Kategori() {
     useEffect(() => {
         const fetchKategori = async () => {
             setIsLoaded(false)
-            const { response, err } = await useApiRequest("kategori")
+            const { response, err } = await useApiRequest("kategori/" + JSON.parse(localStorage.getItem('user')).id)
             setData(response.data)
             setIsLoaded(true)
         }
