@@ -62,13 +62,13 @@ function Laporan() {
     useEffect(() => {
         const fetchTransaksi = async () => {
             setIsLoading(true)
-            await useApiRequest('transaksi/get')
+            await useApiRequest('transaksi/get/' + JSON.parse(localStorage.getItem('user')).id)
                 .then((response) => {
-                    setDataTransaksi(response.response.data.items)
-                    dispatch(calculateTrToday(response.response.data.transaction_today))
-                    dispatch(calculateTrMonth(response.response.data.transaction_month))
-                    dispatch(calculateTrYesterday(response.response.data.transaction_yesterday))
-                    dispatch(calculateTrLMonth(response.response.data.transaction_last_month))
+                    setDataTransaksi(response.response.data.items.Transaksi)
+                    dispatch(calculateTrToday(response.response.data.transaction_today.Transaksi))
+                    dispatch(calculateTrMonth(response.response.data.transaction_month.Transaksi))
+                    dispatch(calculateTrYesterday(response.response.data.transaction_yesterday.Transaksi))
+                    dispatch(calculateTrLMonth(response.response.data.transaction_last_month.Transaksi))
                     setIsLoading(false)
                 })
                 .catch((error) => {
