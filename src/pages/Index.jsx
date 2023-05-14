@@ -23,7 +23,7 @@ function Index() {
 
         const getKategori = async () => {
             setIsLoaded(false)
-            const { response, err } = await useApiRequest("kategori")
+            const { response, err } = await useApiRequest("kategori/" + JSON.parse(localStorage.getItem('user')).id)
             setKategori(response.data)
             setIsLoaded(true)
         }
