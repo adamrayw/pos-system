@@ -70,23 +70,24 @@ function Menu() {
             {isLoaded ?
                 <>
                     {data.items.length === 0 && isSearchMode ?
-                        <div div className='flex flex-col items-center justify-center mt-10'>
+                        <div div className='flex flex-col items-center justify-center mt-10 bg-white max-w-md mx-auto p-10'>
                             <TbMoodConfuzed className='text-6xl text-orange-500' />
-                            <p className='text-center'>Menu yang anda cari tidak ditemukan</p>
+                            <p className='text-center font-semibold text-lg mt-2'>Menu yang anda cari tidak ditemukan</p>
+                            <p className='text-center text-gray-500 font-normal mt-2'>Coba dengan  keyword lain</p>
                         </div>
                         : null}
                     {data.items.length === 0 && !isSearchMode ? (
                         <div className="flex flex-col items-center justify-center mt-10">
                             <div className="bg-white p-5 md:p-10 rounded">
-                                <h1 className="text-base md:text-2xl font-bold mb-4">👋 Selamat Datang, {user.nama_usaha}!</h1>
-                                <p className="text-base md:text-lg mb-4">Terima Kasih telah memilih aplikasi <span className='text-orange-500 font-semibold'>POSKU</span>.</p>
-                                <h2 className="text-base md:text-lg font-medium mb-2">Untuk memulai dengan cepat, ikuti langkah-langkah berikut:</h2>
-                                <div className="flex items-center mb-2">
+                                <h1 className="text-base md:text-2xl font-bold mb-4 text-gray-700">👋 Selamat Datang, {user.nama_usaha}!</h1>
+                                <p className="text-base md:text-lg mb-4 text-gray-500">Terima Kasih telah memilih aplikasi <span className='text-orange-500 font-semibold'>POSKU</span>.</p>
+                                <h2 className="text-base md:text-lg font-medium mb-2 text-gray-700">Untuk memulai dengan cepat, ikuti langkah-langkah berikut:</h2>
+                                <div className="flex items-center mb-2 text-gray-500">
                                     <div className="text-base md:text-lg mr-4">1.</div>
                                     <div>
-                                        <span className='flex'>Buka menu dengan mengklik ikon
+                                        <span className='md:flex'>Buka menu dengan mengklik ikon
                                             <svg
-                                                class='w-6 h-6 mx-1'
+                                                class='w-6 h-6 mx-1 text-black'
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
@@ -104,19 +105,19 @@ function Menu() {
 
                                     </div>
                                 </div>
-                                <div className="flex items-center mb-2">
+                                <div className="flex items-center mb-2 text-gray-500">
                                     <div className="text-base md:text-lg mr-4">2.</div>
                                     <div>
-                                        <p className='md:text-base text-sm'>Pilih menu "Kategori".</p>
+                                        <p className='md:text-base text-sm'>Pilih menu <span className='text-gray-700 font-semibold'>"Kategori"</span>.</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center mb-2">
+                                <div className="flex items-center mb-2 text-gray-500">
                                     <div className="text-base md:text-lg mr-4">3.</div>
                                     <div>
-                                        <p className='md:text-base text-sm'>Klik tombol "Tambah Kategori" dan isi informasi yang dibutuhkan.</p>
+                                        <p className='md:text-base text-sm'>Klik tombol <span className='text-gray-700 font-semibold'>"Tambah Kategori"</span> dan isi informasi yang dibutuhkan.</p>
                                     </div>
                                 </div>
-                                <p className="text-base md:text-lg mt-4 font-semibold">Anda siap untuk memasukkan menu-menu anda ke dalam kategori-kategori dan siap berjualan!</p>
+                                <p className="text-base md:text-lg mt-4 font-semibold text-gray-700">Anda siap untuk memasukkan menu-menu anda ke dalam kategori-kategori dan siap berjualan!</p>
                             </div>
                         </div>
 
