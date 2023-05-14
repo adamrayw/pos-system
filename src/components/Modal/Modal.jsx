@@ -80,7 +80,7 @@ function Modal(props) {
 
     useState(() => {
         const fetchKategori = async () => {
-            const { response, err } = await useApiRequest('kategori')
+            const { response, err } = await useApiRequest('kategori/' + JSON.parse(localStorage.getItem('user')).id)
             setDataKategori(response.data)
             setIsLoaded(true)
             if (err !== null) {
