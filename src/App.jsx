@@ -33,7 +33,7 @@ function App() {
       <div className="bg-gray-50">
         {pathname === '/auth/login' ? <></> : <Sidebar />}
       </div>
-      <div className={` ${pathname === '/auth/login' ? 'bg-gray-50' : 'bg-gray-100'}  py-10 px-5 md:p-10 w-full max-h-screen overflow-auto`}>
+      <div className={` ${pathname === '/auth/login' ? 'bg-gray-50' : 'bg-gray-100'}  py-10 px-5 md:p-10 w-full h-screen overflow-auto`}>
         <Routes>
           <Route path='/' element={
             <Protected>
