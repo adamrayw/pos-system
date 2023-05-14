@@ -13,6 +13,8 @@ function ModalKategori(props) {
     const [imageEdited, setImageEdited] = useState(false)
     const [isEdit, setIsEdit] = useState(true)
 
+    const userId = JSON.parse(localStorage.getItem('user')).id
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -23,7 +25,7 @@ function ModalKategori(props) {
         } else if (props.isDelete) {
             await useApiDelete("kategori/remove", props.dataMenu.id)
         } else {
-            const { response, err } = await useApiPost("kategori/add", { name })
+            const { response, err } = await useApiPost("kategori/add", { name, userId })
             console.log(response, err)
         }
 
