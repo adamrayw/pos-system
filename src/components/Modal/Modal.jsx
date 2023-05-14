@@ -164,7 +164,12 @@ function Modal(props) {
                                                     {dataKategori.items.map((e) => {
                                                         return (
                                                             <>
-                                                                <option key={e.id} value={e.id} selected={kategori.id === e.id}>{e.name}</option>
+                                                                {isEdit ?
+                                                                    <option key={e.id} value={e.id} selected={kategori.id === e.id}>{e.name}</option>
+                                                                    :
+                                                                    <option key={e.id} value={e.id} >{e.name}</option>
+                                                                }
+
                                                             </>
                                                         )
                                                     })}
