@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { add, kategoriIndex } from '../../features/menuSlice/menuSlice'
 import { useEffect, useState } from 'react'
 import { getSubTotal } from '../../features/menuSlice/menuSlice'
-import axios from 'axios'
 import { useApiRequest } from '../../services/api.service'
 import convert from '../../utils/convertToRupiah.utils'
 import { TbMoodConfuzed } from 'react-icons/tb'
@@ -22,7 +21,7 @@ function Menu() {
         if (keyword !== '') {
             const fetchSearch = async () => {
                 setIsLoaded(false)
-                const { response } = await useApiRequest("menu/search/" + keyword)
+                const { response } = await useApiRequest("menu/search/" + JSON.parse(localStorage.getItem('user')).id + "/" + keyword)
                 setData(response.data)
                 setIsLoaded(true)
                 setIsSearchMode(true)
@@ -32,7 +31,7 @@ function Menu() {
             const fetchAllMenu = async () => {
                 setIsSearchMode(false)
                 setIsLoaded(false)
-                const { response, err } = await useApiRequest("menu")
+                const { response, err } = await useApiRequest("menu/" + JSON.parse(localStorage.getItem('user')).id)
                 setData(response.data)
                 setIsLoaded(true)
             }
@@ -44,7 +43,7 @@ function Menu() {
         const fetchMenu = async () => {
             if (selector === "semua") {
                 setIsLoaded(false)
-                const { response, err } = await useApiRequest("menu")
+                const { response, err } = await useApiRequest("menu/" + JSON.parse(localStorage.getItem('user')).id)
                 setData(response.data)
                 setIsLoaded(true)
             } else {
