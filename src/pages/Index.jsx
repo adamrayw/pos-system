@@ -59,7 +59,7 @@ function Index() {
                     <p className='text-xs md:text-base text-gray-400'>Effortless sales, anytime, anywhere.</p>
                 </div>
                 <div className="relative">
-                    <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-2.5" />
+                    <FiSearch className="absolute m-auto left-0 top-0 bottom-0 ml-4" />
                     <input
                         type="text"
                         name="search"
