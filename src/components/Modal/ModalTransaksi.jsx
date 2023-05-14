@@ -58,7 +58,7 @@ function ModalTransaksi(props) {
                             </button>
                             <h2 className="text-gray-500 mb-2">Menu yang dipesan</h2>
                             <div className="h-32 scrollbar-hide overflow-x-scroll">
-                                <div className="grid grid-cols-4 justify-between">
+                                <div className="grid grid-cols-4 gap-x-1 justify-between">
                                     {menus.map((e) => {
                                         return (
                                             <>
@@ -82,7 +82,7 @@ function ModalTransaksi(props) {
 
                             </div>
                             <div className="bg-gray-100 text-gray-800 px-5 py-4 space-y-2 mt-5">
-                                <div className="flex items-center justify-between">
+                                {/* <div className="flex items-center justify-between">
                                     <h4 className="text-sm font-semibold">
                                         Subtotal
                                     </h4>
@@ -97,22 +97,27 @@ function ModalTransaksi(props) {
                                     <p className="text-sm font-medium">
                                         -
                                     </p>
-                                </div>
+                                </div> 
                                 <div className="flex items-center justify-between">
                                     <h4 className="text-sm font-semibold">
-                                        Pajak
+                                        PPN
                                     </h4>
                                     <p className="text-sm font-medium">
-                                        Rp. 1.000
+                                        11%
                                     </p>
-                                </div>
-                                <div className="flex items-center pt-4 justify-between">
+                                </div>*/}
+                                <div className="flex items-center justify-between">
                                     <h4 className="font-bold text-lg">
                                         TOTAL
                                     </h4>
-                                    <p className="text-lg font-medium">
-                                        Rp. {convert(props.dataPrice[0].total)}
-                                    </p>
+                                    <div>
+                                        <p className="text-xl font-bold">
+                                            Rp. {convert(props.dataPrice[0].total)}
+                                        </p>
+                                        <p className="text-xs text-gray-500">
+                                            *sudah termasuk ppn
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 text-start gap-y-2 mt-4">
@@ -168,7 +173,9 @@ function ModalTransaksi(props) {
                                 null
                             }
                             {paymentMethod === 'cash' ?
-                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-700 transition'>Pembayaran Selesai</button>
+                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-700 transition'>
+                                    Lanjutkan
+                                </button>
                                 :
                                 null
                             }
