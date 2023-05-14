@@ -35,7 +35,6 @@ const Login = () => {
         try {
             setIsLoading(true)
             const response = await useApiLogin('auth/login', data)
-            console.log(response.response.data)
             if (response.err) {
                 setErrResponse(response.response.data)
                 setIsLoading(false)
