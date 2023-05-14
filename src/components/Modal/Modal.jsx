@@ -16,6 +16,8 @@ function Modal(props) {
     const [kategori, setKategori] = useState('')
     const [isLoaded, setIsLoaded] = useState(false)
 
+    const userId = JSON.parse(localStorage.getItem('user')).id
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -35,7 +37,7 @@ function Modal(props) {
         } else if (props.isDelete) {
             await useApiDelete("menu/remove", props.dataMenu.id)
         } else {
-            await useApiPost("menu/add", data)
+            await useApiPost("menu/add/" + userId, data)
         }
 
         setIsLoading(false)
