@@ -13,7 +13,7 @@ function Modal(props) {
     const [imageEdited, setImageEdited] = useState(false)
     const [isEdit, setIsEdit] = useState(true)
     const [dataKategori, setDataKategori] = useState([])
-    const [kategori, setKategori] = useState('')
+    const [kategori, setKategori] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
     const userId = JSON.parse(localStorage.getItem('user')).id
@@ -27,7 +27,7 @@ function Modal(props) {
 
         data.append('id', props.dataMenu ? props.dataMenu.id : null)
         data.append('imageEdited', imageEdited)
-        data.append('kategoriId', kategori)
+        data.append('kategoriId', kategori.id)
         data.append('image', file)
         data.append('name', name)
         data.append('price', price)
@@ -161,11 +161,10 @@ function Modal(props) {
                                         <select id="kategori" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" onChange={handleKategori}>
                                             {isLoaded ?
                                                 <>
-                                                    <option selected>Pilih Kategori</option>
                                                     {dataKategori.items.map((e) => {
                                                         return (
                                                             <>
-                                                                <option key={e.id} value={e.id}>{e.name}</option>
+                                                                <option key={e.id} value={e.id} selected={kategori.id === e.id}>{e.name}</option>
                                                             </>
                                                         )
                                                     })}
