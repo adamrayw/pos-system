@@ -22,7 +22,7 @@ function Menu() {
     useEffect(() => {
         const fetchMenu = async () => {
             setIsLoaded(false)
-            const { response, err } = await useApiRequest("menu")
+            const { response, err } = await useApiRequest("menu/" + JSON.parse(localStorage.getItem('user')).id)
 
             setData(response.data)
             setIsLoaded(true)
