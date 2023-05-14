@@ -14,7 +14,7 @@ function RightBar() {
     const subTotal = useSelector((state) => state.menu.subTotal)
     const dispatch = useDispatch()
 
-    let total = subTotal + 1000
+    let total = subTotal + (subTotal * 0.11)
 
     const triggerFromModal = (data) => {
         setIsModalKonfirmasiOpen(data)
@@ -85,8 +85,8 @@ function RightBar() {
                                 <p className='text-gray-500 font-semibold'>-</p>
                             </div>
                             <div className='flex justify-between text-gray-800'>
-                                <h1 className='font-semibold'>Pajak</h1>
-                                <p className='text-gray-500 font-semibold'>+Rp 1.000</p>
+                                <h1 className='font-semibold'>PPN</h1>
+                                <p className='text-gray-500 font-semibold'>+11%</p>
                             </div>
                             <div className='flex justify-between pt-10 text-gray-800'>
                                 <h1 className='font-bold text-xl'>TOTAL</h1>
