@@ -61,7 +61,7 @@ function Modal(props) {
     }
 
     const handleKategori = (e) => {
-        setKategori(e.target.value)
+        setKategori({ id: e.target.value })
     }
 
     const handleName = (e) => {
@@ -159,6 +159,7 @@ function Modal(props) {
                                     <div>
                                         <label htmlFor='pilih-kategori' className="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
                                         <select id="kategori" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" onChange={handleKategori}>
+                                            <option selected>Pilih Kategori</option>
                                             {isLoaded ?
                                                 <>
                                                     {dataKategori.items.map((e) => {
@@ -167,7 +168,9 @@ function Modal(props) {
                                                                 {isEdit ?
                                                                     <option key={e.id} value={e.id} selected={kategori.id === e.id}>{e.name}</option>
                                                                     :
-                                                                    <option key={e.id} value={e.id} >{e.name}</option>
+                                                                    <>
+                                                                        <option key={e.id} value={e.id} >{e.name}</option>
+                                                                    </>
                                                                 }
 
                                                             </>
@@ -175,7 +178,9 @@ function Modal(props) {
                                                     })}
                                                 </>
                                                 :
-                                                <option selected>Pilih Kategori</option>
+                                                <>
+                                                    Loading...
+                                                </>
                                             }
                                         </select>
                                     </div>
