@@ -20,9 +20,11 @@ function ModalTransaksi(props) {
         props.toggleModal(false)
     }
 
+    const userId = JSON.parse(localStorage.getItem('user')).id
+
     function handlePayment() {
         setIsLoading(true)
-        useApiPost("transaksi/post", { data: { menu: menus, total: props.dataPrice[0].total } })
+        useApiPost("transaksi/post/" + userId, { data: { menu: menus, total: props.dataPrice[0].total } })
             .then((response) => {
                 setPaymentLink(response.response.data.data.redirect_url)
                 setIsLoading(false)
