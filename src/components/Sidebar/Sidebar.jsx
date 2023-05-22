@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg'
-import posku from '../../../public/assets/posku-logo.png'
+import posku from '../../assets/posku-logo.png'
 
 function Sidebar() {
     const [open, setOpen] = useState(false);
