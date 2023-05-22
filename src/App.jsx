@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Index from "./pages/Index";
 import Laporan from "./pages/Laporan";
 import Menu from "./pages/Manage/Menu";
-import ManageMenu from "./pages/ManageMenu";
+import PaymentSuccess from "./pages/PaymentSuccess/PaymentSuccess";
 import 'react-toastify/dist/ReactToastify.css';
 import Kategori from "./pages/Manage/Kategori";
 import Login from "./pages/Auth/Login/Login";
@@ -31,9 +31,9 @@ function App() {
   return (
     <div className="App flex">
       <div className="bg-gray-50">
-        {pathname === '/auth/login' ? <></> : <Sidebar />}
+        {pathname === '/auth/login' || pathname === '/payment-success' ? <></> : <Sidebar />}
       </div>
-      <div className={` ${pathname === '/auth/login' ? 'bg-gray-50' : 'bg-gray-100'}  py-10 px-5 md:p-10 w-full h-screen overflow-auto`}>
+      <div className={` ${pathname === '/auth/login' ? 'bg-gray-50' : 'bg-gray-100'}  py-10 md:p-10 w-full h-screen overflow-auto`}>
         <Routes>
           <Route path='/' element={
             <Protected>
@@ -65,9 +65,12 @@ function App() {
           <Route path='auth'>
             <Route path='login' element={<Login />} />
           </Route>
+          <Route path='payment-success' element={
+            <PaymentSuccess />
+          } />
         </Routes>
       </div>
-      {pathname === '/auth/login' ? <></> : <RightBar />}
+      {pathname === '/auth/login' || pathname === '/payment-success' ? <></> : <RightBar />}
       <ToastContainer />
     </div >
   )
