@@ -27,7 +27,7 @@ function Hero() {
                             Aplikasi kasir online berbasis cloud yang dapat membawa potensi bisnis Anda ke level tertinggi.
                         </p>
                         <div>
-                            <button className="btn bg-orange-500 hover:bg-orange-600 border-0 mt-4">Lihat harga</button>
+                            <a href='#harga' className="btn bg-orange-500 hover:bg-orange-600 border-0 mt-4">Lihat harga</a>
                         </div>
                     </div>
                 </div>
