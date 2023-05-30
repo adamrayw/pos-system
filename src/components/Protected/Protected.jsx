@@ -15,7 +15,7 @@ function Protected({ children }) {
                     setIsSubscribed(true);
                 }
             } catch (error) {
-                alert(error);
+                console.log(error)
             }
         };
         checkSubs();
