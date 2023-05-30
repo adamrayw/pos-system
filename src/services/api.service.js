@@ -1,4 +1,4 @@
-// const api = 'https://83c3-139-192-148-110.ngrok-free.app/api/'
+// const api = 'https://5b1d-139-192-162-43.ngrok-free.app/api/'
 const api = 'https://pos-backend.up.railway.app/api/'
 import axios from "axios"
 import { useEffect, useState } from "react"
@@ -73,5 +73,43 @@ export const useApiLogin = async (url, data) => {
         return { response, err: false }
     } catch (error) {
         return { response: error.response, err: true }
+    }
+}
+
+// ladning page services
+
+export const useApiDaftar = async (url, data) => {
+    try {
+        const response = await axios.post(api + url, data)
+        return { response, err: false }
+    } catch (error) {
+        return { response: error.response, err: true }
+    }
+}
+
+export const useApiSubscribe = async (url, data) => {
+    try {
+        const response = await axios.post(api + url, data, config)
+        return { response, err: false }
+    } catch (error) {
+        return { response: error.response, err: true }
+    }
+}
+
+export const useApiGetDashboard = async (url) => {
+    try {
+        const response = await axios.get(api + url, config);
+        return { response, err: false };
+    } catch (error) {
+        return { response: error.response, err: true };
+    }
+};
+
+export const useApiCheckSubscriptions = async (url) => {
+    try {
+        const response = await axios.get(api + url, config);
+        return { response, err: false };
+    } catch (error) {
+        return { response: error.response, err: true };
     }
 }
