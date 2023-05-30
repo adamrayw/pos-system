@@ -49,16 +49,13 @@ function RightBar() {
                                     : ''}
                                 {menus.map((e) => {
                                     return (
-                                        <div key={e.id} className="card flex items-center space-x-4">
+                                        <div key={e.id} className="flex items-center space-x-4">
                                             <img src={e.image} alt="icon" className='w-14' />
                                             <div className='flex justify-between items-end w-full'>
                                                 <div className='space-y-2'>
                                                     <h2 className='font-bold text-lg'>{e.name}</h2>
                                                     <p className='text-orange-500 font-medium'>Rp {convert(e.price)}</p>
                                                 </div>
-                                                {/* <div>
-                                            <p className='text-gray-400'>{e.qty}x</p>
-                                        </div> */}
                                                 <div className='flex items-center justify-between space-x-2'>
                                                     <button className='text-xs py-1 w-6  rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => {
                                                         dispatch(remove(e))
