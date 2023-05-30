@@ -24,7 +24,7 @@ function Protected({ children }) {
     }
 
     if (!token) {
-        return <Navigate to="/auth/login" replace={true} />;
+        return <Navigate to="/" replace={true} />;
     }
     return children;
 }
