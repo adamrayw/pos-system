@@ -54,7 +54,7 @@ function Sidebar() {
                         <ul className="pt-2 pb-4 space-y-1 text-sm">
                             <li>
                                 <Link
-                                    to="/"
+                                    to="/app"
                                     className={`flex items-center ${open ? '' : 'justify-center'} group p-2 space-x-3 rounded-md hover:bg-gray-50 transition`}
                                     onClick={() => {
                                         setOpen(false)
@@ -119,7 +119,7 @@ function Sidebar() {
                                 </Link>
                                 <ul className={`${stateManage ? 'block' : 'hidden'} px-8 pb-4 pt-2 mx-3`}>
                                     <li>
-                                        <Link to='/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                        <Link to='app/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
                                             setOpen(false)
                                             setStateManage(false)
                                         }}>
@@ -127,7 +127,7 @@ function Sidebar() {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/manage/kategori" className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                        <Link to="app/manage/kategori" className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
                                             setOpen(false)
                                             setStateManage(false)
                                         }}>
@@ -146,7 +146,7 @@ function Sidebar() {
                             </li>
                             <li className="rounded-sm">
                                 <Link
-                                    to="/laporan"
+                                    to="app/laporan"
                                     className={`flex items-center ${open ? '' : 'justify-center'} group p-2 space-x-3 rounded-md hover:bg-gray-50 transition`}
                                     onClick={() => {
                                         setOpen(false)

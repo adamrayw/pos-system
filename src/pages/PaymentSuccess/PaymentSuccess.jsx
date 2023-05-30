@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import PaymentSuccessImg from '../../assets/payment_success.svg'
 
 function PaymentSuccess() {
@@ -12,11 +13,11 @@ function PaymentSuccess() {
                             <p className="text-gray-500 font-normal md:text-sm text-sm">
                                 Silahkan cek status pembayaran anda di dashboard atau di laporan.
                             </p>
-                            <div className='card-actions flex items-center justify-center flex-col-reverse md:flex-row md:space-x-2 px-4 pt-4 font-semibold'>
-                                <a href='https://posku.vercel.app/laporan' className='w-full px-4 py-3 rounded bg-gray-500 hover:bg-gray-600 transition text-white text-xs md:mb-0 mb-4 active:bg-gray-700'>Pergi ke Laporan (APP)</a>
-                                <a href='https://posku-main.vercel.app/dashboard' className='w-full px-4 py-3 rounded bg-orange-500 hover:bg-orange-600 active:bg-orange-700 transition border-0 text-white text-xs '>
-                                    Pergi ke Dashboard (WEB)
-                                </a>
+                            <div className='card-actions flex items-center justify-center flex-col-reverse md:flex-row md:space-x-0 px-4 pt-4 font-semibold'>
+                                <Link to='/app/laporan' className='w-full px-4 py-3 rounded bg-gray-500 hover:bg-gray-600 transition text-white text-xs md:mb-0 mb-4 active:bg-gray-700'>Pergi ke Laporan (APP)</Link>
+                                <Link to='/dashboard' className='w-full px-4 py-3 rounded bg-orange-500 hover:bg-orange-600 active:bg-orange-700 transition border-0 text-white text-xs '>
+                                    Pergi ke Dashboard
+                                </Link>
                             </div>
                         </div>
                     </div>
