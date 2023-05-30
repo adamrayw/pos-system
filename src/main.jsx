@@ -8,11 +8,20 @@ import Sidebar from './components/Sidebar/Sidebar'
 import About from './pages/About'
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+import Login from './components/LandingPage/components/Auth/Login/Login'
+import Daftar from './components/LandingPage/components/Auth/Daftar/Daftar'
+import ModalPricing from './components/LandingPage/components/Modal/ModalPricing'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <div>
+        <App />
+      </div>
+      <Login />
+      <Daftar />
+      <ModalPricing />
+    </BrowserRouter>
+  </Provider>
 )
