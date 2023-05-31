@@ -24,12 +24,27 @@ function ModalTransaksi(props) {
 
     function handlePayment() {
         setIsLoading(true)
-        useApiPost("transaksi/post/" + userId, { data: { menu: menus, total: props.dataPrice[0].total } })
+        useApiPost("transaksi/post/" + userId + '/midtrans', { data: { menu: menus, total: props.dataPrice[0].total } })
             .then((response) => {
                 setPaymentLink(response.response.data.data.redirect_url)
                 setIsLoading(false)
                 dispatch(reset())
                 redirect(paymentLink)
+            })
+            .catch((error) => {
+                console.log(error)
+                setIsLoading(false)
+            })
+
+    }
+
+    function handleCashPayment() {
+        setIsLoading(true)
+        useApiPost("transaksi/post/" + userId + '/cash', { data: { menu: menus, total: props.dataPrice[0].total } })
+            .then((response) => {
+                setIsLoading(false)
+                dispatch(reset())
+                triggerToRightBarComponent(false)
             })
             .catch((error) => {
                 console.log(error)
@@ -64,11 +79,11 @@ function ModalTransaksi(props) {
                                     {menus.map((e) => {
                                         return (
                                             <>
-                                                <div key={e.id} className="card flex flex-col items-center justify-center space-y-4 my-1">
+                                                <div key={e.id} className=" flex flex-col items-center justify-center space-y-4 my-1">
                                                     <img src={e.image} alt="icon" className='w-10' />
                                                     <div className='flex flex-col justify-between items-center w-full'>
                                                         <div>
-                                                            <h2 className='font-medium text-sm'>{e.name}</h2>
+                                                            <h2 className='font-medium text-xs'>{e.name}</h2>
                                                         </div>
                                                         <div className='flex items-center justify-between'>
                                                             <p className='text-sm font-semibold'>
@@ -175,8 +190,8 @@ function ModalTransaksi(props) {
                                 null
                             }
                             {paymentMethod === 'cash' ?
-                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-700 transition'>
-                                    Lanjutkan
+                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-700 transition' onClick={() => handleCashPayment()}>
+                                    Pembayaran Selesai
                                 </button>
                                 :
                                 null
