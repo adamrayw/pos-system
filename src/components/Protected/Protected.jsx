@@ -11,8 +11,11 @@ function Protected({ children }) {
         const checkSubs = async () => {
             try {
                 const checkSubscriptions = await useApiCheckSubscriptions("user/checkSubscription/" + userId)
-                if (checkSubscriptions.response.data && checkSubscriptions.response.data.isHaveActiveSubscription) {
+                console.log(checkSubscriptions)
+                if (checkSubscriptions.response.data.isHaveActiveSubscription === true) {
                     setIsSubscribed(true);
+                } else {
+                    setIsSubscribed(false);
                 }
             } catch (error) {
                 console.log(error)
@@ -28,6 +31,7 @@ function Protected({ children }) {
     if (!token) {
         return <Navigate to="/" replace={true} />;
     }
+
     return children;
 }
 
