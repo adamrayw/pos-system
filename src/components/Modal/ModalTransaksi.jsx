@@ -13,6 +13,7 @@ function ModalTransaksi(props) {
     const [isToggleModalOpen, setIsToggleModalOpen] = useState(true)
     const [paymentMethod, setPaymentMethod] = useState('midtrans')
     const [paymentLink, setPaymentLink] = useState([])
+    const [cashPaymentSuccess, setCashPaymentSuccess] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -44,7 +45,8 @@ function ModalTransaksi(props) {
             .then((response) => {
                 setIsLoading(false)
                 dispatch(reset())
-                triggerToRightBarComponent(false)
+                setCashPaymentSuccess(true)
+                window.location.href = '/payment-success'
             })
             .catch((error) => {
                 console.log(error)
@@ -53,11 +55,13 @@ function ModalTransaksi(props) {
 
     }
 
+    console.log(cashPaymentSuccess)
+
     return (
         <div>
-            <div className={`fixed flex justify-center items-center ${isToggleModalOpen ? 'block' : 'hidden'} bg-black bg-opacity-60 top-0 left-0 right-0 w-full z-10 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full`} >
+            <div className={`fixed flex justify-center items-center ${isToggleModalOpen ? 'block' : 'hidden'} bg-black bg-opacity-60 top-0 left-0 right-0 z-10 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full`} >
                 {paymentLink.length === 0 ?
-                    <div className="relative w-full h-full max-w-md md:h-auto">
+                    <div className={`relative w-full h-full max-w-md md:h-auto ${cashPaymentSuccess ? 'hidden' : 'block'}`}>
                         <div className="relative bg-white rounded-lg shadow px-6 pb-6 my-10">
                             {isLoading ?
                                 <div className="absolute h-full flex justify-center items-center w-full left-0 bg-gray-500 opacity-30">
@@ -99,30 +103,6 @@ function ModalTransaksi(props) {
 
                             </div>
                             <div className="bg-gray-100 text-gray-800 px-5 py-4 space-y-2 mt-5">
-                                {/* <div className="flex items-center justify-between">
-                                    <h4 className="text-sm font-semibold">
-                                        Subtotal
-                                    </h4>
-                                    <p className="text-sm font-medium">
-                                        Rp. {convert(props.dataPrice[0].subTotal)}
-                                    </p>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <h4 className="text-sm font-semibold">
-                                        Diskon
-                                    </h4>
-                                    <p className="text-sm font-medium">
-                                        -
-                                    </p>
-                                </div> 
-                                <div className="flex items-center justify-between">
-                                    <h4 className="text-sm font-semibold">
-                                        PPN
-                                    </h4>
-                                    <p className="text-sm font-medium">
-                                        11%
-                                    </p>
-                                </div>*/}
                                 <div className="flex items-center justify-between">
                                     <h4 className="font-bold text-lg">
                                         TOTAL
@@ -204,28 +184,59 @@ function ModalTransaksi(props) {
                         </div>
                     </div>
                     :
+                    <>
+                        <div className="relative w-full h-full max-w-md md:h-auto">
+                            <div className="relative bg-white rounded-lg shadow px-6 pb-6 my-10">
+                                {/* <h1 className="py-3 font-semibold text-2xl">Link Pembayaran</h1> */}
+                                <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="authentication-modal" onClick={() => {
+                                    triggerToRightBarComponent()
+                                    setPaymentLink('')
+                                }}>
+                                    <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                    <span className="sr-only">Close modal</span>
+                                </button>
+                                <div className="pt-10">
+                                    <TbUnlink className="text-6xl mx-auto  mb-6 text-orange-500" />
+                                    <h1 className="text-2xl mb-2 text-center font-bold">Link Pembayaran Berhasil Dibuat</h1>
+                                    <p className="text-center text-sm text-gray-500 leading-relaxed">Klik <span className="text-orange-500 font-semibold">Lanjutkan Pembayaran</span> untuk melanjutkan pembayaran, link pembayaran tersimpan di laporan.</p>
+                                    <a className="flex justify-center mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" href={paymentLink}>Lanjutkan Pembayaran</a>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                }
+                {/* {cashPaymentSuccess ?
                     <div className="relative w-full h-full max-w-md md:h-auto">
                         <div className="relative bg-white rounded-lg shadow px-6 pb-6 my-10">
-                            {/* <h1 className="py-3 font-semibold text-2xl">Link Pembayaran</h1> */}
                             <button type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="authentication-modal" onClick={() => {
-                                triggerToRightBarComponent()
-                                setPaymentLink('')
+                                setCashPaymentSuccess(false)
                             }}>
                                 <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 <span className="sr-only">Close modal</span>
                             </button>
                             <div className="pt-10">
                                 <TbUnlink className="text-6xl mx-auto  mb-6 text-orange-500" />
-                                <h1 className="text-2xl mb-2 text-center font-bold">Link Pembayaran Berhasil Dibuat</h1>
-                                <p className="text-center text-sm text-gray-500 leading-relaxed">Klik <span className="text-orange-500 font-semibold">Lanjutkan Pembayaran</span> untuk melanjutkan pembayaran, link pembayaran tersimpan di laporan.</p>
-                                <a className="flex justify-center mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" href={paymentLink}>Lanjutkan Pembayaran</a>
+                                <h1 className="text-2xl mb-2 text-center font-bold">Pembayaran Berhasil!</h1>
+                                <p className="text-center text-sm text-gray-500 leading-relaxed">
+                                    Pembayaran telah berhasil dilakukan, silahkan cek laporan untuk melihat detail pembayaran.
+                                </p>
+                                <div className="flex justify-between md:flex-row flex-col text-center md:space-x-2 space-x-0">
+                                    <a className="w-full mt-4 bg-gray-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" onClick={() => {
+                                        triggerToRightBarComponent()
+                                    }}>Tutup</a>
+                                    <Link to='/app/laporan' className="w-full mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" onClick={() => {
+                                        triggerToRightBarComponent()
+                                    }}>Laporan</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                }
+                    :
+                    ''
+                } */}
             </div>
 
-        </div>
+        </div >
     )
 }
 
