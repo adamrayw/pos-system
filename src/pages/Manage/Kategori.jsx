@@ -30,7 +30,7 @@ function Kategori() {
     }
 
     return (
-        <div>
+        <div className="px-4">
             {isModalOpen ? (
                 <ModalKategori toggleModal={triggerFromModal} isEdit={false} />
             ) : null}

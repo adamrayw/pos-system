@@ -51,7 +51,7 @@ function Index() {
     const formattedTime = date.toLocaleTimeString();
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4">
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
                 <div className="md:text-left text-center space-y-1 mb-4 md:mb-0">
                     <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>

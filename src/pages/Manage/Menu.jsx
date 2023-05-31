@@ -32,7 +32,7 @@ function Menu() {
     }, [isEditModalOpen, isDeleteModalOpen, isModalOpen])
 
     return (
-        <div>
+        <div className="px-4">
             {isModalOpen ? (
                 <Modal toggleModal={triggerFromModal} isEdit={false} />
             ) : null}
