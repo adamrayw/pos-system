@@ -81,7 +81,7 @@ function Laporan() {
     }, [])
 
     return (
-        <div className='container'>
+        <div className='container px-4'>
             <h1 className="text-2xl md:text-4xl font-semibold mb-6">Laporan</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2 bg-black p-2 md:p-10 bg-gradient-to-bl from-yellow-200 via-yellow-300 to-amber-500 rounded-lg shadow background-animate'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between w-full">
