@@ -3,7 +3,7 @@ export const validatePassword = (password) => {
         return ""
     }
 
-    if (password.length <= 6) {
+    if (password.length <= 5) {
         return "Password harus lebih atau sama dengan 6 karakter"
     }
 };
