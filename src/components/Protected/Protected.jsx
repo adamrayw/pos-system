@@ -11,7 +11,6 @@ function Protected({ children }) {
         const checkSubs = async () => {
             try {
                 const checkSubscriptions = await useApiCheckSubscriptions("user/checkSubscription/" + userId)
-                console.log(checkSubscriptions)
                 if (checkSubscriptions.response.data.isHaveActiveSubscription === true) {
                     setIsSubscribed(true);
                 } else {
