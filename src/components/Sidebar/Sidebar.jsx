@@ -64,7 +64,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app' ? 'text-orange-500' : 'text-gray-500'}`}
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -97,7 +97,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/manage/menu' || pathname === '/manage/kategori' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app/manage/menu' || pathname === '/app/manage/kategori' ? 'text-orange-500' : 'text-gray-500'}`}
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -157,7 +157,7 @@ function Sidebar() {
                                     <svg
                                         viewBox="0 0 1024 1024"
                                         fill="currentColor"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/laporan' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app/laporan' ? 'text-orange-500' : 'text-gray-500'}`}
                                     >
                                         <path d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm-600-80h56c4.4 0 8-3.6 8-8V560c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v144c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V384c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v320c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V462c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v242c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v400c0 4.4 3.6 8 8 8z" />
                                     </svg>
@@ -182,7 +182,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className="w-6 h-6 text-gray-500 group-hover:text-orange-400 transition "
+                                        className="w-6 h-6 text-red-400 group-hover:text-red-500 transition "
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
