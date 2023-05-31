@@ -55,7 +55,7 @@ function Index() {
             <div className='leading-loose mb-6 flex md:flex-row flex-col items-center justify-between'>
                 <div className="md:text-left text-center space-y-1 mb-4 md:mb-0">
                     <p className="text-gray-400 text-sm">{formattedTime} - {formattedDate} </p>
-                    <h1 className='text-xl md:text-2xl font-semibold'>{user.nama_usaha}</h1>
+                    <h1 className='text-xl md:text-2xl font-bold uppercase'>{user.nama_usaha}</h1>
                     <p className='text-xs md:text-base text-gray-400'>Effortless sales, anytime, anywhere.</p>
                 </div>
                 <div className="relative">
