@@ -53,7 +53,7 @@ The aim of this project is to develop a robust and user-friendly Point of Sale (
 
 <!-- Notes -->
 ## Notes
-* In payment gateway choose credit cards/debit, fill the card number 5410 1111 1111 1116, validity period 12/25, cvv 123.
+* In payment gateway choose credit cards/debit, fill the card number 5410 1111 1111 1116, validity period 12/25, cvv 123. (it's just for testing, not real card)
 
 <!-- CONTRIBUTING -->
 ## Contributing
