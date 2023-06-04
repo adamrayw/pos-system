@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import RightBar from "./components/RightBar/RightBar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import About from "./pages/About";
@@ -28,8 +28,8 @@ function App() {
   if (decodedToken && decodedToken.exp * 1000 < new Date().getTime()) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    window.location.href = "/auth/login";
-    alert("Sesi anda telah berakhir, silahkan login kembali");
+    window.location.href = "/";
+    toast.warn("Sesi anda telah berakhir, silahkan login kembali");
   }
 
 
