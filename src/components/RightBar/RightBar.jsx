@@ -28,7 +28,7 @@ function RightBar() {
                     {/* <p className='whitespace-nowrap font-semibold'>Open</p> */}
                 </button>
             </div>
-            <div className={`md:relative absolute ${isOpen ? 'block z-20' : 'hidden'} h-full w-full md:w-1/2 top-1/2 md:top-0 left-1/2 md:left-0 md:transform-none transform md:-translate-x-0 md:translate-y-0 -translate-x-1/2 -translate-y-1/`}>
+            <div className={`md:relative absolute ${isOpen ? 'block z-20' : 'hidden'} h-full w-full md:w-1/2 top-1/2 md:top-0 left-1/2 md:left-0 md:transform-none transform md:-translate-x-0 md:translate-y-0 -translate-x-1/2 -translate-y-1/2`}>
                 {isModalKonfirmasiOpen ?
                     <ModalTransaksi toggleModal={triggerFromModal} dataPrice={[{ subTotal, total }]} />
                     :
@@ -103,7 +103,6 @@ function RightBar() {
                 </div>
             </div>
         </>
-
     )
 }
 
