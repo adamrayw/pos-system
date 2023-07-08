@@ -94,7 +94,7 @@ const Login = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="text" id="sign-in-email" className={`rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent ${isLoading ? 'hover:cursor-not-allowed' : ''}`} disabled={`${isLoading ? 'true' : ''}`} placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                                <input type="text" id="sign-in-email" className={`rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${isLoading ? 'hover:cursor-not-allowed' : ''}`} disabled={`${isLoading ? 'true' : ''}`} placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                             </div>
                         </div>
                         <div className="flex flex-col mb-6">
@@ -105,7 +105,7 @@ const Login = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="password" id="sign-in-email" className={`rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparen ${isLoading ? 'hover:cursor-not-allowed' : ''}`} disabled={`${isLoading ? 'true' : ''}`} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" id="sign-in-email" className={`rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparen ${isLoading ? 'hover:cursor-not-allowed' : ''}`} disabled={`${isLoading ? 'true' : ''}`} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </div>
                         <div className="flex items-center mb-6 -mt-4">
@@ -118,11 +118,11 @@ const Login = () => {
                         <div className="flex w-full">
                             {isLoading ?
                                 (
-                                    <button className="py-2 px-4  bg-orange-700 hover:cursor-not-allowed text-white w-full transition ease-in text-center text-base font-semibold shadow-md rounded-lg ">
+                                    <button className="py-2 px-4  bg-blue-500 hover:cursor-not-allowed text-white w-full transition ease-in text-center text-base font-semibold shadow-md rounded-lg ">
                                         Loggin in...
                                     </button>
                                 ) : (
-                                    <button type="submit" className="py-2 px-4  bg-orange-500 hover:bg-orange-500 active:bg-orange-700 text-white w-full transition ease-in text-center text-base font-semibold shadow-md rounded-lg ">
+                                    <button type="submit" className="py-2 px-4  bg-blue-500 hover:bg-blue-500 active:bg-blue-500 text-white w-full transition ease-in text-center text-base font-semibold shadow-md rounded-lg ">
                                         Login
                                     </button>
                                 )}

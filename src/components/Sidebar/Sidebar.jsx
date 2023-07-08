@@ -16,18 +16,17 @@ function Sidebar() {
     }
 
     return (
-        <div className="flex">
+        <div>
             <div
-                className={` ${open ? "w-60" : "w-18 md:w-20 "
+                className={` ${open ? "w-60 absolute z-10" : "w-18 md:w-20 absolute z-10"
                     } flex flex-col h-screen py-3 bg-white shadow duration-300`}
             >
                 <div className="space-y-3">
                     <div className={`flex items-center mx-4 ${open ? 'justify-between' : 'justify-center'}`}>
                         {open ?
-                            <img src={posku} alt="posku" className="w-20 h-7" />
-                            // <h2 className="text-xl font-bold text-black truncate">
-                            //     POSKU
-                            // </h2>
+                            <h2 className="text-xl font-semibold text-blue-500 truncate">
+                                POSKU
+                            </h2>
                             : ""}
                         <button onClick={() => {
                             setOpen(!open)
@@ -64,7 +63,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-blue-400 transition group-active:text-blue-500 ${pathname === '/app' ? 'text-blue-500' : 'text-gray-500'}`}
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -97,7 +96,7 @@ function Sidebar() {
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app/manage/menu' || pathname === '/app/manage/kategori' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-blue-400 transition group-active:text-blue-500 ${pathname === '/app/manage/menu' || pathname === '/app/manage/kategori' ? 'text-blue-500' : 'text-gray-500'}`}
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -134,14 +133,14 @@ function Sidebar() {
                                             Kategori
                                         </Link>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <Link className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
                                             setOpen(false)
                                             setStateManage(false)
                                         }}>
                                             Diskon
                                         </Link>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </li>
                             <li className="rounded-sm">
@@ -157,7 +156,7 @@ function Sidebar() {
                                     <svg
                                         viewBox="0 0 1024 1024"
                                         fill="currentColor"
-                                        className={`w-6 h-6 group-hover:text-orange-400 transition group-active:text-orange-500 ${pathname === '/app/laporan' ? 'text-orange-500' : 'text-gray-500'}`}
+                                        className={`w-6 h-6 group-hover:text-blue-400 transition group-active:text-blue-500 ${pathname === '/app/laporan' ? 'text-blue-500' : 'text-gray-500'}`}
                                     >
                                         <path d="M888 792H200V168c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v688c0 4.4 3.6 8 8 8h752c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm-600-80h56c4.4 0 8-3.6 8-8V560c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v144c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V384c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v320c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V462c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v242c0 4.4 3.6 8 8 8zm152 0h56c4.4 0 8-3.6 8-8V304c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v400c0 4.4 3.6 8 8 8z" />
                                     </svg>
@@ -206,7 +205,7 @@ function Sidebar() {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }
 

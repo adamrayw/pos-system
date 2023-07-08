@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ModalSubscription({ isExpiorange, onClose, buttonText }) {
+function ModalSubscription({ isExpiblue, onClose, buttonText }) {
     return (
         <>
             <div className={`fixed flex justify-center items-center bg-black bg-opacity-60 top-0 left-0 right-0 w-full z-10 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full`} >
@@ -13,7 +13,7 @@ function ModalSubscription({ isExpiorange, onClose, buttonText }) {
 
                         <div className="px-6 py-6 lg:px-8 flex flex-col items-center justify-center text-center">
                             <svg
-                                className='w-24 h-24 text-orange-500'
+                                className='w-24 h-24 text-blue-500'
                                 viewBox="0 0 512 512"
                                 fill="currentColor"
                             >
@@ -37,7 +37,7 @@ function ModalSubscription({ isExpiorange, onClose, buttonText }) {
                             </svg>
                             <h2 className="font-bold text-lg mt-2">Langganan Anda telah kedaluwarsa!</h2>
                             <p className="mt-2 mb-6 text-gray-500">Atau mungkin Anda belum berlangganan? Silakan berlangganan untuk terus menggunakan layanan kami.</p>
-                            <a href='https://posku-main.vercel.app/' onClick={onClose} className='px-4 py-2 text-sm text-white font-semibold bg-orange-500 rounded-lg hover:bg-orange-600 active:bg-orange-700 transition'>Berlangganan</a>
+                            <a href='https://posku-main.vercel.app/' onClick={onClose} className='px-4 py-2 text-sm text-white font-semibold bg-blue-500 rounded-lg hover:bg-blue-600 active:bg-blue-500 transition'>Berlangganan</a>
                         </div>
                     </div>
                 </div>

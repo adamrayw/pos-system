@@ -1,11 +1,14 @@
-import Manage from '../../../../assets/manage.svg'
-import Payment from '../../../../assets/payment.svg'
+import Manage from '../../../../assets/manage-report.svg'
+import Payment from '../../../../assets/online-payment.svg'
 import Report from '../../../../assets/report.svg'
+// import Manage from '../../../../assets/manage.svg'
+// import Payment from '../../../../assets/payment.svg'
+// import Report from '../../../../assets/report.svg'
 
 function Feature() {
     return (
         <div className="md:m-24" id='fitur'>
-            <h1 className='text-4xl font-bold text-orange-500 text-center'>Apa yang kami tawarkan?</h1>
+            <h1 className='text-4xl font-bold text-blue-500 text-center'>Apa yang kami tawarkan?</h1>
             <hr className='w-12 text-center mx-auto mt-4' />
             <div className="flex flex-col space-y-20 mt-10">
                 <div className='w-full space-y-2 md:text-left text-center flex md:flex-row flex-col justify-between items-center'>
@@ -19,7 +22,7 @@ function Feature() {
                     <img src={Payment} alt="icon" className='md:w-1/4 w-1/3 mb-6' />
                     <div className='md:w-1/2 mx-8 space-y-4'>
                         <h1 className='font-bold md:text-3xl text-lg text-gray-700'>Terima Semua Jenis Pembayaran</h1>
-                        <p className='text-gray-500 md:text-lg text-sm font-normal leading-relaxed'>Toko Anda dapat menerima semua pembayaran digital modern, Mendukung <span className='text-orange-500 font-semibold'>QRIS, E-Wallet, Transfer Bank dan Debit</span></p>
+                        <p className='text-gray-500 md:text-lg text-sm font-normal leading-relaxed'>Toko Anda dapat menerima semua pembayaran digital modern, Mendukung <span className='text-blue-500 font-semibold'>QRIS, E-Wallet, Transfer Bank dan Debit</span></p>
                     </div>
                 </div>
                 <div className='w-full space-y-2 md:text-left text-center flex md:flex-row flex-col justify-between items-center'>

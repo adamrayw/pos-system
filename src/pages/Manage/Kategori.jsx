@@ -50,7 +50,7 @@ function Kategori() {
                 Manage Kategori
             </h1>
             <button
-                className="py-2 bg-orange-500 text-white px-4 mt-4 rounded-lg shadow-sm font-semibold hover:bg-orange-600 active:bg-orange-700 transition text-sm"
+                className="py-2 bg-blue-500 text-white px-4 mt-4 rounded-lg shadow-sm font-semibold hover:bg-blue-600 active:bg-blue-500 transition text-sm"
                 onClick={() => setIsModalOpen(true)}
             >Tambah Kategori</button>
             <div className="container w-full mx-auto">
@@ -94,7 +94,7 @@ function Kategori() {
                                                             </td>
                                                             <td className="px-5 py-5 text-sm bg-white border-b whitespace-nowrap space-x-2 border-gray-200">
                                                                 <button
-                                                                    className=" text-sm text-orange-500 rounded-xl whitespace-no-wrap"
+                                                                    className=" text-sm text-blue-500 rounded-xl whitespace-no-wrap"
                                                                     onClick={() => {
                                                                         setIsEditModalOpen(true)
                                                                         setDataEdit(e)
@@ -115,24 +115,80 @@ function Kategori() {
                                             }
                                         </>
                                         :
-                                        <tr>
-                                            <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-                                                </div>
-                                            </td>
-                                            <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-                                                </div>
-                                            </td>
-                                            <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-                                                </div>
-                                            </td>
-                                            <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                                <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <>
+                                            <tr>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                                <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                                    <div className="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </>
                                     }
                                 </tbody>
                             </table>

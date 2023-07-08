@@ -66,12 +66,11 @@ function Menu() {
 
     return (
         <>
-
             {isLoaded ?
                 <>
                     {data.items.length === 0 && isSearchMode ?
                         <div div className='flex flex-col items-center justify-center mt-10 bg-white max-w-md mx-auto p-10'>
-                            <TbMoodConfuzed className='text-6xl text-orange-500' />
+                            <TbMoodConfuzed className='text-6xl text-blue-500' />
                             <p className='text-center font-semibold text-lg mt-2'>Menu yang anda cari tidak ditemukan</p>
                             <p className='text-center text-gray-500 font-normal mt-2'>Coba dengan  keyword lain</p>
                         </div>
@@ -80,7 +79,7 @@ function Menu() {
                         <div className="flex flex-col items-center justify-center mt-10">
                             <div className="bg-white p-5 md:p-10 rounded">
                                 <h1 className="text-base md:text-2xl font-bold mb-4 text-gray-700">👋 Selamat Datang, {user.nama_usaha}!</h1>
-                                <p className="text-base md:text-lg mb-4 text-gray-500">Terima Kasih telah memilih aplikasi <span className='text-orange-500 font-semibold'>POSKU</span>.</p>
+                                <p className="text-base md:text-lg mb-4 text-gray-500">Terima Kasih telah memilih aplikasi <span className='text-blue-500 font-semibold'>POSKU</span>.</p>
                                 <h2 className="text-base md:text-lg font-medium mb-2 text-gray-700">Untuk memulai dengan cepat, ikuti langkah-langkah berikut:</h2>
                                 <div className="flex items-center mb-2 text-gray-500">
                                     <div className="text-base md:text-lg mr-4">1.</div>
@@ -132,7 +131,7 @@ function Menu() {
 
                                     <div className="text-left">
                                         <h3 className='text-base md:text-xl font-bold whitespace-nowrap truncate text-gray-800'>{e.name}</h3>
-                                        <p className='text-base font-medium text-orange-500'>
+                                        <p className='text-base font-medium text-gray-500'>
                                             Rp {convert(e.price)}
                                         </p>
                                     </div>

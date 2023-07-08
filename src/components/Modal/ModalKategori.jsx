@@ -79,14 +79,14 @@ function ModalKategori(props) {
                                 <form className="space-y-6" onSubmit={handleSubmit} encType="multipart/form-data">
                                     <div>
                                         <label htmlFor="nama" className="block mb-2 text-sm font-medium text-gray-900">Nama Kategori</label>
-                                        <input type="nama" name="name" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5" placeholder="Minuman, Drinks, Makanan" required onChange={handleName} value={name} />
+                                        <input type="nama" name="name" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Minuman, Drinks, Makanan" required onChange={handleName} value={name} />
                                     </div>
                                     {isLoading ?
-                                        <button disabled className="w-full flex justify-center items-center text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center hover:cursor-not-allowed">
+                                        <button disabled className="w-full flex justify-center items-center text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center hover:cursor-not-allowed">
                                             <CgSpinner className='animate-spin text-xl' />
                                         </button>
                                         :
-                                        <button type="submit" className="w-full text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center">{props.isEdit ? "Edit" : "Tambah"}</button>
+                                        <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center">{props.isEdit ? "Edit" : "Tambah"}</button>
                                     }
                                 </form>
                             </div>

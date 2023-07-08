@@ -15,7 +15,7 @@ function SuccessCheckout() {
         <div className="md:px-12 px-4 mt-10 h-screen">
             <div className="flex items-center justify-center">
                 <div className='text-center space-y-2'>
-                    <div className="card w-fit bg-white text-slate-600">
+                    <div className="card w-fit bg-white text-blue-600">
                         <div className="card-body items-center text-center">
                             <svg
                                 fill="currentColor"
@@ -30,7 +30,7 @@ function SuccessCheckout() {
                             </p>
                             <div className='card-actions flex items-center flex-col-reverse md:flex-row md:space-x-2 pt-4'>
                                 <a href='/dashboard' className='btn text-xs'>Pergi ke Dashboard</a>
-                                <a href={paymentLink ?? ''} className='btn bg-orange-500 hover:bg-orange-600 border-0 text-white text-xs'>
+                                <a href={paymentLink ?? ''} className='btn bg-blue-500 hover:bg-blue-600 border-0 text-white text-xs'>
                                     Lanjutkan Pembayaran
                                 </a>
                             </div>

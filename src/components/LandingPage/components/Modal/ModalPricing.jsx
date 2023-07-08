@@ -46,28 +46,28 @@ function ModalPricing(props) {
             <input type="checkbox" id="modal-pricing-confirm" className="modal-toggle" />
             <label htmlFor="modal-pricing-confirm" className="modal cursor-pointer">
                 <label className="modal-box relative space-y-4" htmlFor="">
-                    <h3 className="text-2xl font-bold text-slate-800a">Konfirmasi Order</h3>
+                    <h3 className="text-2xl font-bold text-blue-500a">Konfirmasi Order</h3>
                     {data && data.nama_paket ? (
                         <div>
-                            <div className="flex justify-center items-center my-4 py-10 bg-slate-800 rounded-lg">
+                            <div className="flex justify-center items-center my-4 py-10 bg-blue-500 rounded-lg">
                                 <p className="text-lg font-bold text-white">{data.nama_paket}</p>
                             </div>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td className="text-slate-800 font-medium">Nama Paket</td>
-                                        <td className="text-slate-800 font-medium pr-2">:</td>
-                                        <td className="font-medium text-slate-500">{data.nama_paket}</td>
+                                        <td className="text-gray-500 font-medium">Nama Paket</td>
+                                        <td className="text-blue-500 font-medium pr-2">:</td>
+                                        <td className="font-medium text-blue-500">{data.nama_paket}</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-slate-800 font-medium">Harga</td>
-                                        <td className="text-slate-800 font-medium pr-2">:</td>
-                                        <td className="font-medium text-slate-500">{formatPrice(data.harga)}</td>
+                                        <td className="text-gray-500 font-medium">Harga</td>
+                                        <td className="text-blue-500 font-medium pr-2">:</td>
+                                        <td className="font-medium text-blue-500">{formatPrice(data.harga)}</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-slate-800 font-medium">Berlangganan selama</td>
-                                        <td className="text-slate-800 font-medium pr-2">:</td>
-                                        <td className="font-medium text-slate-500">{data.duration}</td>
+                                        <td className="text-gray-500 font-medium">Berlangganan selama</td>
+                                        <td className="text-blue-500 font-medium pr-2">:</td>
+                                        <td className="font-medium text-blue-500">{data.duration}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -78,15 +78,15 @@ function ModalPricing(props) {
                     <div className="flex justify-end space-x-2">
                         <div className="modal-action">
                             <label
-                                htmlFor="modal-pricing-confirm" className="btn btn-md text-xs btn-outline hover:bg-slate-800 border border-s-slate-800 text-slate-800">
+                                htmlFor="modal-pricing-confirm" className="btn btn-md text-xs btn-outline hover:bg-blue-500 border border-s-blue-500 text-blue-500">
                                 Batal
                             </label>
                         </div>
                         <div className="modal-action">
                             {isLoading ? (
-                                <label className="btn bg-orange-500 border-0 hover:bg-orange-600 active:bg-orange-700 loading">Mohon Tunggu</label>
+                                <label className="btn bg-blue-500 border-0 hover:bg-blue-600 active:bg-blue-500 loading">Mohon Tunggu</label>
                             ) : (
-                                <label className="btn bg-orange-500 border-0 hover:bg-orange-600 active:bg-orange-700" onClick={handleSubscribe}>Checkout</label>
+                                <label className="btn bg-blue-500 border-0 hover:bg-blue-600 active:bg-blue-500" onClick={handleSubscribe}>Checkout</label>
                             )}
                         </div>
                     </div>

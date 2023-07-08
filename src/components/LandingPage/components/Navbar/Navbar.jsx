@@ -36,14 +36,14 @@ function Navbar(props) {
                         <li><a href={baseUrl + '/#harga'} className="active:bg-gray-100 active:text-gray-700 text-gray-500 hover:text-gray-600 font-medium">Harga</a></li>
                         {isLoggedIn === false && (
                             <li>
-                                <label htmlFor="modal-daftar" className="btn btn-sm bg-orange-500 hover:bg-orange-600 border-0 md:px-4 py-0 flex justify-center items-center text-white md:text-sm text-xs font-medium">Daftar</label>
+                                <label htmlFor="modal-daftar" className="btn btn-sm bg-blue-500 hover:bg-blue-600 border-0 md:px-4 py-0 flex justify-center items-center text-white md:text-sm text-xs font-medium">Daftar</label>
                             </li>
                         )}
 
                     </ul>
                 </div>
                 <Link to="/" className="flex items-center space-x-2">
-                    <h1 className="px-2 normal-case text-2xl text-orange-500">
+                    <h1 className="px-2 font-bold text-2xl text-blue-500">
                         POSKU
                     </h1>
                 </Link>
@@ -64,7 +64,7 @@ function Navbar(props) {
                         <div className="dropdown dropdown-bottom dropdown-end ">
                             <div tabIndex={0} className="flex items-center active:bg-gray-50 rounded-full transition hover:cursor-pointer">
                                 <div className="avatar placeholder rounded-full">
-                                    <div className="bg-slate-900  text-neutral-content rounded-full w-12 mr-2">
+                                    <div className="bg-blue-500  text-neutral-content rounded-full w-12 mr-2">
                                         <span>{user.nama_usaha[0] + user.nama_usaha[1]}</span>
                                     </div>
                                 </div>
@@ -84,12 +84,12 @@ function Navbar(props) {
                                     />
                                 </svg>
                             </div>
-                            <ul tabIndex={0} className="dropdown-content menu p-2 text-slate-800 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="dropdown-content menu p-2 text-gray-500 shadow bg-base-100 rounded-box w-52">
                                 <li className="px-4 py-2 font-medium text-sm">
                                     👋 Hallo, {user.nama_usaha}
                                 </li>
                                 <li>
-                                    <Link to='/dashboard' className="active:bg-orange-500">
+                                    <Link to='/dashboard' className="active:bg-blue-500">
                                         <svg
                                             viewBox="0 0 24 24"
                                             fill="currentColor"
@@ -102,7 +102,7 @@ function Navbar(props) {
                                     </Link>
                                 </li>
                                 <li>
-                                    <a className="active:bg-orange-500" onClick={logout}>
+                                    <a className="active:bg-blue-500" onClick={logout}>
                                         <svg
                                             fill="none"
                                             stroke="currentColor"
@@ -121,7 +121,7 @@ function Navbar(props) {
                             </ul>
                         </div>
                     ) : (
-                        <label htmlFor="modal-daftar" className="btn bg-orange-500 hover:bg-orange-600 border-0 md:visible invisible md:px-4 py-1 md:text-sm text-xs">Daftar</label>
+                        <label htmlFor="modal-daftar" className="btn bg-blue-500 hover:bg-blue-600 border-0 md:visible invisible md:px-4 py-1 md:text-sm text-xs">Daftar</label>
                     )
                 }
             </div>

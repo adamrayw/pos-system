@@ -139,7 +139,7 @@ function Modal(props) {
                                                     }
                                                 </>
                                             }
-                                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-start rounded-lg cursor-pointer bg-orange-500 hover:bg-orange-600">
+                                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-start rounded-lg cursor-pointer bg-blue-500 hover:bg-blue-600">
                                                 <div className="flex flex-col items-center justify-center py-2 px-3">
                                                     <p className="text-xs text-white">
                                                         <span className="font-semibold flex items-center ">
@@ -154,11 +154,11 @@ function Modal(props) {
                                     </div>
                                     <div>
                                         <label htmlFor="nama" className="block mb-2 text-sm font-medium text-gray-900">Nama Menu</label>
-                                        <input type="nama" name="nama" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" placeholder="Soto" required onChange={handleName} value={name} />
+                                        <input type="nama" name="nama" id="nama" className="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-blue-500 block w-full p-2.5" placeholder="Soto" required onChange={handleName} value={name} />
                                     </div>
                                     <div>
                                         <label htmlFor='pilih-kategori' className="block mb-2 text-sm font-medium text-gray-900">Pilih Kategori</label>
-                                        <select id="kategori" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5" onChange={handleKategori}>
+                                        <select id="kategori" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-blue-500 block w-full p-2.5" onChange={handleKategori}>
                                             <option selected>Pilih Kategori</option>
                                             {isLoaded ?
                                                 <>
@@ -186,15 +186,15 @@ function Modal(props) {
                                     </div>
                                     <div>
                                         <label htmlFor="harga" className="block mb-2 text-sm font-medium text-gray-900">Harga</label>
-                                        <input type="text" name="harga" id="harga" placeholder="10000" className='bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-orange-500 block w-full p-2.5' required onChange={handlePrice} value={price} />
+                                        <input type="text" name="harga" id="harga" placeholder="10000" className='bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:ring-1 focus:ring-blue-500 block w-full p-2.5' required onChange={handlePrice} value={price} />
                                         <small className="text-xs text-gray-400">contoh: 10000 = Rp 10.000</small>
                                     </div>
                                     {isLoading ?
-                                        <button disabled className="w-full flex justify-center items-center text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center hover:cursor-not-allowed">
+                                        <button disabled className="w-full flex justify-center items-center text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center hover:cursor-not-allowed">
                                             <CgSpinner className='animate-spin text-xl' />
                                         </button>
                                         :
-                                        <button type="submit" className="w-full text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center">{props.isEdit ? "Edit" : "Tambah"}</button>
+                                        <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-500 font-medium rounded-lg text-sm transition px-5 py-2.5 text-center">{props.isEdit ? "Edit" : "Tambah"}</button>
                                     }
                                 </form>
                             </div>

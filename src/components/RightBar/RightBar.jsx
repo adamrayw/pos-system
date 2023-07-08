@@ -23,12 +23,12 @@ function RightBar() {
     return (
         <>
             <div className={`absolute ${isOpen ? 'hidden' : 'block'} m-6 right-0 bottom-0 '`} >
-                <button className=' bg-orange-500 flex items-center px-2 rounded-3xl text-white shadow-lg space-x-2 hover:bg-orange-600 transition active:bg-orange-800' onClick={() => setIsOpen(true)}>
+                <button className=' bg-blue-500 flex items-center px-2 rounded-3xl text-white shadow-lg space-x-2 hover:bg-blue-600 transition active:bg-blue-500' onClick={() => setIsOpen(true)}>
                     <BiFoodMenu className='md:text-3xl text-xl my-2' />
                     {/* <p className='whitespace-nowrap font-semibold'>Open</p> */}
                 </button>
             </div>
-            <div className={`md:relative absolute ${isOpen ? 'block' : 'hidden'} h-full w-full md:w-1/2 top-1/2 md:top-0 left-1/2 md:left-0 md:transform-none transform md:-translate-x-0 md:translate-y-0 -translate-x-1/2 -translate-y-1/2`}>
+            <div className={`md:relative absolute ${isOpen ? 'block z-20' : 'hidden'} h-full w-full md:w-1/2 top-1/2 md:top-0 left-1/2 md:left-0 md:transform-none transform md:-translate-x-0 md:translate-y-0 -translate-x-1/2 -translate-y-1/`}>
                 {isModalKonfirmasiOpen ?
                     <ModalTransaksi toggleModal={triggerFromModal} dataPrice={[{ subTotal, total }]} />
                     :
@@ -38,7 +38,7 @@ function RightBar() {
                     <div className={`flex flex-col justify-between ${isOpen ? 'block' : 'hidden'}`} >
                         <div>
                             <div className='w-full flex flex-row-reverse justify-between items-center mb-6'>
-                                <button className=' bg-orange-500 px-2 rounded-lg text-white hover:bg-orange-600 transition' onClick={() => setIsOpen(false)}>
+                                <button className=' bg-blue-500 px-2 rounded-lg text-white hover:bg-blue-600 transition' onClick={() => setIsOpen(false)}>
                                     <IoIosClose className='text-xl my-2' />
                                 </button>
                                 <h1 className="font-bold text-xl">Current Order</h1>
@@ -54,16 +54,16 @@ function RightBar() {
                                             <div className='flex justify-between items-end w-full'>
                                                 <div className='space-y-2'>
                                                     <h2 className='font-bold text-lg'>{e.name}</h2>
-                                                    <p className='text-orange-500 font-medium'>Rp {convert(e.price)}</p>
+                                                    <p className='text-gray-500 font-medium'>Rp {convert(e.price)}</p>
                                                 </div>
                                                 <div className='flex items-center justify-between space-x-2'>
-                                                    <button className='text-xs py-1 w-6  rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => {
+                                                    <button className='text-xs py-1 w-6  rounded px-2 hover:bg-blue-600 active:bg-blue-500 bg-blue-500 text-white transition' onClick={() => {
                                                         dispatch(remove(e))
                                                     }}>-</button>
                                                     <p className='text-sm'>
                                                         {e.qty}
                                                     </p>
-                                                    <button className='text-xs py-1 w-6 rounded px-2 hover:bg-orange-600 active:bg-orange-800 bg-orange-500 text-white transition' onClick={() => dispatch(add(e))}>+</button>
+                                                    <button className='text-xs py-1 w-6 rounded px-2 hover:bg-blue-600 active:bg-blue-500 bg-blue-500 text-white transition' onClick={() => dispatch(add(e))}>+</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,12 +91,12 @@ function RightBar() {
                             </div>
                         </div>
                         <div className='mt-10 space-y-2'>
-                            {/* <input type="text" name="diskon" className='w-full p-3 text-center border rounded focus:ring focus:ring-orange-500 font-semibold text-sm' placeholder='Masukkan kode diskon' /> */}
+                            {/* <input type="text" name="diskon" className='w-full p-3 text-center border rounded focus:ring focus:ring-blue-500 font-semibold text-sm' placeholder='Masukkan kode diskon' /> */}
 
                             {menus.length === 0 ?
-                                <button className='bg-orange-500 opacity-40 hover:cursor-not-allowed w-full rounded text-white font-semibold py-3 transition'>Bayar</button>
+                                <button className='bg-blue-500 opacity-40 hover:cursor-not-allowed w-full rounded text-white font-semibold py-3 transition'>Bayar</button>
                                 :
-                                <button className='bg-orange-500 w-full rounded text-white font-semibold py-3 hover:bg-orange-600 active:bg-orange-700 transition' onClick={() => setIsModalKonfirmasiOpen(true)}>Bayar</button>
+                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 hover:bg-blue-600 active:bg-blue-500 transition' onClick={() => setIsModalKonfirmasiOpen(true)}>Bayar</button>
                             }
                         </div>
                     </div>

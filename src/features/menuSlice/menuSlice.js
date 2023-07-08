@@ -13,6 +13,7 @@ const initialState = {
     total_pendapatan_month: 0,
     total_pendapatan_last_month: 0,
     total_pendapatan_yesterday: 0,
+    rincian: [],
 }
 
 export const menuSlice = createSlice({
@@ -97,10 +98,16 @@ export const menuSlice = createSlice({
         reset: (state) => {
             state.value = []
             state.subTotal = 0
+        },
+        rincian: (state, action) => {
+            state.rincian = action.payload
+        },
+        removeRincian: (state) => {
+            state.rincian = []
         }
     }
 })
 
-export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth, reset, calculateTrYesterday, calculateTrLMonth } = menuSlice.actions
+export const { add, remove, getSubTotal, kategoriIndex, setKeyword, calculateTrToday, calculateTrMonth, reset, calculateTrYesterday, calculateTrLMonth, rincian, removeRincian } = menuSlice.actions
 
 export default menuSlice.reducer

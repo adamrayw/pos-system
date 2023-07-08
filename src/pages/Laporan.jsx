@@ -4,12 +4,14 @@ import { useApiRequest } from '../services/api.service'
 import { BiLinkExternal } from 'react-icons/bi'
 import convertToDateTimeFormat from '../utils/converToDateFormat.utils'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTrLMonth, calculateTrMonth, calculateTrToday, calculateTrYesterday } from '../features/menuSlice/menuSlice'
+import { calculateTrLMonth, calculateTrMonth, calculateTrToday, calculateTrYesterday, rincian } from '../features/menuSlice/menuSlice'
 import convert from '../utils/convertToRupiah.utils'
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'
 import { MdGroup, MdGroups2 } from 'react-icons/md'
 import { CgSpinner } from 'react-icons/cg'
 import Chart from '../components/Chart/Chart'
+import ModalRincianPembayaran from '../components/Modal/ModalRincianPembayaran'
+import { IoMdPaper } from 'react-icons/io'
 
 function Laporan() {
     const [isLoading, setIsLoading] = useState(false)
@@ -24,6 +26,9 @@ function Laporan() {
     const getYesterday = useSelector((state) => state.menu.total_pendapatan_yesterday)
     const jumlahOrderTd = useSelector((state) => state.menu.transaction_today)
     const jumlahOrderMh = useSelector((state) => state.menu.transaction_month)
+    const rincianData = useSelector((state) => state.menu.rincian)
+
+    console.log(rincianData)
 
     function hitungSelisihBulan() {
         const incomeThisMonth = getMonth
@@ -81,18 +86,18 @@ function Laporan() {
     }, [])
 
     return (
-        <div className='container px-4'>
-            <h1 className="text-2xl md:text-4xl font-semibold mb-6">Laporan</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-2 bg-black p-2 md:p-10 bg-gradient-to-bl from-yellow-200 via-yellow-300 to-amber-500 rounded-lg shadow background-animate'>
+        <div className='container relative px-4 md:ml-0 ml-1'>
+            <h1 className="text-2xl md:text-4xl font-bold mb-4">Laporan</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-2 bg-blue-500 p-2 md:p-10 rounded-lg shadow'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between w-full">
                     <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400">Total Pendapatan Hari Ini</h3>
-                            <BiLineChart className='text-sm text-orange-500' />
+                            <BiLineChart className='text-sm text-blue-500' />
                         </div>
                         <div className='space-y-2'>
                             {isLoading ?
-                                <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                                <CgSpinner className='animate-spin text-2xl text-blue-500' />
                                 :
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getTotal)}</p>
                             }
@@ -120,11 +125,11 @@ function Laporan() {
                     <div className="card shadow-sm rounded-lg bg-white p-4 texce space-y-2">
                         <div className='flex items-center space-x-1'>
                             <h3 className="text-xs text-gray-400 truncate">Total Pendapatan Bulan Ini</h3>
-                            <BiLineChart className='text-sm text-orange-500' />
+                            <BiLineChart className='text-sm text-blue-500' />
                         </div>
                         <div className='space-y-2'>
                             {isLoading ?
-                                <CgSpinner className='animate-spin text-2xl text-orange-500' />
+                                <CgSpinner className='animate-spin text-2xl text-blue-500' />
                                 :
                                 <p className="font-semibold whitespace-nowrap text-lg md:text-2xl">Rp {convert(getMonth)}</p>
                             }
@@ -148,34 +153,42 @@ function Laporan() {
                             <p className='text-xs text-gray-400'>Pendapatan Bulan kemarin: Rp {convert(getLastMonth)}</p>
                         </div>
                     </div>
-                    <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
-                        <div className='flex items-center space-x-1'>
-                            <h3 className="text-xs text-gray-400 truncate">Jumlah Order Hari Ini</h3>
-                            <MdGroup className='text-sm text-orange-500' />
+                    <label htmlFor="modal_today" className="card shadow-sm rounded-lg bg-white p-4 space-y-2 hover:bg-gray-50 transition cursor-pointer active:bg-gray-100">
+                        <div htmlFor="modal-daftar">
+                            <div className='flex items-center space-x-1'>
+                                <h3 className="text-xs text-gray-400 truncate">Jumlah Order Hari Ini</h3>
+                                <MdGroup className='text-sm text-blue-500' />
+                            </div>
+                            {isLoading ?
+                                <CgSpinner className='animate-spin text-2xl text-blue-500' />
+                                :
+                                <p className="font-semibold text-lg md:text-2xl">{jumlahOrderTd.length}</p>
+                            }
                         </div>
-                        {isLoading ?
-                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
-                            :
-                            <p className="font-semibold text-lg md:text-2xl">{jumlahOrderTd.length}</p>
-                        }
-
-                    </div>
-                    <div className="card shadow-sm rounded-lg bg-white p-4 space-y-2">
-                        <div className='flex items-center space-x-1'>
-                            <h3 className="text-xs text-gray-400 truncate">Jumlah Order Bulan Ini</h3>
-                            <MdGroups2 className='text-sm text-orange-500' />
+                    </label>
+                    <label htmlFor="modal_month" className="card shadow-sm rounded-lg bg-white p-4 space-y-2 hover:bg-gray-50 transition cursor-pointer active:bg-gray-100">
+                        <div>
+                            <div className='flex items-center space-x-1'>
+                                <h3 className="text-xs text-gray-400 truncate">Jumlah Order Bulan Ini</h3>
+                                <MdGroups2 className='text-sm text-blue-500' />
+                            </div>
+                            {isLoading ?
+                                <CgSpinner className='animate-spin text-2xl text-blue-500' />
+                                :
+                                <p className="font-semibold text-lg md:text-2xl">{jumlahOrderMh.length}</p>
+                            }
                         </div>
-                        {isLoading ?
-                            <CgSpinner className='animate-spin text-2xl text-orange-500' />
-                            :
-                            <p className="font-semibold text-lg md:text-2xl">{jumlahOrderMh.length}</p>
-                        }
-                    </div>
+                    </label>
                 </div>
                 <Chart props={dataTransaksi} />
             </div>
-
-            <h2 className='mt-4 font-semibold mb-2'>Transaksi Terakhir</h2>
+            <div className='flex items-center justify-between mt-10 mb-4'>
+                <h2 className='text-2xl font-bold'>5 Transaksi Terakhir</h2>
+                <div className='space-x-4'>
+                    <button className='btn btn-sm text-sm bg-gray-500 border-0 font-medium'>Transaksi Hari Ini</button>
+                    <button className='btn btn-sm text-sm bg-gray-500 border-0 font-medium'>Transaksi Bulan Ini</button>
+                </div>
+            </div>
             <div className='relative space-x-4 max-h-screen w-full overflow-auto'>
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-gray-700 uppercase bg-white whitespace-nowrap">
@@ -193,7 +206,7 @@ function Laporan() {
                                 Status
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Link Pembayaran
+                                Rincian Pembayaran
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Tanggal
@@ -259,10 +272,10 @@ function Laporan() {
                                                 Rp {convert(e.total)}
                                             </td>
                                             <td className='px-6 py-4'>
-                                                <p className={`${e.isPaid ? 'text-green-800 bg-green-300' : 'text-yellow-700 bg-yellow-200'} text-center text-sm py-2 px-3 rounded-xl font-semibold`}>{e.isPaid ? 'Sudah Dibayar' : 'Menunggu Pembayaran'}</p>
+                                                <p className={`${e.isPaid ? 'text-green-800 bg-green-300' : 'text-blue-500 bg-blue-200'} text-center text-sm py-2 px-3 rounded-xl font-semibold`}>{e.isPaid ? 'Sudah Dibayar' : 'Menunggu Pembayaran'}</p>
                                             </td>
                                             <td className='px-6 py-4'>
-                                                <a href={e.redirect_url} className="flex items-center hover:text-blue-500" target="_blank"><BiLinkExternal className='mr-2 text-lg' />Klik Disini</a>
+                                                <label htmlFor="modal_rincian" className="flex items-center hover:text-blue-500 transition cursor-pointer" target="_blank" onClick={() => dispatch(rincian(e.rincian))}><IoMdPaper className='mr-2 text-lg' />Klik Disini</label>
                                             </td>
                                             <td className="px-6 py-4">
                                                 {convertToDateTimeFormat(e.createdAt)}
@@ -284,6 +297,7 @@ function Laporan() {
                 }
             </div>
         </div>
+
     )
 }
 

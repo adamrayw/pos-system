@@ -1,10 +1,12 @@
-import Kasir from '../../../../assets/kasir.jpg'
+// import Kasir from '../../../../assets/mockuuups2.png'
+import Kasir from '../../../../assets/new.png'
+// import Kasir from '../../../../assets/kasir.jpg'
 
 function Hero() {
     return (
         <div className="hero-overlay min-h-screen my-10 bg-white">
             <div className="hero-content flex-col-reverse lg:flex-row-reverse justify-between items-center mx-auto">
-                <img src={Kasir} className="w-full lg:w-1/3" />
+                <img src={Kasir} className="w-full lg:w-1/4 " />
                 <div className='space-y-4 md:w-1/2 w-full'>
                     <div class="w-fit flex items-center space-x-2 bg-gray-50 px-3 py-2 rounded-full text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-6 lg:w-6" viewBox="0 0 20 20"
@@ -20,14 +22,14 @@ function Hero() {
                     </div>
                     <div className='space-y-4'>
                         <h1 className="text-2xl lg:text-4xl font-extrabold text-gray-700">
-                            Satu <span className="text-orange-500">Aplikasi POSKU</span> untuk
+                            Satu <span className="text-blue-500">Aplikasi POSKU</span> untuk
                             segala bisnis.
                         </h1>
                         <p className="text-xs lg:text-lg font-normal leading-relaxed mt-2 text-gray-500">
                             Aplikasi kasir online berbasis cloud yang dapat membawa potensi bisnis Anda ke level tertinggi.
                         </p>
                         <div>
-                            <a href='#harga' className="btn bg-orange-500 hover:bg-orange-600 border-0 mt-4">Lihat harga</a>
+                            <a href='#harga' className="btn bg-blue-500 hover:bg-blue-600 border-0 mt-4">Lihat harga</a>
                         </div>
                     </div>
                 </div>

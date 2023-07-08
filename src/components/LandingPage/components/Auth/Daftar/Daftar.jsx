@@ -63,14 +63,14 @@ function Daftar() {
             <label htmlFor="modal-daftar" className="modal cursor-pointer">
                 <label className="modal-box relative max-w-sm flex flex-col justify-center" >
                     <div className="flex justify-between items-center mb-2">
-                        <h3 className="text-xl font-bold">Daftar Akun <span className='text-orange-500'>POSKU</span></h3>
+                        <h3 className="text-xl font-bold">Daftar Akun <span className='text-blue-500'>POSKU</span></h3>
                         <div className="flex items-center space-x-1 hover:cursor-pointer">
                             <svg
                                 viewBox="0 0 24 24"
                                 fill="currentColor"
                                 height="1em"
                                 width="1em"
-                                className="text-orange-500"
+                                className="text-blue-500"
                             >
                                 <path d="M10 17v-3H3v-4h7V7l5 5-5 5m0-15h9a2 2 0 012 2v16a2 2 0 01-2 2h-9a2 2 0 01-2-2v-2h2v2h9V4h-9v2H8V4a2 2 0 012-2z" />
                             </svg>
@@ -108,7 +108,7 @@ function Daftar() {
                         <div className='flex justify-end space-x-2'>
                             <div className="modal-action">
                                 <label
-                                    htmlFor="modal-daftar" className="btn btn-md text-xs btn-outline hover:bg-slate-800 border border-s-slate-800 text-slate-800"
+                                    htmlFor="modal-daftar" className="btn btn-md text-xs btn-outline hover:bg-blue-500 border border-s-blue-500 text-blue-500"
                                     onClick={() => {
                                         setEmail('')
                                         setPassword('')
@@ -122,9 +122,9 @@ function Daftar() {
                             <div className="modal-action">
                                 {isLoading ?
                                     (
-                                        <button className="btn bg-slate-200 text-slate-800 loading border-0" >Sedang Mendaftar</button>
+                                        <button className="btn bg-blue-200 text-blue-500 loading border-0" >Sedang Mendaftar</button>
                                     ) : (
-                                        <button type='submit' className="btn text-xs bg-orange-500 border-0 hover:bg-orange-600">Daftar</button>
+                                        <button type='submit' className="btn text-xs bg-blue-500 border-0 hover:bg-blue-600">Daftar</button>
                                     )}
                             </div>
                         </div>

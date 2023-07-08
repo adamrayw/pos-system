@@ -54,7 +54,7 @@ function Dashboard() {
             <div className="flex items-center justify-between mb-4">
                 <Link to='/' className="rounded-full bg-gray-50 hover:bg-gray-100 active:bg-gray-200 transition duration-300">
                     <svg
-                        className="h-10 w-10 text-slate-800"
+                        className="h-10 w-10 text-blue-500"
                         fill="currentColor"
                         viewBox="0 0 16 16"
                     >
@@ -65,7 +65,7 @@ function Dashboard() {
                     </svg>
                 </Link>
                 <div>
-                    <Link to="/app" class="btn  border-0 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all text-white text-xs rounded-full font-bold shadow-lg focus:outline-none" target="_blank">Go to App</Link>
+                    <Link to="/app" class="btn  border-0 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-500 transition-all text-white text-xs rounded-full font-bold shadow-lg focus:outline-none" target="_blank">Go to App</Link>
                 </div>
             </div>
             <div>
@@ -115,7 +115,7 @@ function Dashboard() {
                                         )}
                                     </td>
                                     <td>
-                                        <button class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition-all text-white text-base rounded-full font-bold shadow-lg focus:outline-none">
+                                        <button class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-500 transition-all text-white text-base rounded-full font-bold shadow-lg focus:outline-none">
                                             <a href={item.redirect_url} class="flex items-center justify-center px-8 py-3">
                                                 <svg
                                                     viewBox="0 0 576 512"

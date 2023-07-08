@@ -66,7 +66,7 @@ function ModalTransaksi(props) {
                             {isLoading ?
                                 <div className="absolute h-full flex justify-center items-center w-full left-0 bg-gray-500 opacity-30">
                                     <div className="bg-white rounded p-2">
-                                        <CgSpinner className="text-4xl text-orange-500 animate-spin" />
+                                        <CgSpinner className="text-4xl text-blue-500 animate-spin" />
                                     </div>
                                 </div>
                                 :
@@ -119,7 +119,7 @@ function ModalTransaksi(props) {
                             </div>
                             <div className="grid grid-cols-1 text-start gap-y-2 mt-4">
                                 <h2 className="text-gray-500">Pilih Metode Pembayaran</h2>
-                                <button className={`border ${paymentMethod === 'midtrans' ? 'border-orange-500' : ''} hover:border-orange-500 py-2 text-left px-5 rounded font-semibold flex items-center justify-between`} onClick={() => {
+                                <button className={`border ${paymentMethod === 'midtrans' ? 'border-blue-500' : ''} hover:border-blue-500 py-2 text-left px-5 rounded font-semibold flex items-center justify-between`} onClick={() => {
                                     if (paymentMethod === '' || paymentMethod === 'cash') {
                                         setPaymentMethod('midtrans')
                                     } else {
@@ -128,10 +128,10 @@ function ModalTransaksi(props) {
                                 }}>
                                     <div>
                                         Pay with Midtrans
-                                        <p className="text-xs font-normal text-orange-500 mt-1">E-Wallet, Transfer Bank, Debit, QRIS</p>
+                                        <p className="text-xs font-normal text-blue-500 mt-1">E-Wallet, Transfer Bank, Debit, QRIS</p>
                                     </div>
                                     {paymentMethod === 'midtrans' ?
-                                        <BsFillCheckCircleFill className="text-orange-500" />
+                                        <BsFillCheckCircleFill className="text-blue-500" />
                                         :
                                         null
                                     }
@@ -157,11 +157,11 @@ function ModalTransaksi(props) {
                             {paymentMethod === 'midtrans' ?
                                 <>
                                     {isLoading ?
-                                        <button disabled className="w-full flex justify-center items-center text-white py-3 mt-4 bg-orange-300 hover:bg-orange-600 active:bg-orange-700 font-medium rounded-lg text-sm transition px-5 text-center hover:cursor-not-allowed">
+                                        <button disabled className="w-full flex justify-center items-center text-white py-3 mt-4 bg-blue-300 hover:bg-blue-600 active:bg-blue-500 font-medium rounded-lg text-sm transition px-5 text-center hover:cursor-not-allowed">
                                             Buat Link Pembayaran
                                         </button>
                                         :
-                                        <button className='bg-orange-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-orange-600 active:bg-orange-700 transition'
+                                        <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-500 transition'
                                             onClick={() => handlePayment()}
                                         >Buat Link Pembayaran</button>
                                     }
@@ -170,14 +170,14 @@ function ModalTransaksi(props) {
                                 null
                             }
                             {paymentMethod === 'cash' ?
-                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-700 transition' onClick={() => handleCashPayment()}>
+                                <button className='bg-blue-500 w-full rounded text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-500 transition' onClick={() => handleCashPayment()}>
                                     Pembayaran Selesai
                                 </button>
                                 :
                                 null
                             }
                             {paymentMethod === '' ?
-                                <button className='bg-orange-500 w-full rounded invisible text-white font-semibold py-3 mt-4 text-sm hover:bg-orange-600 active:bg-orange-700 transition'>Buat Link Pembayaran</button>
+                                <button className='bg-blue-500 w-full rounded invisible text-white font-semibold py-3 mt-4 text-sm hover:bg-blue-600 active:bg-blue-500 transition'>Buat Link Pembayaran</button>
                                 :
                                 null
                             }
@@ -196,10 +196,10 @@ function ModalTransaksi(props) {
                                     <span className="sr-only">Close modal</span>
                                 </button>
                                 <div className="pt-10">
-                                    <TbUnlink className="text-6xl mx-auto  mb-6 text-orange-500" />
+                                    <TbUnlink className="text-6xl mx-auto  mb-6 text-blue-500" />
                                     <h1 className="text-2xl mb-2 text-center font-bold">Link Pembayaran Berhasil Dibuat</h1>
-                                    <p className="text-center text-sm text-gray-500 leading-relaxed">Klik <span className="text-orange-500 font-semibold">Lanjutkan Pembayaran</span> untuk melanjutkan pembayaran, link pembayaran tersimpan di laporan.</p>
-                                    <a className="flex justify-center mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" href={paymentLink}>Lanjutkan Pembayaran</a>
+                                    <p className="text-center text-sm text-gray-500 leading-relaxed">Klik <span className="text-blue-500 font-semibold">Lanjutkan Pembayaran</span> untuk melanjutkan pembayaran, link pembayaran tersimpan di laporan.</p>
+                                    <a className="flex justify-center mt-4 bg-blue-500 text-white py-2 font-semibold rounded hover:bg-blue-600 active:bg-blue-500 transition" href={paymentLink}>Lanjutkan Pembayaran</a>
                                 </div>
                             </div>
                         </div>
@@ -215,16 +215,16 @@ function ModalTransaksi(props) {
                                 <span className="sr-only">Close modal</span>
                             </button>
                             <div className="pt-10">
-                                <TbUnlink className="text-6xl mx-auto  mb-6 text-orange-500" />
+                                <TbUnlink className="text-6xl mx-auto  mb-6 text-blue-500" />
                                 <h1 className="text-2xl mb-2 text-center font-bold">Pembayaran Berhasil!</h1>
                                 <p className="text-center text-sm text-gray-500 leading-relaxed">
                                     Pembayaran telah berhasil dilakukan, silahkan cek laporan untuk melihat detail pembayaran.
                                 </p>
                                 <div className="flex justify-between md:flex-row flex-col text-center md:space-x-2 space-x-0">
-                                    <a className="w-full mt-4 bg-gray-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" onClick={() => {
+                                    <a className="w-full mt-4 bg-gray-500 text-white py-2 font-semibold rounded hover:bg-blue-600 active:bg-blue-500 transition" onClick={() => {
                                         triggerToRightBarComponent()
                                     }}>Tutup</a>
-                                    <Link to='/app/laporan' className="w-full mt-4 bg-orange-500 text-white py-2 font-semibold rounded hover:bg-orange-600 active:bg-orange-800 transition" onClick={() => {
+                                    <Link to='/app/laporan' className="w-full mt-4 bg-blue-500 text-white py-2 font-semibold rounded hover:bg-blue-600 active:bg-blue-500 transition" onClick={() => {
                                         triggerToRightBarComponent()
                                     }}>Laporan</Link>
                                 </div>
