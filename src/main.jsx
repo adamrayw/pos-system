@@ -11,6 +11,9 @@ import { store } from './app/store';
 import Login from './components/LandingPage/components/Auth/Login/Login'
 import Daftar from './components/LandingPage/components/Auth/Daftar/Daftar'
 import ModalPricing from './components/LandingPage/components/Modal/ModalPricing'
+import ModalTransaksiHariIni from './components/Modal/ModalTransaksiHariIni';
+import ModalTransaksiBulanIni from './components/Modal/ModalTransaksiBulanIni';
+import ModalRincianPembayaran from './components/Modal/ModalRincianPembayaran';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,6 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </div>
       <Login />
       <Daftar />
+      <ModalTransaksiHariIni />
+      <ModalTransaksiBulanIni />
+      <ModalRincianPembayaran />
       <ModalPricing />
     </BrowserRouter>
   </Provider>
