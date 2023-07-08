@@ -10,7 +10,7 @@ function AlertError({ message }) {
     }, [message])
 
     return (
-        <div className={`${message.status_text === "warning" ? "bg-orange-400" : "bg-red-400"} ${isInvoke ? "block" : "hidden"} py-3 px-4 text-white rounded-md flex justify-between items-center`}>
+        <div className={`${message.status_text === "warning" ? "bg-blue-400" : "bg-red-400"} ${isInvoke ? "block" : "hidden"} py-3 px-4 text-white rounded-md flex justify-between items-center`}>
             <div className="flex items-center space-x-2">
                 <svg
                     viewBox="0 0 24 24"
