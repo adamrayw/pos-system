@@ -86,7 +86,7 @@ function Laporan() {
     }, [])
 
     return (
-        <div className='container relative px-4 md:ml-0 ml-1'>
+        <div className='container relative px-4 md:ml-0 ml-2'>
             <h1 className="text-2xl md:text-4xl font-bold mb-4">Laporan</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2 bg-blue-500 p-2 md:p-10 rounded-lg shadow'>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-between w-full">
@@ -182,11 +182,11 @@ function Laporan() {
                 </div>
                 <Chart props={dataTransaksi} />
             </div>
-            <div className='flex items-center justify-between mt-10 mb-4'>
+            <div className='flex md:flex-row flex-col-reverse text-left md:items-center justify-between mt-10 mb-4'>
                 <h2 className='text-2xl font-bold'>5 Transaksi Terakhir</h2>
-                <div className='space-x-4'>
-                    <button className='btn btn-sm text-sm bg-gray-500 border-0 font-medium'>Transaksi Hari Ini</button>
-                    <button className='btn btn-sm text-sm bg-gray-500 border-0 font-medium'>Transaksi Bulan Ini</button>
+                <div className='md:space-x-4 md:space-y-0 flex md:flex-row flex-col my-2 space-y-2 justify-center'>
+                    <button className='btn btn-sm md:text-sm text-xs bg-gray-500 border-0 font-medium'>Transaksi Hari Ini</button>
+                    <button className='btn btn-sm md:text-sm text-xs bg-gray-500 border-0 font-medium'>Transaksi Bulan Ini</button>
                 </div>
             </div>
             <div className='relative space-x-4 max-h-screen w-full overflow-auto'>
@@ -275,7 +275,12 @@ function Laporan() {
                                                 <p className={`${e.isPaid ? 'text-green-800 bg-green-300' : 'text-blue-500 bg-blue-200'} text-center text-sm py-2 px-3 rounded-xl font-semibold`}>{e.isPaid ? 'Sudah Dibayar' : 'Menunggu Pembayaran'}</p>
                                             </td>
                                             <td className='px-6 py-4'>
-                                                <label htmlFor="modal_rincian" className="flex items-center hover:text-blue-500 transition cursor-pointer" target="_blank" onClick={() => dispatch(rincian(e.rincian))}><IoMdPaper className='mr-2 text-lg' />Klik Disini</label>
+                                                {e.isPaid ?
+                                                    <label htmlFor="modal_rincian" className="flex items-center hover:text-blue-500 transition cursor-pointer" target="_blank"
+                                                        onClick={() => dispatch(rincian(e.rincian))}><IoMdPaper className='mr-2 text-lg' />Klik Disini</label>
+                                                    :
+                                                    <a href={e.redirect_url} className="text-sm mt-4 text-blue-500 underline hover:text-blue-600 border-0">Lanjutkan Pembayaran</a>
+                                                }
                                             </td>
                                             <td className="px-6 py-4">
                                                 {convertToDateTimeFormat(e.createdAt)}
