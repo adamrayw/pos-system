@@ -5,7 +5,6 @@ function ModalRincianPembayaran() {
     const dispatch = useDispatch()
 
     const rincian = useSelector((state) => state.menu.rincian)
-
     return (
         <>
             {/* Put this part before </body> tag */}
@@ -32,20 +31,23 @@ function ModalRincianPembayaran() {
                         <tr>
                             <td>Status Transaksi</td>
                             <td className="px-2">:</td>
-                            <td>{rincian.transaction_status ?
-                                (
-                                    <>
-                                        <span className="bg-green-300 text-green-500 px-2 rounded font-bold">Success</span>
-                                    </>
-                                )
-                                :
-                                <>
-                                    <span className="text-red-500">Failed</span>
-                                </>
-                            }
+                            <td>
+                                {
+                                    rincian.transaction_status ?
+                                        (
+                                            <>
+                                                <span className="bg-green-300 text-green-500 px-2 rounded font-bold">Success</span>
+                                            </>
+                                        )
+                                        :
+                                        <>
+                                            <span className="text-red-500">Failed</span>
+                                        </>
+                                }
                             </td>
                         </tr>
                     </tabel>
+
                     <div className="modal-action">
                         <label htmlFor="modal_rincian" className="btn" onClick={() => dispatch(removeRincian())}>Close</label>
                     </div>
