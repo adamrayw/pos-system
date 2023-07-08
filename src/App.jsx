@@ -38,7 +38,7 @@ function App() {
       <div className="bg-gray-50">
         {pathname === '/auth/login' || pathname === '/payment-success' || pathname === '/' || pathname === '/dashboard' | pathname === '/success-checkout' || pathname === "/404" ? <></> : <Sidebar />}
       </div>
-      <div className={` ${pathname === '/auth/login' || pathname === "/" || pathname === '/dashboard' ? 'bg-white w-full h-screen overflow-auto' : 'bg-gray-100 py-10 md:p-10 w-full h-screen overflow-auto'}  `}>
+      <div className={` ${pathname === '/auth/login' || pathname === "/" || pathname === '/dashboard' ? 'bg-white w-full h-screen overflow-auto' : 'bg-gray-100 py-10 pl-16 md:pl-24 w-full h-screen overflow-auto'}  `}>
         <Routes>
           {/* Landing Page Routes */}
           <Route path="/" element={<Home />} />
@@ -88,7 +88,7 @@ function App() {
           <Route path="404" element={<NotFound />} />
         </Routes>
       </div>
-      {pathname === '/auth/login' || pathname === '/payment-success' || pathname === '/' || pathname === '/dashboard' || pathname === '/success-checkout' || pathname === "/404" ? <></> : <RightBar />}
+      {pathname === '/auth/login' || pathname === '/payment-success' || pathname === '/' || pathname === '/dashboard' || pathname === '/success-checkout' || pathname === "/404" || pathname === '/app/laporan' || pathname === '/app/manage/menu' || pathname === '/app/manage/kategori' ? <></> : <RightBar />}
       <ToastContainer />
     </div >
   )
