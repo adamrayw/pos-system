@@ -118,19 +118,19 @@ function Sidebar() {
                                 </Link>
                                 <ul className={`${stateManage ? 'block' : 'hidden'} px-8 pb-4 pt-2 mx-3`}>
                                     <li>
-                                        <Link to='app/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
-                                            setOpen(false)
-                                            setStateManage(false)
-                                        }}>
-                                            Menu
-                                        </Link>
-                                    </li>
-                                    <li>
                                         <Link to="app/manage/kategori" className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
                                             setOpen(false)
                                             setStateManage(false)
                                         }}>
                                             Kategori
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='app/manage/menu' className='hover:underline transition text-gray-400 py-2.5 font-semibold block' onClick={() => {
+                                            setOpen(false)
+                                            setStateManage(false)
+                                        }}>
+                                            Menu
                                         </Link>
                                     </li>
                                     {/* <li>
